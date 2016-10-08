@@ -1,12 +1,11 @@
-<persistence> <!-- use xmlns=""
+<persistence> use xmlns=""
     <persistence-unit name="company" >
-        <class> company.domain.Employee</class>
-        <class> company.domain.Department</class>
+        <class> at.fhj.swd.dbanw.User</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.0.0.16:5432/company" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
-            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="javax.persistence.jdbc.password" value="wegl4fh" />
         </properties>
-    </persistence-unit> -->
+    </persistence-unit>
 </persistence>
