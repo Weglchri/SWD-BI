@@ -7,3 +7,4 @@ DROP TABLE public.ProjectManager CASCADE
 DROP TABLE public.Freelancer CASCADE
 DROP TABLE public.User CASCADE
 
+DROP SEQUENCE serial;

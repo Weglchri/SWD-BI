@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e44a0aa5-fc40-42d2-b602-0b907b2b95f5.SCHEMA:wegl.public</OriginalElement>
+  <nodes>
+    <node x="258.5" y="169.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.freelancer</node>
+    <node x="841.0" y="0.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.project</node>
+    <node x="0.0" y="447.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.projectmanager</node>
+    <node x="836.5" y="224.5">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.responsibility</node>
+    <node x="15.5" y="234.5">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.company</node>
+    <node x="170.25" y="0.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.location</node>
+    <node x="597.5" y="191.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.offer</node>
+    <node x="603.75" y="11.0">e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.user</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.responsibility" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.project">
+      <point x="59.0" y="-37.0" />
+      <point x="57.5" y="70.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.company" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.location">
+      <point x="0.0" y="-48.5" />
+      <point x="127.0" y="144.0" />
+      <point x="218.25" y="144.0" />
+      <point x="-48.0" y="59.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.offer" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.project">
+      <point x="54.75" y="-70.5" />
+      <point x="761.75" y="171.0" />
+      <point x="898.5" y="171.0" />
+      <point x="-57.5" y="70.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.freelancer" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.location">
+      <point x="0.0" y="-114.0" />
+      <point x="405.5" y="144.0" />
+      <point x="314.25" y="144.0" />
+      <point x="48.0" y="59.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.responsibility" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.user">
+      <point x="-59.0" y="-37.0" />
+      <point x="895.5" y="161.0" />
+      <point x="749.25" y="161.0" />
+      <point x="48.5" y="59.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.projectmanager" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.company">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.offer" target="e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.user">
+      <point x="-54.75" y="-70.5" />
+      <point x="-48.5" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="539.5" y="315.5" />
+  <SelectedNodes>
+    <node>e44a0aa5-fc40-42d2-b602-0b907b2b95f5.TABLE:wegl.public.location</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

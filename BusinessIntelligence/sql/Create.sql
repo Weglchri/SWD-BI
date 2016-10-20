@@ -1,19 +1,19 @@
 CREATE TABLE public.User(
-User_Id INT PRIMARY KEY,
+User_Id SERIAL PRIMARY KEY,
 Name VARCHAR NOT NULL,
 Email VARCHAR NOT NULL,
 Password VARCHAR NOT NULL);
 
-CREATE TABLE public.Freelancer (
-Branch VARCHAR NOT NULL,
+CREATE TABLE public.Freelancer(
+Profession VARCHAR NOT NULL,
 Availability VARCHAR NOT NULL,
 Fk_Adress VARCHAR,
-Rate DECIMAL,
+Hourly_Wage INT,
 Education VARCHAR
 ) INHERITS (public.User);
 
 CREATE TABLE public.ProjectManager(
-Involved_in VARCHAR NOT NULL,
+Involved_In INT NOT NULL,
 Fk_Company_Name VARCHAR,
 Function VARCHAR
 ) INHERITS (public.User);
@@ -21,7 +21,7 @@ Function VARCHAR
 CREATE TABLE public.Company(
 Company_Name VARCHAR PRIMARY KEY,
 Fk_Adress VARCHAR,
-BRANCH VARCHAR);
+Branch VARCHAR);
 
 CREATE TABLE public.Location(
 Adress VARCHAR PRIMARY KEY,
@@ -30,15 +30,15 @@ ZIP INT NOT NULL,
 City VARCHAR NOT NULL);
 
 CREATE TABLE public.Offer(
-Offer_Id INT PRIMARY KEY,
-Price DECIMAL NOT NULL,
+Offer_Id SERIAL PRIMARY KEY,
+Price INT NOT NULL,
 Creation_Date DATE NOT NULL,
 Fk_Project_Id INT,
 Fk_User_Id INT);
 
 CREATE TABLE public.Project(
-Project_Id INT PRIMARY KEY,
-Capital DECIMAL,
+Project_Id SERIAL PRIMARY KEY,
+Capital INT,
 Creation_Date DATE NOT NULL,
 Task VARCHAR NOT NULL,
 Fk_Adress VARCHAR);
