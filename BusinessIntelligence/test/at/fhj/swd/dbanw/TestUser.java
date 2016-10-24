@@ -1,3 +1,4 @@
+/*
 package at.fhj.swd.dbanw;
 
 import org.junit.AfterClass;
@@ -12,9 +13,6 @@ import javax.persistence.Persistence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by sattlerb on 08/10/16.
- */
 public class TestUser
 {
 
@@ -59,3 +57,4 @@ public class TestUser
     }
 
 }
+*/
