@@ -1,4 +1,4 @@
-<persistence>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="wegl" >
         <class> at.fhj.swd.dbanw.User</class>
         <class> at.fhj.swd.dbanw.Company</class>
