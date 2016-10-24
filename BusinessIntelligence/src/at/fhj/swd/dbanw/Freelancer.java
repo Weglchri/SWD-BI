@@ -77,7 +77,7 @@ public class Freelancer {
         this.availability = availability;
     }
 
-    @Id
+    @Basic
     @Column(name = "fk_adress")
     public String getFkAdress() {
         return fkAdress;

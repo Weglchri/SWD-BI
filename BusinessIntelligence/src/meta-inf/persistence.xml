@@ -5,14 +5,14 @@
         <class>at.fhj.swd.dbanw.Location</class>
         <class>at.fhj.swd.dbanw.Offer</class>
         <class>at.fhj.swd.dbanw.Project</class>
-        <class>at.fhj.swd.dbanw.ProjectManager</class>
+        <class>at.fhj.swd.dbanw.Projectmanager</class>
         <class>at.fhj.swd.dbanw.Responsibility</class>
         <class>at.fhj.swd.dbanw.User</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/wegl"/>
             <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="eclipselink.jdbc.user" value="wegl"/>
-            <property name="eclipselink.jdbc.password" value="wegl4fh" />
+            <property name="eclipselink.jdbc.password" value="wegl4fh"/>
         </properties>
     </persistence-unit>
 </persistence>

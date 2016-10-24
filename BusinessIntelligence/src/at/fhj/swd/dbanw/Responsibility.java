@@ -3,14 +3,13 @@ package at.fhj.swd.dbanw;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 public class Responsibility {
     private Integer fkProjectmanagerId;
     private Integer fkProjectId;
 
-    @Id
+    @Basic
     @Column(name = "fk_projectmanager_id")
     public Integer getFkProjectmanagerId() {
         return fkProjectmanagerId;
@@ -20,7 +19,7 @@ public class Responsibility {
         this.fkProjectmanagerId = fkProjectmanagerId;
     }
 
-    @Id
+    @Basic
     @Column(name = "fk_project_id")
     public Integer getFkProjectId() {
         return fkProjectId;

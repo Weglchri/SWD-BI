@@ -54,7 +54,7 @@ public class Project {
         this.task = task;
     }
 
-    @Id
+    @Basic
     @Column(name = "fk_adress")
     public String getFkAdress() {
         return fkAdress;

@@ -44,7 +44,7 @@ public class Offer {
         this.creationDate = creationDate;
     }
 
-    @Id
+    @Basic
     @Column(name = "fk_project_id")
     public Integer getFkProjectId() {
         return fkProjectId;
@@ -54,7 +54,7 @@ public class Offer {
         this.fkProjectId = fkProjectId;
     }
 
-    @Id
+    @Basic
     @Column(name = "fk_user_id")
     public Integer getFkUserId() {
         return fkUserId;
