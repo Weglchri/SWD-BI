@@ -25,8 +25,8 @@ public class TestUser
     static final String persistenceUnitName = "wegl";
 
     @BeforeClass
-    public static void setup()
-    {
+    public static void setup() {
+
         factory = Persistence.createEntityManagerFactory( persistenceUnitName );
         assertNotNull (factory);
         manager = factory.createEntityManager();
