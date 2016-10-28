@@ -7,7 +7,7 @@ Password VARCHAR NOT NULL);
 CREATE TABLE public.Freelancer(
 Profession VARCHAR NOT NULL,
 Availability VARCHAR NOT NULL,
-Fk_Adress VARCHAR,
+Fk_Address VARCHAR,
 Hourly_Wage INT,
 Education VARCHAR
 ) INHERITS (public.User);
@@ -20,11 +20,11 @@ Function VARCHAR
 
 CREATE TABLE public.Company(
 Company_Name VARCHAR PRIMARY KEY,
-Fk_Adress VARCHAR,
+Fk_Address VARCHAR,
 Branch VARCHAR);
 
 CREATE TABLE public.Location(
-Adress VARCHAR PRIMARY KEY,
+Address VARCHAR PRIMARY KEY,
 Country VARCHAR NOT NULL,
 ZIP INT NOT NULL,
 City VARCHAR NOT NULL);
@@ -41,7 +41,7 @@ Project_Id SERIAL PRIMARY KEY,
 Capital INT,
 Creation_Date DATE NOT NULL,
 Task VARCHAR NOT NULL,
-Fk_Adress VARCHAR);
+Fk_Address VARCHAR);
 
 CREATE TABLE public.Responsibility(
 Fk_Projectmanager_Id INT,
@@ -74,10 +74,10 @@ REFERENCES public.User(User_Id);
 
 ALTER TABLE public.Freelancer
 ADD CONSTRAINT Freelancer_Location
-FOREIGN KEY (Fk_Adress)
-REFERENCES public.Location(Adress);
+FOREIGN KEY (Fk_Address)
+REFERENCES public.Location(Address);
 
 ALTER TABLE public.Company
 ADD CONSTRAINT Company_Location
-FOREIGN KEY (Fk_Adress)
-REFERENCES public.Location(Adress);
+FOREIGN KEY (Fk_Address)
+REFERENCES public.Location(Address);

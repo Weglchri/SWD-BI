@@ -1,35 +1,31 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity public class Location {
-    @Id private String adress;
-    private String country;
-    private Integer zip;
-    private String city;
+    @Id private String address;
+        private String country;
+        private Integer zip;
+        private String city;
 
     public Location(String adress, String country, int zip, String city) {
-        setAdress(adress);
+        setAdress(address);
         setCountry(country);
         setZip(zip);
         setCity(city);
     }
 
-
     public Location() {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAdress(String address) {
+        this.address = address;
     }
-
 
     public String getCountry() {
         return country;

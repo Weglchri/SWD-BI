@@ -5,9 +5,9 @@ import javax.persistence.Id;
 
 @Entity public class User {
    @Id private Integer userId;
-    private String name;
-    private String email;
-    private String password;
+        private String name;
+        private String email;
+        private String password;
 
     public User(int user_Id,String name, String email, String password) {
         setName(name);
@@ -16,18 +16,14 @@ import javax.persistence.Id;
         setUserId(user_Id);
     }
 
-
     public User() {
-
     }
-
 
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
-
     }
 
     public String getName() {
