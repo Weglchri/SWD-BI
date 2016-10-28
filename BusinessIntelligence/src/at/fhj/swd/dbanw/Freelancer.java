@@ -14,6 +14,21 @@ import javax.persistence.Id;
         private Integer hourlyWage;
         private String education;
 
+
+    public Freelancer(int userId, String name, String email, String password, String profession, String availability, int hourlyWage, String education){
+        setUserId(userId);
+        setName(name);
+        setEmail(email);
+        setPassword(password);
+        setProfession(profession);
+        setAvailability(availability);
+        setHourlyWage(hourlyWage);
+        setEducation(education);
+
+    }
+
+    public Freelancer(){}
+
     public Integer getUserId() {
         return userId;
     }
