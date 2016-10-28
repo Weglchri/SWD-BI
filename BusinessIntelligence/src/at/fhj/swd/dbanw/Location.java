@@ -16,8 +16,7 @@ import javax.persistence.Id;
         setCity(city);
     }
 
-    public Location() {
-    }
+    public Location() {}
 
     public String getAdress() {
         return address;
