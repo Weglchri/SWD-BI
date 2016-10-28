@@ -1,4 +1,4 @@
-/*
+
 package at.fhj.swd.dbanw;
 
 import org.junit.AfterClass;
@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TestUser
+public class TestLocation
 {
 
     static EntityManagerFactory factory;
@@ -22,10 +22,15 @@ public class TestUser
 
     static final String persistenceUnitName = "wegl";
 
+    static final String adress = "Straße";
+    static final String country = "Mexico";
+    static final int zip = 8020;
+    static final String city = "Canberra";
+
     @BeforeClass
     public static void setup() {
 
-        factory = Persistence.createEntityManagerFactory( persistenceUnitName );
+        factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull (factory);
         manager = factory.createEntityManager();
         assertNotNull (manager);
@@ -43,18 +48,10 @@ public class TestUser
     public void create ()
     {
         transaction.begin ();
-        User testUser = new User (1, "CE", "CE@CE.CE", "*****");
-        assertNotNull (testUser);
-        manager.persist (testUser);
+        Location Adress = new Location(adress, country, zip, city);
+        assertNotNull (Adress);
+        manager.persist (Adress);
         transaction.commit();
-    }
 
-    @Test
-    public void getName()
-    {
-        User testUser = new User (1, "CE", "CE@CE.CE", "*****");
-        assertEquals("CE", testUser.getName());
     }
-
 }
-*/
