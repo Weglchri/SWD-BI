@@ -18,6 +18,7 @@ import javax.persistence.Id;
         setCity(city);
     }
 
+
     public Location() {
     }
 
