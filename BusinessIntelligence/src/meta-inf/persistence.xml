@@ -9,10 +9,10 @@
         <class>at.fhj.swd.dbanw.Responsibility</class>
         <class>at.fhj.swd.dbanw.User</class>
         <properties>
-            <property name="eclipselink.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/wegl"/>
-            <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="eclipselink.jdbc.user" value="wegl"/>
-            <property name="eclipselink.jdbc.password" value="wegl4fh"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/wegl"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="wegl"/>
+            <property name="javax.persistence.jdbc.password" value="wegl4fh"/>
         </properties>
     </persistence-unit>
 </persistence>
