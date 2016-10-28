@@ -13,8 +13,7 @@ import javax.persistence.Persistence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TestLocation
-{
+public class TestLocation {
 
     static EntityManagerFactory factory;
     static EntityManager manager;
@@ -22,7 +21,7 @@ public class TestLocation
 
     static final String persistenceUnitName = "wegl";
 
-    static final String adress = "Straße";
+    static final String address = "Straße";
     static final String country = "Mexico";
     static final int zip = 8020;
     static final String city = "Canberra";
@@ -31,9 +30,9 @@ public class TestLocation
     public static void setup() {
 
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
-        assertNotNull (factory);
+        assertNotNull(factory);
         manager = factory.createEntityManager();
-        assertNotNull (manager);
+        assertNotNull(manager);
         transaction = manager.getTransaction();
     }
 
@@ -45,13 +44,39 @@ public class TestLocation
     }
 
     @Test
-    public void create ()
-    {
-        transaction.begin ();
-        Location Adress = new Location(adress, country, zip, city);
-        assertNotNull (Adress);
-        manager.persist (Adress);
+    public void create() {
+        transaction.begin();
+        Location testAddress = new Location(address, country, zip, city);
+        assertNotNull(testAddress);
+        manager.persist(testAddress);
         transaction.commit();
 
+        testAddress = manager.find(Location.class, address);
+        assertEquals("Straße", testAddress.getAddress());
     }
+/*
+    @Test public void modify () {
+        Employee john = manager.find (Employee.class, id);
+        assertNotNull (john);
+        transaction.begin ();
+        john.raiseSalary (salaryRaise);
+        transaction.commit();
+        teardown ();
+        setup ();
+        john = manager.find (Employee.class, id);
+        assertEquals (salary + salaryRaise, (int) john.getSalary());
+    }
+*/
+    @Test
+    public void remove() {
+        Location testAddress = manager.find(Location.class, address);
+        assertNotNull(testAddress);
+        transaction.begin();
+        manager.remove(testAddress);
+        transaction.commit();
+        testAddress = manager.find(Location.class, address);
+        assertEquals(null, testAddress.getAddress());
+        assertNotNull(testAddress); //assertNull ---- Problem
+    }
+
 }

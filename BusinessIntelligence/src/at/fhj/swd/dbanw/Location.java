@@ -10,7 +10,7 @@ import javax.persistence.Id;
         private String city;
 
     public Location(String address, String country, int zip, String city) {
-        setAdress(address);
+        setAddress(address);
         setCountry(country);
         setZip(zip);
         setCity(city);
@@ -18,11 +18,11 @@ import javax.persistence.Id;
 
     public Location() {}
 
-    public String getAdress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAdress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
