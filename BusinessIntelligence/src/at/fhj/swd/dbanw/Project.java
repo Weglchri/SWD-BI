@@ -11,6 +11,15 @@ import java.sql.Date;
         private String task;
         private String fkAdress;
 
+    public Project(int projectId, int capital, Date creationDate, String task){
+        setProjectId(projectId);
+        setCapital(capital);
+        setCreationDate(creationDate);
+        setTask(task);
+    }
+
+    public Project(){}
+
     public Integer getProjectId() {
         return projectId;
     }

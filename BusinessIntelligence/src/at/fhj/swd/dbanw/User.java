@@ -16,8 +16,7 @@ import javax.persistence.Id;
         setUserId(user_Id);
     }
 
-    public User() {
-    }
+    public User() {}
 
     public Integer getUserId() {
         return userId;
@@ -41,7 +40,6 @@ import javax.persistence.Id;
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getPassword() {
         return password;

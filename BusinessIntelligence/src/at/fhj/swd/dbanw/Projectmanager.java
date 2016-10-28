@@ -9,9 +9,14 @@ import javax.persistence.Id;
         private String email;
         private String password;
         private Integer involvedIn;
-        private String fkCompanyName;
         private String function;
+        private String fkCompanyName;
 
+    public Projectmanager(int userId, String name,  String email, String password, int involvedIn, String function ){
+
+    }
+
+    public Projectmanager(){}
 
     public Integer getUserId() {
         return userId;
@@ -53,20 +58,20 @@ import javax.persistence.Id;
         this.involvedIn = involvedIn;
     }
 
-    public String getFkCompanyName() {
-        return fkCompanyName;
-    }
-
-    public void setFkCompanyName(String fkCompanyName) {
-        this.fkCompanyName = fkCompanyName;
-    }
-
     public String getFunction() {
         return function;
     }
 
     public void setFunction(String function) {
         this.function = function;
+    }
+
+    public String getFkCompanyName() {
+        return fkCompanyName;
+    }
+
+    public void setFkCompanyName(String fkCompanyName) {
+        this.fkCompanyName = fkCompanyName;
     }
 
 }
