@@ -5,8 +5,16 @@ import javax.persistence.Id;
 
 @Entity public class Company {
    @Id private String companyName;
-        private String fkAdress;
         private String branch;
+        private String fkAdress;
+
+
+    public Company(String companyName, String branch){
+        setCompanyName(companyName);
+        setBranch(branch);
+    }
+
+    public Company(){}
 
     public String getCompanyName() {
         return companyName;
@@ -14,6 +22,14 @@ import javax.persistence.Id;
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     public String getFkAdress() {
@@ -24,12 +40,6 @@ import javax.persistence.Id;
         this.fkAdress = fkAdress;
     }
 
-    public String getBranch() {
-        return branch;
-    }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
 
 }
