@@ -7,6 +7,8 @@ import javax.persistence.Id;
     @Id private Integer fkProjectmanagerId;
     @Id private Integer fkProjectId;
 
+    public Responsibility(){}
+
     public Integer getFkProjectmanagerId() {
         return fkProjectmanagerId;
     }

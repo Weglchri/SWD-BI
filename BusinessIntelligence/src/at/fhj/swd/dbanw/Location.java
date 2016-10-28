@@ -9,7 +9,7 @@ import javax.persistence.Id;
         private Integer zip;
         private String city;
 
-    public Location(String adress, String country, int zip, String city) {
+    public Location(String address, String country, int zip, String city) {
         setAdress(address);
         setCountry(country);
         setZip(zip);

@@ -11,6 +11,12 @@ import java.sql.Date;
         private Integer fkProjectId;
         private Integer fkUserId;
 
+    public Offer(){
+        setOfferId(offerId);
+        setPrice(price);
+        setCreationDate(creationDate);
+    }
+
     public Integer getOfferId() {
         return offerId;
     }
