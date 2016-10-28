@@ -16,6 +16,7 @@ import javax.persistence.Id;
         setUserId(user_Id);
     }
 
+
     public User() {
 
     }

@@ -15,4 +15,5 @@
             <property name="javax.persistence.jdbc.password" value="wegl4fh"/>
         </properties>
     </persistence-unit>
+
 </persistence>
