@@ -21,7 +21,7 @@ public class TestLocation {
 
     static final String persistenceUnitName = "wegl";
 
-    static final String address = "Straße";
+    static final String address = "Straße3";
     static final String country = "Mexico";
     static final int zip = 8020;
     static final String city = "Canberra";
@@ -43,6 +43,8 @@ public class TestLocation {
         factory.close();
     }
 
+
+
     @Test
     public void create() {
         transaction.begin();
@@ -52,19 +54,21 @@ public class TestLocation {
         transaction.commit();
 
         testAddress = manager.find(Location.class, address);
-        assertEquals("Straße", testAddress.getAddress());
+        assertEquals("Straße3", testAddress.getAddress());
     }
 /*
-    @Test public void modify () {
-        Employee john = manager.find (Employee.class, id);
-        assertNotNull (john);
-        transaction.begin ();
-        john.raiseSalary (salaryRaise);
+    @Test //URGENT CHANGE ADDRESS WITH CITY --> Primary key exception!
+    public void modify() {
+        Location testAddress = manager.find(Location.class, address);
+        assertNotNull(testAddress);
+        transaction.begin();
+        manager.merge(testAddress);
+        testAddress.setAddress("Humbulumbu");
         transaction.commit();
-        teardown ();
-        setup ();
-        john = manager.find (Employee.class, id);
-        assertEquals (salary + salaryRaise, (int) john.getSalary());
+        teardown();
+        setup();
+        testAddress = manager.find(Location.class, address);
+        assertEquals("Humbulumbu" ,testAddress.getAddress());
     }
 */
     @Test
@@ -75,8 +79,6 @@ public class TestLocation {
         manager.remove(testAddress);
         transaction.commit();
         testAddress = manager.find(Location.class, address);
-        assertEquals(null, testAddress.getAddress());
-        assertNotNull(testAddress); //assertNull ---- Problem
+        assertEquals(null, testAddress);
     }
-
 }
