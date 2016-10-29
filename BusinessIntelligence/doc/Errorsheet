@@ -1,0 +1,23 @@
+Problem von M:N Auflösung in der Datenbank!
+M:N zwischen Projectmanager und Project wurde zu jeweils 1:N aufgelöst!
+Das resultierte in in einer zusätzlichen Tabelle "Responsibility".
+Java kann diese Verbindung intern abhandeln, was diese Auflösung eventuell überflüssig macht!
+Dementsprechend müssen wir die Auflösung mit den Verbindungsannotations implementieren,
+bevor wir das SQL Skript und Tests schreiben.
+
+
+Testbetreffend:
+Meines Wissens nach sollen in den Tests auch die übergebenen Keys an die andere Enitity
+geprüft werden, deshalb kommen wir über die Verbindungsannotations nicht herum.
+Beispiel: Geben wir im Moment bei Adresse Daten ein, erscheint in der Company kein Key!
+
+
+Vererbung:
+Müssen Freelancer und Projectmanager die gleichen Datentypen wie User haben?
+Würde hier ein extends nicht reichen?
+
+
+
+
+
+
