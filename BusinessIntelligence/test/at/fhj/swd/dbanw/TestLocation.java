@@ -56,21 +56,19 @@ public class TestLocation {
         testAddress = manager.find(Location.class, address);
         assertEquals("Straße3", testAddress.getAddress());
     }
-/*
-    @Test //URGENT CHANGE ADDRESS WITH CITY --> Primary key exception!
+
+    @Test
     public void modify() {
-        Location testAddress = manager.find(Location.class, address);
-        assertNotNull(testAddress);
+        Location testAddresse = manager.find(Location.class, address);
+        assertNotNull(testAddresse);
         transaction.begin();
-        manager.merge(testAddress);
-        testAddress.setAddress("Humbulumbu");
+        Location merge = manager.merge(testAddresse);
+        merge.setCity("Vienna");
         transaction.commit();
-        teardown();
-        setup();
-        testAddress = manager.find(Location.class, address);
-        assertEquals("Humbulumbu" ,testAddress.getAddress());
+        testAddresse = manager.find(Location.class, city);
+        assertEquals("Vienna" ,merge.getCity());
     }
-*/
+
     @Test
     public void remove() {
         Location testAddress = manager.find(Location.class, address);
