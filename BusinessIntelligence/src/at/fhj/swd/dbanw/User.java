@@ -9,7 +9,7 @@ import javax.persistence.Id;
         private String email;
         private String password;
 
-    public User(int user_Id,String name, String email, String password) {
+    public User(int user_Id, String name, String email, String password) {
         setName(name);
         setEmail(email);
         setPassword(password);
@@ -22,8 +22,7 @@ import javax.persistence.Id;
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-    }
+    public void setUserId(Integer userId) {this.userId = userId;}
 
     public String getName() {
         return name;
