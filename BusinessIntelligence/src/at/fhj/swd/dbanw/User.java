@@ -1,10 +1,11 @@
 package at.fhj.swd.dbanw;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity public class User {
-   @Id private Integer userId;
+    @Id private Integer user_Id;
         private String name;
         private String email;
         private String password;
@@ -19,10 +20,10 @@ import javax.persistence.Id;
     public User() {}
 
     public Integer getUserId() {
-        return userId;
+        return user_Id;
     }
 
-    public void setUserId(Integer userId) {this.userId = userId;}
+    public void setUserId(Integer userId) {this.user_Id = userId;}
 
     public String getName() {
         return name;
@@ -40,9 +41,7 @@ import javax.persistence.Id;
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() {return password;}
 
     public void setPassword(String password) {
         this.password = password;

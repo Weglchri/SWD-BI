@@ -1,13 +1,14 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity public class Location {
+
     @Id private String address;
         private String country;
         private Integer zip;
         private String city;
+
 
     public Location(String address, String country, int zip, String city) {
         setAddress(address);

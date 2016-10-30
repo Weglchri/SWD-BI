@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity public class Responsibility {
     @Id private Integer fkProjectmanagerId;
-    @Id private Integer fkProjectId;
+        private Integer fkProjectId;
 
     public Responsibility(){}
 

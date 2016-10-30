@@ -3,23 +3,20 @@ package at.fhj.swd.dbanw;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity public class Freelancer {
+@Entity public class Freelancer extends User {
     @Id private Integer userId;
         private String name;
         private String email;
         private String password;
         private String profession;
         private String availability;
-        private String fkAdress;
+        private String fk_address;
         private Integer hourlyWage;
         private String education;
 
 
-    public Freelancer(int userId, String name, String email, String password, String profession, String availability, int hourlyWage, String education){
-        setUserId(userId);
-        setName(name);
-        setEmail(email);
-        setPassword(password);
+    public Freelancer(Integer userId, String name, String email, String password, String profession, String availability, Integer hourlyWage, String education){
+
         setProfession(profession);
         setAvailability(availability);
         setHourlyWage(hourlyWage);
@@ -77,12 +74,12 @@ import javax.persistence.Id;
         this.availability = availability;
     }
 
-    public String getFkAdress() {
-        return fkAdress;
+    public String getFkAddress() {
+        return fk_address;
     }
 
-    public void setFkAdress(String fkAdress) {
-        this.fkAdress = fkAdress;
+    public void setFkAddress(String fkAdress) {
+        this.fk_address = fkAdress;
     }
 
     public Integer getHourlyWage() {

@@ -1,24 +1,24 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import javax.persistence.SequenceGenerator;
 
 @Entity public class Project {
-   @Id private Integer projectId;
+    @Id private Integer projectId;
         private Integer capital;
         private Date creationDate;
         private String task;
-        private String fkAdress;
 
-    public Project(int projectId, int capital, Date creationDate, String task){
+    public Project(int projectId, int capital, Date creationDate, String task) {
         setProjectId(projectId);
         setCapital(capital);
         setCreationDate(creationDate);
         setTask(task);
     }
 
-    public Project(){}
+    public Project() {
+    }
 
     public Integer getProjectId() {
         return projectId;
@@ -50,14 +50,6 @@ import java.sql.Date;
 
     public void setTask(String task) {
         this.task = task;
-    }
-
-    public String getFkAdress() {
-        return fkAdress;
-    }
-
-    public void setFkAdress(String fkAdress) {
-        this.fkAdress = fkAdress;
     }
 
 }

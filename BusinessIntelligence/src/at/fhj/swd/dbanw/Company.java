@@ -1,26 +1,28 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity public class Company {
-   @Id private String companyName;
-        private String branch;
-        private String fkAdress;
 
+    @Id @Column(name="company_name") private String companyName;
+    @OneToOne
+    @JoinColumn(name="fk_address")
+    private Location address;
+    private String branch;
 
-    public Company(String companyName, String branch){
-        setCompanyName(companyName);
+    public Company(String companyName, String branch, Location address){
+        setCompany(companyName);
         setBranch(branch);
+        setAddress(address);
     }
 
     public Company(){}
 
-    public String getCompanyName() {
+    public String getCompany() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
+    public void setCompany(String companyName) {
         this.companyName = companyName;
     }
 
@@ -32,14 +34,8 @@ import javax.persistence.Id;
         this.branch = branch;
     }
 
-    public String getFkAdress() {
-        return fkAdress;
-    }
+    public Location getAddress() {return address;}
 
-    public void setFkAdress(String fkAdress) {
-        this.fkAdress = fkAdress;
-    }
-
-
+    public void setAddress(Location address) {this.address = address;}
 
 }
