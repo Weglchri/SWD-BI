@@ -1,29 +1,32 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import sun.jvm.hotspot.memory.Generation;
 
-@Entity public class User {
-    @Id private Integer user_Id;
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy= InheritanceType.JOINED)
+@Table(schema="public")
+public class User {
+    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer userId;
         private String name;
         private String email;
         private String password;
 
-    public User(int user_Id, String name, String email, String password) {
+    public User(int userId, String name, String email, String password) {
+        setUserId(userId);
         setName(name);
         setEmail(email);
         setPassword(password);
-        setUserId(user_Id);
     }
 
     public User() {}
 
     public Integer getUserId() {
-        return user_Id;
+        return userId;
     }
 
-    public void setUserId(Integer userId) {this.user_Id = userId;}
+    public void setUserId(Integer userId) {this.userId = userId;}
 
     public String getName() {
         return name;

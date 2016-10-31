@@ -2,7 +2,9 @@ package at.fhj.swd.dbanw;
 
 import javax.persistence.*;
 
-@Entity public class Company {
+@Entity
+@Table(schema = "public")
+public class Company {
 
     @Id @Column(name="company_name") private String companyName;
     @OneToOne

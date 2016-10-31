@@ -1,11 +1,8 @@
-
 package at.fhj.swd.dbanw;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,8 +12,11 @@ import javax.persistence.Persistence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestProjectmanager {
+/**
+ * Created by sattlerb on 31/10/16.
+ */
+public class TestFreelancer
+{
 
 
     static EntityManagerFactory factory;
@@ -25,26 +25,29 @@ public class TestProjectmanager {
 
     static final String persistenceUnitName = "persistence";
 
-    //Variables for Projectmanager
-    static final Integer involved = 3;
-    static final String task = "Personal";
-
-    //Variables for Company/Location
-    static final String companyName = "Orangen Inc.";
-    static final String branch = "Stahlbau";
-    static final String address = "Straße3";
-    static final String country = "Mexico";
+    //data for location
+    static final String address = "Alte Poststraße 122/15";
+    static final String country = "Austria";
     static final Integer zip = 8020;
-    static final String city = "Canberra";
+    static final String city = "Graz";
 
-    //Variables for User
-    static final Integer user_id = 123;
-    static final String name = "Herbert";
-    static final String email = "herbert@Orange";
-    static final String password = "password";
+    //data for user
+    static final Integer user_Id = 124;
+    static final String name = "Freelancer Herbert";
+    static final String email = "herbert@freelancer.at";
+    static final String password = "*****";
+
+    //data for freelancer
+    static final String eduacation = "FH Joanneum";
+    static final String availability = "available";
+    static final int wagePerHour = 13;
+    static final String profession = "Software Engineer Freelancer";
+
+
 
     @BeforeClass
-    public static void setup() {
+    public static void setup()
+    {
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull(factory);
         manager = factory.createEntityManager();
@@ -53,45 +56,26 @@ public class TestProjectmanager {
     }
 
     @AfterClass
-    public static void teardown() {
+    public static void teardown()
+    {
         if (manager == null) return;
         manager.close();
         factory.close();
     }
 
     @Test
-    public void create()
-    {
+    public void create() {
         transaction.begin();
-
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
 
-        Company testCompany = new Company(companyName, branch, testAddress);
-        assertNotNull(testCompany);
-        manager.persist(testCompany);
-
-        Projectmanager testProjectmanager = new Projectmanager(user_id, name, email, password, involved, task, testCompany );
-//        Projectmanager testProjectmanager = new Projectmanager();
-//        testProjectmanager.setUserId(user_id);
-//        testProjectmanager.setName(name);
-//        testProjectmanager.setEmail(email);
-//        testProjectmanager.setPassword(password);
-//
-//        testProjectmanager.setInvolvedIn(involved);
-//        testProjectmanager.setFunction(task);
-//        testProjectmanager.setCompanyName(testCompany);
-
+        Freelancer testFreelancer = new Freelancer( user_Id, name, email, password, profession, availability, wagePerHour, eduacation, testAddress );
         assertNotNull(testAddress);
-        assertNotNull(testCompany);
-        assertNotNull(testProjectmanager);
-        manager.persist(testProjectmanager);
-
+        manager.persist(testFreelancer);
         transaction.commit();
 
     }
-//
 //    @Test
 //    public void modify() {
 //        transaction.begin();
@@ -109,26 +93,22 @@ public class TestProjectmanager {
 //        assertEquals("Herbert@asd", testProjectmanager.getEmail());
 //    }
 //
+//
 //    @Test
 //    public void remove() {
-//        Projectmanager testProjectmanager = manager.find(Projectmanager.class, user_id);
-//        assertNotNull(testProjectmanager);
-//        Company testCompany = manager.find(Company.class, companyName);
-//        assertNotNull(testCompany);
+//        Freelancer testFreelancer = manager.find(Freelancer.class, user_id);
+//        assertNotNull(testFreelancer);
 //        Location testAddress = manager.find(Location.class, address);
 //        assertNotNull(testAddress);
 //        transaction.begin();
-//        manager.remove(testProjectmanager);
-//        manager.remove(testCompany);
+//        manager.remove(testFreelancer);
 //        manager.remove(testAddress);
 //        transaction.commit();
 //
-//        testProjectmanager = manager.find(Projectmanager.class, user_id);
-//        assertEquals(null, testProjectmanager);
+//        testFreelancer = manager.find(Freelancer.class, user_id);
+//        assertEquals(null, testFreelancer);
 //        testAddress = manager.find(Location.class, address);
 //        assertEquals(null, testAddress);
-//        testCompany = manager.find(Company.class, companyName);
-//        assertEquals(null, testCompany);
 //    }
 
 }

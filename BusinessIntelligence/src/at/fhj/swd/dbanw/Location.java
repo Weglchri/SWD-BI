@@ -9,7 +9,6 @@ import javax.persistence.*;
         private Integer zip;
         private String city;
 
-
     public Location(String address, String country, int zip, String city) {
         setAddress(address);
         setCountry(country);

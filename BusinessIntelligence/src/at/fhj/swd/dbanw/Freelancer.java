@@ -1,30 +1,40 @@
 package at.fhj.swd.dbanw;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity public class Freelancer extends User {
-    @Id private Integer userId;
-        private String name;
-        private String email;
-        private String password;
-        private String profession;
-        private String availability;
-        private String fk_address;
-        private Integer hourlyWage;
-        private String education;
+@Entity @Table(name="Freelancer")
+public class Freelancer extends User
+{
+    //User Variables
+    @Id @Column(name = "user_id") private Integer userId;
+    private String name;
+    private String email;
+    private String password;
 
+    //Freelancer Variables
+    private String profession;
+    private String availability;
+    private Integer hourlyWage;
+    private String education;
 
-    public Freelancer(Integer userId, String name, String email, String password, String profession, String availability, Integer hourlyWage, String education){
+    @OneToOne
+    @JoinColumn(name="fk_address")
+    private Location address;
 
+    public Freelancer(Integer userId, String name, String email, String password, String profession, String availability, Integer hourlyWage, String education, Location address){
+        setUserId(userId);
+        setName(name);
+        setEmail(email);
+        setPassword(password);
         setProfession(profession);
         setAvailability(availability);
         setHourlyWage(hourlyWage);
         setEducation(education);
-
+        setAddress(address);
     }
 
     public Freelancer(){}
+
 
     public Integer getUserId() {
         return userId;
@@ -74,14 +84,6 @@ import javax.persistence.Id;
         this.availability = availability;
     }
 
-    public String getFkAddress() {
-        return fk_address;
-    }
-
-    public void setFkAddress(String fkAdress) {
-        this.fk_address = fkAdress;
-    }
-
     public Integer getHourlyWage() {
         return hourlyWage;
     }
@@ -96,6 +98,14 @@ import javax.persistence.Id;
 
     public void setEducation(String education) {
         this.education = education;
+    }
+
+    public Location getAddress() {
+        return address;
+    }
+
+    public void setAddress(Location address) {
+        this.address = address;
     }
 
 }
