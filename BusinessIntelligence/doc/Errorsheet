@@ -5,10 +5,8 @@ Java kann diese Verbindung intern abhandeln, was diese Auflösung eventuell übe
 Dementsprechend müssen wir die Auflösung mit der Verbindungsannotations ManyToMany implementieren.
 (Keine Ahnung noch wie das geht!)
 
-Vererbung:
-Freelancer- und Projectmanager-Klasse umschreiben, sodass sie Id, Email usw.. vom User vererbt kriegen.
-Im Moment funktionierts zwar auch so, die doppelten Werte sind aber grauslig.
-
+Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert, ist der Freelancer-Test & Projectmanager-Test nur beim ersten Durchlauf positiv.
+Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ. Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich Schuld hat.
 
 
 User - @ Table definition, warum hier das schema angegeben werden muss
@@ -16,3 +14,8 @@ User - @ Table definition, warum hier das schema angegeben werden muss
 
 
 
+
+
+#Done -- statt Joined wurde TABLE_PER_CLASS verwendet.
+//Vererbung: Freelancer- und Projectmanager-Klasse umschreiben, sodass sie Id, Email usw.. vom User vererbt kriegen.
+//Im Moment funktionierts zwar auch so, die doppelten Werte sind aber grauslig.
