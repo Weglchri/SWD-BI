@@ -22,12 +22,11 @@ public class TestUser
 
     static final String persistenceUnitName = "persistence";
 
-    //Data for User
+    //data for User
     static final Integer id = 1;
     static final String name = "Admin";
     static final String email = "Admin@edu.fh-joanneum.at";
     static final String dtype = "User";
-
     static final String password = "1234567";
     static final String passwordMerge = "7654321";
 
