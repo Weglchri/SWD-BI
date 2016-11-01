@@ -22,8 +22,7 @@ public class TestUser
 
     static final String persistenceUnitName = "persistence";
 
-    //Data for user
-
+    //Data for User
     static final Integer id = 1;
     static final String name = "Admin";
     static final String email = "Admin@edu.fh-joanneum.at";
