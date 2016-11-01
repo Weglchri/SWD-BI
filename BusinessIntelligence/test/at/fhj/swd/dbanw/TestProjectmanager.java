@@ -35,14 +35,14 @@ public class TestProjectmanager {
     static final Integer zip = 8020;
     static final String city = "Graz";
 
-    //Data for User
+    //data for User
     static final int id = 1;
     static final String name = "Björn Sattler";
     static final String email = "bjoern.sattler@edu.fh-joanneum.at";
     static final String password = "*******";
     static final String dtype = "Projectmanager";
 
-    //Data for Projectmanager
+    //data for Projectmanager
     static final Integer involved = 1;
     static final String function = "Personal";
     static final String functionMerge = "Zulieferung";
