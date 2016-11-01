@@ -39,7 +39,6 @@ public class TestFreelancer
     static final String eduacation = "FH Joanneum";
     static final String availability = "available";
     static final int hourly_wage = 13;
-
     static final String profession = "Software Engineer Freelancer";
     static final String professionMerge ="Database Admin";
 
@@ -98,7 +97,7 @@ public class TestFreelancer
         manager.remove(testAddress);
         transaction.commit();
 
-        testFreelancer = manager.find(Freelancer.class, id);
+        testFreelancer = manager.find  (Freelancer.class, id);
         assertNull(testFreelancer);
         testAddress = manager.find(Location.class, address);
         assertNull(testAddress);

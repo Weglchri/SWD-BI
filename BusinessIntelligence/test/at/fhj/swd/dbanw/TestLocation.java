@@ -29,6 +29,7 @@ public class TestLocation {
     static final String city = "Graz";
     static final String cityMerge ="Vienna";
 
+
     @BeforeClass
     public static void setup() {
 

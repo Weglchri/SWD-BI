@@ -6,7 +6,8 @@ Dementsprechend müssen wir die Auflösung mit der Verbindungsannotations ManyTo
 (Keine Ahnung noch wie das geht!)
 
 Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert, ist der Freelancer-Test & Projectmanager-Test nur beim ersten Durchlauf positiv.
-Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ. Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich Schuld hat.
+Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ. Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich
+in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
 
 
 User - @ Table definition, warum hier das schema angegeben werden muss
