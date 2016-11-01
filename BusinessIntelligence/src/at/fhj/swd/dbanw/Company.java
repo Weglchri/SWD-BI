@@ -3,29 +3,33 @@ package at.fhj.swd.dbanw;
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "public")
+@Table(name="Company", schema="public")
 public class Company {
 
-    @Id @Column(name="company_name") private String companyName;
+    @Id @Column(name="company_name")
+    private String company_name;
+    private String branch;
+
     @OneToOne
     @JoinColumn(name="fk_address")
     private Location address;
-    private String branch;
 
-    public Company(String companyName, String branch, Location address){
-        setCompany(companyName);
+
+    public Company(String company_name, String branch, Location address){
+        setCompany(company_name);
         setBranch(branch);
         setAddress(address);
     }
 
     public Company(){}
 
+
     public String getCompany() {
-        return companyName;
+        return company_name;
     }
 
-    public void setCompany(String companyName) {
-        this.companyName = companyName;
+    public void setCompany(String company_name) {
+        this.company_name = company_name;
     }
 
     public String getBranch() {

@@ -2,71 +2,31 @@ package at.fhj.swd.dbanw;
 
 import javax.persistence.*;
 
-@Entity @Table(name="Freelancer")
-public class Freelancer extends User
-{
-    //User Variables
-    @Id @Column(name = "user_id") private Integer userId;
-    private String name;
-    private String email;
-    private String password;
+@Entity
+@Table(name="Freelancer", schema="public")
+public class Freelancer extends User {
 
     //Freelancer Variables
     private String profession;
     private String availability;
-    private Integer hourlyWage;
+    private Integer hourly_wage;
     private String education;
 
     @OneToOne
     @JoinColumn(name="fk_address")
     private Location address;
 
-    public Freelancer(Integer userId, String name, String email, String password, String profession, String availability, Integer hourlyWage, String education, Location address){
-        setUserId(userId);
-        setName(name);
-        setEmail(email);
-        setPassword(password);
+    public Freelancer(Integer user_id, String name, String email, String password, String dtype, String profession, String availability, Integer hourly_wage, String education, Location address){
+        super(user_id, name, email, password, dtype);
         setProfession(profession);
         setAvailability(availability);
-        setHourlyWage(hourlyWage);
+        setHourly_wage(hourly_wage);
         setEducation(education);
         setAddress(address);
     }
 
     public Freelancer(){}
 
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getProfession() {
         return profession;
@@ -84,12 +44,12 @@ public class Freelancer extends User
         this.availability = availability;
     }
 
-    public Integer getHourlyWage() {
-        return hourlyWage;
+    public Integer getHourly_wage() {
+        return hourly_wage;
     }
 
-    public void setHourlyWage(Integer hourlyWage) {
-        this.hourlyWage = hourlyWage;
+    public void setHourly_wage(Integer hourly_wage) {
+        this.hourly_wage = hourly_wage;
     }
 
     public String getEducation() {
@@ -107,5 +67,4 @@ public class Freelancer extends User
     public void setAddress(Location address) {
         this.address = address;
     }
-
 }

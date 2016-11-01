@@ -14,6 +14,7 @@ import javax.persistence.Persistence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCompany {
@@ -25,12 +26,16 @@ public class TestCompany {
 
     static final String persistenceUnitName = "persistence";
 
-    static final String companyName = "Orangen Inc.";
+    //data for Company
+    static final String companyName = "Stahl Incorporation";
     static final String branch = "Stahlbau";
-    static final String address = "Straße3";
-    static final String country = "Mexico";
-    static final int zip = 8020;
-    static final String city = "Canberra";
+    static final String branchMerge = "Bergbau";
+
+    //data for Location
+    static final String address = "Alte Poststraße 122/13";
+    static final String country = "Austria";
+    static final Integer zip = 8020;
+    static final String city = "Graz";
 
 
     @BeforeClass
@@ -68,27 +73,29 @@ public class TestCompany {
         assertNotNull(testAddress);
         Company testCompany = new Company(companyName, branch, testAddress);
         Company merge = manager.merge(testCompany);
-        merge.setBranch("Industrie");
+        merge.setBranch(branchMerge);
         transaction.commit();
-        testCompany = manager.find(Company.class, companyName);
-        assertEquals("Industrie", testCompany.getBranch());
-    }
 
+        testCompany = manager.find(Company.class, companyName);
+        assertEquals(branchMerge, testCompany.getBranch());
+    }
 
     @Test
     public void remove() {
+        transaction.begin();
         Company testCompany = manager.find(Company.class, companyName);
         assertNotNull(testCompany);
         Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        transaction.begin();
         manager.remove(testCompany);
         manager.remove(testAddress);
         transaction.commit();
+
         testAddress = manager.find(Location.class, address);
         assertEquals(null, testAddress);
         testCompany = manager.find(Company.class, companyName);
-        assertEquals(null, testCompany);
+        assertNull(testAddress);
+        assertNull(testCompany);
     }
 
 }

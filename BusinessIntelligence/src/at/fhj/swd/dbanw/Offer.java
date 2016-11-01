@@ -2,9 +2,12 @@ package at.fhj.swd.dbanw;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Date;
 
-@Entity public class Offer {
+@Entity
+@Table(name="Offer", schema="public")
+public class Offer {
     @Id private Integer offerId;
         private Integer price;
         private Date creationDate;

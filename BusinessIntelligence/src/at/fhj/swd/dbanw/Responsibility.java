@@ -2,8 +2,11 @@ package at.fhj.swd.dbanw;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity public class Responsibility {
+@Entity
+@Table(name="Responsibility", schema="public")
+public class Responsibility {
     @Id private Integer fkProjectmanagerId;
         private Integer fkProjectId;
 

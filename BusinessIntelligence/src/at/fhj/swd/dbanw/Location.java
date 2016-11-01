@@ -2,7 +2,9 @@ package at.fhj.swd.dbanw;
 
 import javax.persistence.*;
 
-@Entity public class Location {
+@Entity
+@Table(name="Location", schema="public")
+public class Location {
 
     @Id private String address;
         private String country;

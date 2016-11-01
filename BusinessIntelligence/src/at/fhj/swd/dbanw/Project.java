@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import javax.persistence.SequenceGenerator;
 
-@Entity public class Project {
+@Entity
+@Table(name="Project", schema="public")
+public class Project {
     @Id private Integer projectId;
         private Integer capital;
         private Date creationDate;

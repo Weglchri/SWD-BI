@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class TestLocation {
 
@@ -21,10 +22,12 @@ public class TestLocation {
 
     static final String persistenceUnitName = "persistence";
 
-    static final String address = "Straße3";
-    static final String country = "Mexico";
-    static final int zip = 8020;
-    static final String city = "Canberra";
+    //data for Location
+    static final String address = "Alte Poststraße 122/15";
+    static final String country = "Austria";
+    static final Integer zip = 8020;
+    static final String city = "Graz";
+    static final String cityMerge ="Vienna";
 
     @BeforeClass
     public static void setup() {
@@ -54,24 +57,26 @@ public class TestLocation {
 
     @Test
     public void modify() {
+        transaction.begin();
         Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        transaction.begin();
         Location merge = manager.merge(testAddress);
-        merge.setCity("Vienna");
+        merge.setCity(cityMerge);
         transaction.commit();
+
         testAddress = manager.find(Location.class, address);
-        assertEquals("Vienna" ,testAddress.getCity());
+        assertEquals(cityMerge ,testAddress.getCity());
     }
 
     @Test
     public void remove() {
+        transaction.begin();
         Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        transaction.begin();
         manager.remove(testAddress);
         transaction.commit();
+
         testAddress = manager.find(Location.class, address);
-        assertEquals(null, testAddress);
+        assertNull(testAddress);
     }
 }

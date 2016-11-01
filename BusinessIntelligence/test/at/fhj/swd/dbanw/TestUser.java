@@ -13,9 +13,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-/**
- * Created by sattlerb on 31/10/16.
- */
 public class TestUser
 {
 
@@ -25,10 +22,16 @@ public class TestUser
 
     static final String persistenceUnitName = "persistence";
 
-    static final int id = 1;
-    static final String name = "Björn Sattler";
-    static final String eMail = "bjoern.sattler@edu.fh-joanneum.at";
-    static final String password = "*****";
+    //Data for user
+
+    static final Integer id = 1;
+    static final String name = "Admin";
+    static final String email = "Admin@edu.fh-joanneum.at";
+    static final String dtype = "User";
+
+    static final String password = "1234567";
+    static final String passwordMerge = "7654321";
+
 
     @BeforeClass
     public static void setup() {
@@ -47,44 +50,36 @@ public class TestUser
     }
 
     @Test
-    public void create()
-    {
+    public void create() {
         transaction.begin();
-        User u = new User(id, name, eMail, password);
-        assertNotNull(u);
-        manager.persist(u);
+        User testUser = new User(id, name, email, password, dtype);
+        assertNotNull(testUser);
+        manager.persist(testUser);
         transaction.commit();
     }
 
     @Test
-    public void modify()
-    {
-
-        User u = manager.find(User.class, id);
-        assertNotNull(u);
-
+    public void modify() {
         transaction.begin ();
-        u.setEmail("test@test.test");
-
+        User testUser = manager.find(User.class, id);
+        assertNotNull(testUser);
+        User merge = manager.merge(testUser);
+        merge.setPassword(passwordMerge);
         transaction.commit();
-        teardown();
-        setup();
-        u = manager.find (User.class, id);
-        assertEquals ("test@test.test", u.getEmail());
+
+        testUser = manager.find(User.class, id);
+        assertEquals (passwordMerge, testUser.getPassword());
     }
 
     @Test
-    public void remove()
-    {
-        User u = manager.find (User.class, id);
-        assertNotNull (u);
+    public void remove() {
         transaction.begin();
-        manager.remove(u);
+        User testUser = manager.find (User.class, id);
+        assertNotNull(testUser);
+        manager.remove(testUser);
         transaction.commit();
-        u = manager.find(User.class, id);
-        assertNull(u);
+
+        testUser = manager.find(User.class, id);
+        assertNull(testUser);
     }
-
-
-
 }

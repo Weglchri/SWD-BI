@@ -11,13 +11,10 @@ import javax.persistence.Persistence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-/**
- * Created by sattlerb on 31/10/16.
- */
 public class TestFreelancer
 {
-
 
     static EntityManagerFactory factory;
     static EntityManager manager;
@@ -25,29 +22,30 @@ public class TestFreelancer
 
     static final String persistenceUnitName = "persistence";
 
-    //data for location
-    static final String address = "Alte Poststraße 122/15";
+    //data for Location
+    static final String address = "Alte Poststraße 122/14";
     static final String country = "Austria";
     static final Integer zip = 8020;
     static final String city = "Graz";
 
-    //data for user
-    static final Integer user_Id = 124;
-    static final String name = "Freelancer Herbert";
-    static final String email = "herbert@freelancer.at";
-    static final String password = "*****";
+    //data for User
+    static final int id = 1;
+    static final String name = "Christopher Wegl";
+    static final String email = "christopher.wegl@edu.fh-joanneum.at";
+    static final String password = "*******";
+    static final String dtype = "Freelancer";
 
-    //data for freelancer
+    //data for Freelancer
     static final String eduacation = "FH Joanneum";
     static final String availability = "available";
-    static final int wagePerHour = 13;
-    static final String profession = "Software Engineer Freelancer";
+    static final int hourly_wage = 13;
 
+    static final String profession = "Software Engineer Freelancer";
+    static final String professionMerge ="Database Admin";
 
 
     @BeforeClass
-    public static void setup()
-    {
+    public static void setup() {
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull(factory);
         manager = factory.createEntityManager();
@@ -56,8 +54,7 @@ public class TestFreelancer
     }
 
     @AfterClass
-    public static void teardown()
-    {
+    public static void teardown() {
         if (manager == null) return;
         manager.close();
         factory.close();
@@ -69,46 +66,42 @@ public class TestFreelancer
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
-
-        Freelancer testFreelancer = new Freelancer( user_Id, name, email, password, profession, availability, wagePerHour, eduacation, testAddress );
-        assertNotNull(testAddress);
+        Freelancer testFreelancer = new Freelancer( id, name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
+        assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
         transaction.commit();
-
     }
-//    @Test
-//    public void modify() {
-//        transaction.begin();
-//        Location testAddress = new Location(address, country, zip, city);
-//        assertNotNull(testAddress);
-//        Company testCompany = new Company(companyName, branch, testAddress);
-//        assertNotNull(testCompany);
-//        Projectmanager testProjectmanager = new Projectmanager( user_id, name, email, password, involved, task, testCompany );
-//        assertNotNull(testProjectmanager);
-//        Projectmanager merge = manager.merge(testProjectmanager);
-//        merge.setEmail("Herbert@asd");
-//        transaction.commit();
-//
-//        testProjectmanager = manager.find(Projectmanager.class, user_id);
-//        assertEquals("Herbert@asd", testProjectmanager.getEmail());
-//    }
-//
-//
-//    @Test
-//    public void remove() {
-//        Freelancer testFreelancer = manager.find(Freelancer.class, user_id);
-//        assertNotNull(testFreelancer);
-//        Location testAddress = manager.find(Location.class, address);
-//        assertNotNull(testAddress);
-//        transaction.begin();
-//        manager.remove(testFreelancer);
-//        manager.remove(testAddress);
-//        transaction.commit();
-//
-//        testFreelancer = manager.find(Freelancer.class, user_id);
-//        assertEquals(null, testFreelancer);
-//        testAddress = manager.find(Location.class, address);
-//        assertEquals(null, testAddress);
-//    }
+
+    @Test
+    public void modify() {
+        transaction.begin();
+        Location testAddress = new Location(address, country, zip, city);
+        assertNotNull(testAddress);
+        Freelancer testFreelancer = new Freelancer( id, name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
+        assertNotNull(testFreelancer);
+        Freelancer merge = manager.merge(testFreelancer);
+        merge.setProfession(professionMerge);
+        transaction.commit();
+
+        testFreelancer = manager.find(Freelancer.class, id );
+        assertEquals(professionMerge, testFreelancer.getProfession());
+    }
+
+    @Test
+    public void remove() {
+        Freelancer testFreelancer = manager.find(Freelancer.class, id);
+        assertNotNull(testFreelancer);
+        Location testAddress = manager.find(Location.class, address);
+        assertNotNull(testAddress);
+        transaction.begin();
+        manager.remove(testFreelancer);
+        manager.remove(testAddress);
+        transaction.commit();
+
+        testFreelancer = manager.find(Freelancer.class, id);
+        assertNull(testFreelancer);
+        testAddress = manager.find(Location.class, address);
+        assertNull(testAddress);
+    }
 
 }
