@@ -22,7 +22,8 @@ public class User {
         setDtype(dtype);
     }
 
-    public User() {}
+    protected User() {}
+
 
     public Integer getUserId() {
         return userId;

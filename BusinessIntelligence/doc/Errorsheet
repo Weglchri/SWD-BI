@@ -14,7 +14,49 @@ User - @ Table definition, warum hier das schema angegeben werden muss
 
 
 
+  SQL
+         Freelancer und Projectmanager INHERITS (public.User)
+         gut. aber nicht portble af eine anderes RDMBS :-(
 
+         ansonsten sieh's sher gut aus!
+
+         at.fhj.swd.dbanw
+             das drueckt nicht aus um welches projekt es sich handelt - das
+             gehoert schon in den url hinein
+
+
+         User
+             PK  userId wird generiert (SERIAL) - dann braucht und darf
+                 man keinen wert beim konstruktor mitgeben !
+
+
+         beziehungen zw. entitaeten : da sind sie erst am anfang..
+
+
+     test
+         die setup() methode ist in allen tests gleich. die gehoert
+         refactored - z.B. in eine gemeinsam elternklasse; oder
+         noch besser in eine eigenen klasse in src - dann kann die
+         application sie auch nutzen.
+
+
+
+
+
+
+#Done -- alle Default-Konsturktoren auf protected
+//Offer
+//der default konstruktor sollte nicht public sein.
+//den benutzt ja nur JPA intern
+//so koennte ein DAU inbenutzen, was keinen sinn ergibt.
+
+
+#Done -- META-INF großgeschrieben, Persistance: name="BusinessIntelligence"
+//meta-inf - auf Linux / UNIX wird das crashen - denn dort wird gross-
+//kleinschreibung untershieden!
+//persistence.xml
+//persistence-unit name="persistence"
+//der name hat info-wert 0 ! das sollte der name der DB sein!
 
 
 #Done -- statt Joined wurde TABLE_PER_CLASS verwendet.

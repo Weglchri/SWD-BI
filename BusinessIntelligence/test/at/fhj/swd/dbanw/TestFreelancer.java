@@ -20,7 +20,7 @@ public class TestFreelancer
     static EntityManager manager;
     static EntityTransaction transaction;
 
-    static final String persistenceUnitName = "persistence";
+    static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for Location
     static final String address = "Alte Poststraße 122/14";

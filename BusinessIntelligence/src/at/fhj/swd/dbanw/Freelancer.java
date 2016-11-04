@@ -25,7 +25,7 @@ public class Freelancer extends User {
         setAddress(address);
     }
 
-    public Freelancer(){}
+    protected Freelancer(){}
 
 
     public String getProfession() {

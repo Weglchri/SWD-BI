@@ -15,9 +15,8 @@ public class Projectmanager extends User{
     @JoinColumn(name = "fk_company_name")
     public Company company_name;
 
-    public Projectmanager() {
+    protected Projectmanager() {}
 
-    }
 
     public Projectmanager(Integer user_id, String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
         super(user_id, name, email, password, dtype);

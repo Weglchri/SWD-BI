@@ -18,7 +18,8 @@ public class Location {
         setCity(city);
     }
 
-    public Location() {}
+    protected Location() {}
+
 
     public String getAddress() {
         return address;
