@@ -1,17 +1,8 @@
-Problem von M:N Auflösung in der Datenbank!
-M:N zwischen Projectmanager und Project wurde zu 2-mal 1:N aufgelöst!
-Das resultierte in in einer zusätzlichen Tabelle "Responsibility".
-Java kann diese Verbindung intern abhandeln, was diese Auflösung eventuell überflüssig macht!
-Dementsprechend müssen wir die Auflösung mit der Verbindungsannotations ManyToMany implementieren.
-(Keine Ahnung noch wie das geht!)
-
-Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert, ist der Freelancer-Test & Projectmanager-Test nur beim ersten Durchlauf positiv.
-Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ. Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich
+Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert,
+ist der Freelancer-Test & Projectmanager-Test nur beim ersten Test-Durchlauf positiv.
+Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ.
+Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich
 in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
-
-
-User - @ Table definition, warum hier das schema angegeben werden muss
-
 
 
   SQL
@@ -41,7 +32,16 @@ User - @ Table definition, warum hier das schema angegeben werden muss
 
 
 
+#Done -- Klasse gelöscht, Logik des M:N übernimmt Java
+//Problem von M:N Auflösung in der Datenbank!
+//M:N zwischen Projectmanager und Project wurde zu 2-mal 1:N aufgelöst!
+//Das resultierte in in einer zusätzlichen Tabelle "Responsibility".
+//Java kann diese Verbindung intern abhandeln, was diese Auflösung eventuell überflüssig macht!
+//Dementsprechend müssen wir die Auflösung mit der Verbindungsannotations ManyToMany implementieren.
 
+
+#Done -- wurde überall hinzugefügt
+//User - @ Table definition, warum hier das schema angegeben werden muss
 
 
 #Done -- alle Default-Konsturktoren auf protected
