@@ -62,3 +62,7 @@ in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
 #Done -- statt Joined wurde TABLE_PER_CLASS verwendet.
 //Vererbung: Freelancer- und Projectmanager-Klasse umschreiben, sodass sie Id, Email usw.. vom User vererbt kriegen.
 //Im Moment funktionierts zwar auch so, die doppelten Werte sind aber grauslig.
+
+
+#Open
+//Nachfragen bezüglich Sequence, warum geht das erst am 1001 bzw. wenn die werte != 1 sind?
