@@ -1,25 +1,27 @@
+CREATE SEQUENCE public.user_sequence START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE public.offer_sequence START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE public.project_sequence START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE public.User(
-User_Id SERIAL PRIMARY KEY,
+User_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.user_sequence'),
 Name VARCHAR NOT NULL,
 Email VARCHAR NOT NULL,
 Password VARCHAR NOT NULL,
 Dtype VARCHAR);
 
 CREATE TABLE public.Freelancer(
-User_Id INTEGER NOT NULL PRIMARY KEY,
 Profession VARCHAR NOT NULL,
 Availability VARCHAR NOT NULL,
 Fk_Address VARCHAR,
 Hourly_Wage INT,
 Education VARCHAR
-);
+)INHERITS (public.User);
 
 CREATE TABLE public.Projectmanager(
-User_Id INTEGER NOT NULL PRIMARY KEY,
 Involved_In INT NOT NULL,
 Fk_Company_Name VARCHAR,
 Function VARCHAR
-);
+)INHERITS (public.User);
 
 CREATE TABLE public.Company(
 Company_Name VARCHAR PRIMARY KEY,
@@ -33,14 +35,14 @@ ZIP INT NOT NULL,
 City VARCHAR NOT NULL);
 
 CREATE TABLE public.Offer(
-Offer_Id SERIAL PRIMARY KEY,
+Offer_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.offer_sequence'),
 Price INT NOT NULL,
 Creation_Date DATE NOT NULL,
 Fk_Project_Id INT,
 Fk_User_Id INT);
 
 CREATE TABLE public.Project(
-Project_Id SERIAL PRIMARY KEY,
+Project_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.project_sequence'),
 Capital INT,
 Creation_Date DATE NOT NULL,
 Task VARCHAR NOT NULL,
