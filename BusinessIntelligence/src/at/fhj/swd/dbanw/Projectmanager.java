@@ -6,10 +6,14 @@ import javax.persistence.*;
 @Table(name="Projectmanager", schema="public")
 public class Projectmanager extends User{
 
-    //Projectmanager Variables
-    private int involved_In;
-    private String function;
 
+    @SequenceGenerator (name = "UserIdSequence", sequenceName = "User_Sequences", allocationSize = 1)
+    @Id @GeneratedValue (generator="UserIdSequence")
+    private int id;
+
+    //Projectmanager Variables
+    @Column(name="Involved_In") private int involvedIn;
+    private String function;
 
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
@@ -17,9 +21,8 @@ public class Projectmanager extends User{
 
     protected Projectmanager() {}
 
-
-    public Projectmanager(Integer user_id, String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
-        super(user_id, name, email, password, dtype);
+    public Projectmanager(String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
+        super(name, email, password, dtype);
         setInvolvedIn(involved_In);
         setFunction(function);
         setCompanyName(company_name);
@@ -31,11 +34,11 @@ public class Projectmanager extends User{
     public Company getCompanyName() {return company_name;}
 
     public int getInvolvedIn() {
-        return involved_In;
+        return involvedIn;
     }
 
     public void setInvolvedIn(Integer involved_In) {
-        this.involved_In = involved_In;
+        this.involvedIn = involved_In;
     }
 
     public String getFunction() {

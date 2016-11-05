@@ -5,17 +5,22 @@ import sun.jvm.hotspot.memory.Generation;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy= InheritanceType.JOINED)
 @Table(name ="User", schema="public")
-public class User {
-    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer userId;
+public class User
+{
+    @SequenceGenerator (name = "UserIdGenerator",
+            sequenceName = "user_sequence",
+            allocationSize = 1)
+
+    @Id @Column(name = "user_id") @GeneratedValue(generator="UserIdGenerator")
+        private int userId;
         private String name;
         private String email;
         private String password;
         private String dtype;
 
-    public User(int userId, String name, String email, String password, String dtype) {
-        setUserId(userId);
+    public User(String name, String email, String password, String dtype) {
         setName(name);
         setEmail(email);
         setPassword(password);
@@ -25,11 +30,9 @@ public class User {
     protected User() {}
 
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
-
-    public void setUserId(Integer userId) {this.userId = userId;}
 
     public String getName() {
         return name;

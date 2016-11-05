@@ -65,7 +65,7 @@ public class TestFreelancer
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
-        Freelancer testFreelancer = new Freelancer( id, name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
+        Freelancer testFreelancer = new Freelancer(name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
         assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
         transaction.commit();
@@ -76,7 +76,7 @@ public class TestFreelancer
         transaction.begin();
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
-        Freelancer testFreelancer = new Freelancer( id, name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
+        Freelancer testFreelancer = new Freelancer(name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
         assertNotNull(testFreelancer);
         Freelancer merge = manager.merge(testFreelancer);
         merge.setProfession(professionMerge);
