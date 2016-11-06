@@ -52,12 +52,12 @@ Open Issues:
 //so koennte ein DAU inbenutzen, was keinen sinn ergibt.
 
 
-#Done -- META-INF großgeschrieben, Persistance: name="BusinessIntelligence"
+#Done -- META-INF großgeschrieben, 
 //meta-inf
 //auf Linux / UNIX wird das crashen - denn dort wird gross-kleinschreibung untershieden!
 
 
-#Done -- auf BusinessIntelligence geändert
+#Done -- Persistance: name="BusinessIntelligence"
 //persistence.xml
 //persistence-unit name="persistence"
 //der name hat info-wert 0 ! das sollte der name der DB sein!
