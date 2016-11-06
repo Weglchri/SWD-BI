@@ -20,7 +20,7 @@ public class TestUser
     static EntityManager manager;
     static EntityTransaction transaction;
 
-    static final String persistenceUnitName = "persistence";
+    static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for User
     static final Integer id = 1;

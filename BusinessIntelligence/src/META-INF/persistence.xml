@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="BusinessIntelligence" >
-        <class>at.fhj.swd.dbanw.Company</class>
-        <class>at.fhj.swd.dbanw.Freelancer</class>
-        <class>at.fhj.swd.dbanw.Location</class>
-        <class>at.fhj.swd.dbanw.Offer</class>
-        <class>at.fhj.swd.dbanw.Project</class>
-        <class>at.fhj.swd.dbanw.Projectmanager</class>
-        <class>at.fhj.swd.dbanw.Responsibility</class>
-        <class>at.fhj.swd.dbanw.User</class>
+        <class>at.fhj.swd.BusinessIntelligence.Company</class>
+        <class>at.fhj.swd.BusinessIntelligence.Freelancer</class>
+        <class>at.fhj.swd.BusinessIntelligence.Location</class>
+        <class>at.fhj.swd.BusinessIntelligence.Offer</class>
+        <class>at.fhj.swd.BusinessIntelligence.Project</class>
+        <class>at.fhj.swd.BusinessIntelligence.Projectmanager</class>
+        <class>at.fhj.swd.BusinessIntelligence.User</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/wegl"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

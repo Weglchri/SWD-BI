@@ -21,7 +21,7 @@ public class TestProjectmanager {
     static EntityManager manager;
     static EntityTransaction transaction;
 
-    static final String persistenceUnitName = "persistence";
+    static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for Company
     static final String company_name = "Stahl Incorporation";
