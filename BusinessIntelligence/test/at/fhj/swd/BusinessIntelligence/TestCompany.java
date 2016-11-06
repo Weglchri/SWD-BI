@@ -1,4 +1,5 @@
-package at.fhj.swd.dbanw;
+
+package at.fhj.swd.BusinessIntelligence;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,13 +11,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.sound.midi.Sequence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestProjectmanager {
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestCompany {
 
 
     static EntityManagerFactory factory;
@@ -25,27 +26,17 @@ public class TestProjectmanager {
 
     static final String persistenceUnitName = "persistence";
 
-    //data for Company
-    static final String company_name = "Stahl Incorporation";
-    static final String branch = "Stahlbau";
-
     //data for Location
-    static final String address = "Alte Poststraße 122/16";
+    static final String address = "Alte Poststraße 122/13";
     static final String country = "Austria";
     static final Integer zip = 8020;
     static final String city = "Graz";
 
-    //data for User
-    static final int id = 1;
-    static final String name = "Björn Sattler";
-    static final String email = "bjoern.sattler@edu.fh-joanneum.at";
-    static final String password = "*******";
-    static final String dtype = "Projectmanager";
+    //data for Company
+    static final String company_name = "Stahl Incorporation";
+    static final String branch = "Stahlbau";
+    static final String branchMerge = "Bergbau";
 
-    //data for Projectmanager
-    static final Integer involved = 1;
-    static final String function = "Personal";
-    static final String functionMerge = "Zulieferung";
 
     @BeforeClass
     public static void setup() {
@@ -64,23 +55,15 @@ public class TestProjectmanager {
     }
 
     @Test
-    public void create()
-    {
+    public void create() {
         transaction.begin();
-
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
-
         Company testCompany = new Company(company_name, branch, testAddress);
         assertNotNull(testCompany);
         manager.persist(testCompany);
-
-        Projectmanager testProjectmanager = new Projectmanager(id, name, email, password, dtype, involved, function, testCompany);
-        assertNotNull(testProjectmanager);
-        manager.persist(testProjectmanager);
         transaction.commit();
-
     }
 
     @Test
@@ -89,37 +72,30 @@ public class TestProjectmanager {
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         Company testCompany = new Company(company_name, branch, testAddress);
-        assertNotNull(testCompany);
-        Projectmanager testProjectmanager = new Projectmanager( id, name, email, password, dtype, involved, function, testCompany);
-        assertNotNull(testProjectmanager);
-        Projectmanager merge = manager.merge(testProjectmanager);
-        merge.setFunction(functionMerge);
+        Company merge = manager.merge(testCompany);
+        merge.setBranch(branchMerge);
         transaction.commit();
 
-        testProjectmanager = manager.find(Projectmanager.class, id);
-        assertEquals(functionMerge, testProjectmanager.getFunction());
+        testCompany = manager.find(Company.class, company_name);
+        assertEquals(branchMerge, testCompany.getBranch());
     }
 
     @Test
     public void remove() {
-        Projectmanager testProjectmanager = manager.find(Projectmanager.class, id);
-        assertNotNull(testProjectmanager);
+        transaction.begin();
         Company testCompany = manager.find(Company.class, company_name);
         assertNotNull(testCompany);
         Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        transaction.begin();
-        manager.remove(testProjectmanager);
         manager.remove(testCompany);
         manager.remove(testAddress);
         transaction.commit();
 
-        testProjectmanager = manager.find(Projectmanager.class, id);
-        assertEquals(null, testProjectmanager);
         testAddress = manager.find(Location.class, address);
         assertEquals(null, testAddress);
         testCompany = manager.find(Company.class, company_name);
-        assertEquals(null, testCompany);
+        assertNull(testAddress);
+        assertNull(testCompany);
     }
 
 }

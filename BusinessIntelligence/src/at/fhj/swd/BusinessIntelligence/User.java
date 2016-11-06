@@ -1,6 +1,4 @@
-package at.fhj.swd.dbanw;
-
-import sun.jvm.hotspot.memory.Generation;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 
@@ -14,8 +12,7 @@ public class User {
         private String password;
         private String dtype;
 
-    public User(int userId, String name, String email, String password, String dtype) {
-        setUserId(userId);
+    public User(String name, String email, String password, String dtype) {
         setName(name);
         setEmail(email);
         setPassword(password);
@@ -27,8 +24,6 @@ public class User {
     public Integer getUserId() {
         return userId;
     }
-
-    public void setUserId(Integer userId) {this.userId = userId;}
 
     public String getName() {
         return name;

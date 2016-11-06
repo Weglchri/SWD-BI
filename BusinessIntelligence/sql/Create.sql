@@ -1,5 +1,9 @@
+CREATE SEQUENCE public.user_sequence START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE public.offer_sequence START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE public.project_sequence START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE public.User(
-User_Id SERIAL PRIMARY KEY,
+User_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.user_sequence'),
 Name VARCHAR NOT NULL,
 Email VARCHAR NOT NULL,
 Password VARCHAR NOT NULL,
@@ -31,18 +35,18 @@ ZIP INT NOT NULL,
 City VARCHAR NOT NULL);
 
 CREATE TABLE public.Offer(
-Offer_Id SERIAL PRIMARY KEY,
+Offer_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.offer_sequence'),
 Price INT NOT NULL,
 Creation_Date DATE NOT NULL,
 Fk_Project_Id INT,
 Fk_User_Id INT);
 
 CREATE TABLE public.Project(
-Project_Id SERIAL PRIMARY KEY,
+Project_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.project_sequence'),
 Capital INT,
 Creation_Date DATE NOT NULL,
 Task VARCHAR NOT NULL,
-Fk_Company_Name VARCHAR);
+ Fk_Company_Name VARCHAR);
 
 CREATE TABLE public.Responsibility(
 Fk_User_Id INT,

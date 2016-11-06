@@ -1,5 +1,4 @@
-
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -14,7 +13,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class TestLocation {
+public class TestUser
+{
 
     static EntityManagerFactory factory;
     static EntityManager manager;
@@ -22,17 +22,20 @@ public class TestLocation {
 
     static final String persistenceUnitName = "persistence";
 
-    //data for Location
-    static final String address = "Alte Poststraße 122/15";
-    static final String country = "Austria";
-    static final Integer zip = 8020;
-    static final String city = "Graz";
-    static final String cityMerge ="Vienna";
+    //data for User
+    static final Integer id = 1;
+    static final String name = "Admin";
+    static final String email = "Admin@edu.fh-joanneum.at";
+    static final String dtype = "User";
+    static final String password = "1234567";
+    static final String passwordMerge = "7654321";
+
+    //data for tests
+    private static User testUser;
 
 
     @BeforeClass
     public static void setup() {
-
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull(factory);
         manager = factory.createEntityManager();
@@ -50,34 +53,29 @@ public class TestLocation {
     @Test
     public void create() {
         transaction.begin();
-        Location testAddress = new Location(address, country, zip, city);
-        assertNotNull(testAddress);
-        manager.persist(testAddress);
+        this.testUser = new User(name, email, password, dtype);
+        assertNotNull(testUser);
+        manager.persist(testUser);
         transaction.commit();
     }
 
     @Test
     public void modify() {
         transaction.begin();
-        Location testAddress = manager.find(Location.class, address);
-        assertNotNull(testAddress);
-        Location merge = manager.merge(testAddress);
-        merge.setCity(cityMerge);
+        assertNotNull(testUser);
+        User merge = manager.merge(testUser);
+        merge.setPassword(passwordMerge);
         transaction.commit();
-
-        testAddress = manager.find(Location.class, address);
-        assertEquals(cityMerge ,testAddress.getCity());
+        assertEquals(passwordMerge, testUser.getPassword());
     }
 
     @Test
     public void remove() {
         transaction.begin();
-        Location testAddress = manager.find(Location.class, address);
-        assertNotNull(testAddress);
-        manager.remove(testAddress);
+        assertNotNull(testUser);
+        manager.remove(testUser);
         transaction.commit();
-
-        testAddress = manager.find(Location.class, address);
-        assertNull(testAddress);
+        this.testUser = manager.find(User.class, testUser.getUserId());
+        assertNull(testUser);
     }
 }

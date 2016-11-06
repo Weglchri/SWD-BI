@@ -1,4 +1,4 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 
@@ -16,8 +16,8 @@ public class Freelancer extends User {
     @JoinColumn(name="fk_address")
     private Location address;
 
-    public Freelancer(Integer user_id, String name, String email, String password, String dtype, String profession, String availability, Integer hourly_wage, String education, Location address){
-        super(user_id, name, email, password, dtype);
+    public Freelancer(String name, String email, String password, String dtype, String profession, String availability, Integer hourly_wage, String education, Location address){
+        super(name, email, password, dtype);
         setProfession(profession);
         setAvailability(availability);
         setHourly_wage(hourly_wage);

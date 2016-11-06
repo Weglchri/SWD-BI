@@ -1,4 +1,4 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 
@@ -19,8 +19,8 @@ public class Projectmanager extends User{
 
     }
 
-    public Projectmanager(Integer user_id, String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
-        super(user_id, name, email, password, dtype);
+    public Projectmanager(String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
+        super(name, email, password, dtype);
         setInvolvedIn(involved_In);
         setFunction(function);
         setCompanyName(company_name);
