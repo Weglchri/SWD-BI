@@ -1,9 +1,5 @@
 Open Issues:
 
-  SQL
-         Freelancer und Projectmanager INHERITS (public.User)
-         gut. aber nicht portble af eine anderes RDMBS :-(
-
      test
          die setup() methode ist in allen tests gleich. die gehoert
          refactored - z.B. in eine gemeinsam elternklasse; oder
@@ -14,12 +10,14 @@ Open Issues:
 
 
 
+#Done -- DTYPE aus Konstruktor % INHERITS aus SQL-SKRIPT entfernt
+//SQL
+//Freelancer und Projectmanager INHERITS (public.User) gut. aber nicht portble af eine anderes RDMBS :-(
 
 
-
-
-#Done -- Sequences und Test funktionnieren
-//User PK userId wird generiert (SERIAL) - dann braucht und darf
+#Done -- Sequences und Tests funktionieren
+//User
+//PK userId wird generiert (SERIAL) - dann braucht und darf
 //man keinen wert beim konstruktor mitgeben !
 //Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert,
 //ist der Freelancer-Test & Projectmanager-Test nur beim ersten Test-Durchlauf positiv.
@@ -43,7 +41,8 @@ Open Issues:
 
 
 #Done -- wurde überall hinzugefügt
-//User - @ Table definition, warum hier das schema angegeben werden muss
+//User
+//@ Table definition, warum hier das schema angegeben werden muss
 
 
 #Done -- alle Default-Konsturktoren auf protected
@@ -54,17 +53,20 @@ Open Issues:
 
 
 #Done -- META-INF großgeschrieben, Persistance: name="BusinessIntelligence"
-//meta-inf - auf Linux / UNIX wird das crashen - denn dort wird gross-
-//kleinschreibung untershieden!
+//meta-inf
+//auf Linux / UNIX wird das crashen - denn dort wird gross-kleinschreibung untershieden!
+
+
+#Done -- auf BusinessIntelligence geändert
 //persistence.xml
 //persistence-unit name="persistence"
 //der name hat info-wert 0 ! das sollte der name der DB sein!
 
 
-#Done -- statt Joined wurde TABLE_PER_CLASS verwendet.
+##Redone -- (statt Joined wurde TABLE_PER_CLASS verwendet) -- Joined wurde belassen
 //Vererbung: Freelancer- und Projectmanager-Klasse umschreiben, sodass sie Id, Email usw.. vom User vererbt kriegen.
 //Im Moment funktionierts zwar auch so, die doppelten Werte sind aber grauslig.
 
 
-#Open
+#Done -- Fehler in der IntelliJ SQL-Begriffauflösung
 //Nachfragen bezüglich Sequence, warum geht das erst am 1001 bzw. wenn die werte != 1 sind?
