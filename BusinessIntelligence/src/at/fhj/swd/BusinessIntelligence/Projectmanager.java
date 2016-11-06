@@ -1,4 +1,4 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 
@@ -6,13 +6,8 @@ import javax.persistence.*;
 @Table(name="Projectmanager", schema="public")
 public class Projectmanager extends User{
 
-
-    @SequenceGenerator (name = "UserIdSequence", sequenceName = "User_Sequences", allocationSize = 1)
-    @Id @GeneratedValue (generator="UserIdSequence")
-    private int id;
-
     //Projectmanager Variables
-    @Column(name="Involved_In") private int involvedIn;
+    private int involved_In;
     private String function;
 
     @ManyToOne
@@ -21,6 +16,7 @@ public class Projectmanager extends User{
 
     protected Projectmanager() {}
 
+
     public Projectmanager(String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
         super(name, email, password, dtype);
         setInvolvedIn(involved_In);
@@ -28,17 +24,16 @@ public class Projectmanager extends User{
         setCompanyName(company_name);
     }
 
-
     public void setCompanyName(Company company) {this.company_name = company;}
 
     public Company getCompanyName() {return company_name;}
 
     public int getInvolvedIn() {
-        return involvedIn;
+        return involved_In;
     }
 
     public void setInvolvedIn(Integer involved_In) {
-        this.involvedIn = involved_In;
+        this.involved_In = involved_In;
     }
 
     public String getFunction() {

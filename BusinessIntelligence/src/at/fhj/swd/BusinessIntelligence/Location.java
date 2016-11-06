@@ -1,4 +1,4 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 

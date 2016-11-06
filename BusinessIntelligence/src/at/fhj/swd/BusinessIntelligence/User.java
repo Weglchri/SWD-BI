@@ -1,20 +1,12 @@
-package at.fhj.swd.dbanw;
-
-import sun.jvm.hotspot.memory.Generation;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 @Table(name ="User", schema="public")
-public class User
-{
-    @SequenceGenerator (name = "UserIdGenerator",
-            sequenceName = "user_sequence",
-            allocationSize = 1)
-
-    @Id @Column(name = "user_id") @GeneratedValue(generator="UserIdGenerator")
-        private int userId;
+public class User {
+    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer userId;
         private String name;
         private String email;
         private String password;
@@ -30,7 +22,7 @@ public class User
     protected User() {}
 
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

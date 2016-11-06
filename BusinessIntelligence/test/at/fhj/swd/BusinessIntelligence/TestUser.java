@@ -1,4 +1,4 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -20,17 +20,19 @@ public class TestUser
     static EntityManager manager;
     static EntityTransaction transaction;
 
-    static final String persistenceUnitName = "BusinessIntelligence";
+    static final String persistenceUnitName = "persistence";
 
     //data for User
     static final Integer id = 1;
     static final String name = "Admin";
     static final String email = "Admin@edu.fh-joanneum.at";
-    static final String dtype = "Freelancer";
+    static final String dtype = "User";
     static final String password = "1234567";
     static final String passwordMerge = "7654321";
 
-    User testUser = new User(name, email, password, dtype);
+    //data for tests
+    private static User testUser;
+
 
     @BeforeClass
     public static void setup() {
@@ -51,31 +53,29 @@ public class TestUser
     @Test
     public void create() {
         transaction.begin();
-        //User testUser = new User(name, email, password, dtype);
+        this.testUser = new User(name, email, password, dtype);
         assertNotNull(testUser);
         manager.persist(testUser);
         transaction.commit();
     }
 
-//    @Test
-//    public void modify() {
-//        transaction.begin ();
-//        User testUser = manager.find(User.class, id);
-//        assertNotNull(testUser);
-//        User merge = manager.merge(testUser);
-//        merge.setPassword(passwordMerge);
-//        transaction.commit();
-//
-//        testUser = manager.find(User.class, id);
-//        assertEquals (passwordMerge, testUser.getPassword());
-//    }
+    @Test
+    public void modify() {
+        transaction.begin();
+        assertNotNull(testUser);
+        User merge = manager.merge(testUser);
+        merge.setPassword(passwordMerge);
+        transaction.commit();
+        assertEquals(passwordMerge, testUser.getPassword());
+    }
 
     @Test
     public void remove() {
         transaction.begin();
-        //User testUser1 = manager.find(User.class, name);
-        //assertNotNull(testUser1);
+        assertNotNull(testUser);
         manager.remove(testUser);
         transaction.commit();
+        this.testUser = manager.find(User.class, testUser.getUserId());
+        assertNull(testUser);
     }
 }

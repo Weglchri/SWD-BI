@@ -1,8 +1,7 @@
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 import java.sql.Date;
-import javax.persistence.SequenceGenerator;
 
 @Entity
 @Table(name="Project", schema="public")

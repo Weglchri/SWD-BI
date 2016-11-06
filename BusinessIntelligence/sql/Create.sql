@@ -46,7 +46,7 @@ Project_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.project_sequence'),
 Capital INT,
 Creation_Date DATE NOT NULL,
 Task VARCHAR NOT NULL,
-Fk_Company_Name VARCHAR);
+ Fk_Company_Name VARCHAR);
 
 CREATE TABLE public.Responsibility(
 Fk_User_Id INT,

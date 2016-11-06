@@ -1,11 +1,9 @@
 
-package at.fhj.swd.dbanw;
+package at.fhj.swd.BusinessIntelligence;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,9 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestCompany {
-
+public class TestLocation {
 
     static EntityManagerFactory factory;
     static EntityManager manager;
@@ -27,19 +23,16 @@ public class TestCompany {
     static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for Location
-    static final String address = "Alte Poststraße 122/13";
+    static final String address = "Alte Poststraße 122/15";
     static final String country = "Austria";
     static final Integer zip = 8020;
     static final String city = "Graz";
-
-    //data for Company
-    static final String company_name = "Stahl Incorporation";
-    static final String branch = "Stahlbau";
-    static final String branchMerge = "Bergbau";
+    static final String cityMerge ="Vienna";
 
 
     @BeforeClass
     public static void setup() {
+
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull(factory);
         manager = factory.createEntityManager();
@@ -60,42 +53,31 @@ public class TestCompany {
         Location testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
-        Company testCompany = new Company(company_name, branch, testAddress);
-        assertNotNull(testCompany);
-        manager.persist(testCompany);
         transaction.commit();
     }
 
     @Test
     public void modify() {
         transaction.begin();
-        Location testAddress = new Location(address, country, zip, city);
+        Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        Company testCompany = new Company(company_name, branch, testAddress);
-        Company merge = manager.merge(testCompany);
-        merge.setBranch(branchMerge);
+        Location merge = manager.merge(testAddress);
+        merge.setCity(cityMerge);
         transaction.commit();
 
-        testCompany = manager.find(Company.class, company_name);
-        assertEquals(branchMerge, testCompany.getBranch());
+        testAddress = manager.find(Location.class, address);
+        assertEquals(cityMerge ,testAddress.getCity());
     }
 
     @Test
     public void remove() {
         transaction.begin();
-        Company testCompany = manager.find(Company.class, company_name);
-        assertNotNull(testCompany);
         Location testAddress = manager.find(Location.class, address);
         assertNotNull(testAddress);
-        manager.remove(testCompany);
         manager.remove(testAddress);
         transaction.commit();
 
         testAddress = manager.find(Location.class, address);
-        assertEquals(null, testAddress);
-        testCompany = manager.find(Company.class, company_name);
         assertNull(testAddress);
-        assertNull(testCompany);
     }
-
 }
