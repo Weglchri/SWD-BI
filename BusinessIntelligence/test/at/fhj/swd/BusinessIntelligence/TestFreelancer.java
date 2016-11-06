@@ -33,7 +33,6 @@ public class TestFreelancer
     static final String name = "Christopher Wegl";
     static final String email = "christopher.wegl@edu.fh-joanneum.at";
     static final String password = "*******";
-    static final String dtype = "Freelancer";
 
     //data for Freelancer
     static final String eduacation = "FH Joanneum";
@@ -70,7 +69,7 @@ public class TestFreelancer
         assertNotNull(testAddress);
         manager.persist(testAddress);
 
-        this.testFreelancer = new Freelancer(name, email, password, dtype, profession, availability, hourly_wage, eduacation, testAddress );
+        this.testFreelancer = new Freelancer(name, email, password, profession, availability, hourly_wage, eduacation, testAddress );
         assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
 

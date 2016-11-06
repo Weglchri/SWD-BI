@@ -38,7 +38,6 @@ public class TestProjectmanager {
     static final String name = "Björn Sattler";
     static final String email = "bjoern.sattler@edu.fh-joanneum.at";
     static final String password = "*******";
-    static final String dtype = "Projectmanager";
 
     //data for Projectmanager
     static final Integer involved = 1;
@@ -79,7 +78,7 @@ public class TestProjectmanager {
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        this.testProjectmanager = new Projectmanager(name, email, password, dtype, involved, function, testCompany);
+        this.testProjectmanager = new Projectmanager(name, email, password, involved, function, testCompany);
         assertNotNull(testProjectmanager);
         manager.persist(testProjectmanager);
 

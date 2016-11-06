@@ -16,8 +16,8 @@ public class Freelancer extends User {
     @JoinColumn(name="fk_address")
     private Location address;
 
-    public Freelancer(String name, String email, String password, String dtype, String profession, String availability, Integer hourly_wage, String education, Location address){
-        super(name, email, password, dtype);
+    public Freelancer(String name, String email, String password, String profession, String availability, Integer hourly_wage, String education, Location address){
+        super(name, email, password);
         setProfession(profession);
         setAvailability(availability);
         setHourly_wage(hourly_wage);

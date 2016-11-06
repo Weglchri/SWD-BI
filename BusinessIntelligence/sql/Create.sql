@@ -10,18 +10,18 @@ Password VARCHAR NOT NULL,
 Dtype VARCHAR);
 
 CREATE TABLE public.Freelancer(
+User_Id INTEGER PRIMARY KEY,
 Profession VARCHAR NOT NULL,
 Availability VARCHAR NOT NULL,
 Fk_Address VARCHAR,
 Hourly_Wage INT,
-Education VARCHAR
-)INHERITS (public.User);
+Education VARCHAR);
 
 CREATE TABLE public.Projectmanager(
+User_Id INTEGER PRIMARY KEY,
 Involved_In INT NOT NULL,
 Fk_Company_Name VARCHAR,
-Function VARCHAR
-)INHERITS (public.User);
+Function VARCHAR);
 
 CREATE TABLE public.Company(
 Company_Name VARCHAR PRIMARY KEY,

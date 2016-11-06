@@ -1,22 +1,22 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy= InheritanceType.JOINED)
 @Table(name ="User", schema="public")
 public class User {
     @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer userId;
         private String name;
         private String email;
         private String password;
-        private String dtype;
 
-    public User(String name, String email, String password, String dtype) {
+    public User(String name, String email, String password) {
         setName(name);
         setEmail(email);
         setPassword(password);
-        setDtype(dtype);
     }
 
     protected User() {}
@@ -45,9 +45,5 @@ public class User {
     public String getPassword() {return password;}
 
     public void setPassword(String password) {this.password = password;}
-
-    public String getDtype() {return dtype;}
-
-    public void setDtype(String dtype) {this.dtype = dtype;}
 
 }

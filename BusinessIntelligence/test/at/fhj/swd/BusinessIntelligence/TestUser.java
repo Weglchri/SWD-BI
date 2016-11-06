@@ -26,7 +26,6 @@ public class TestUser
     static final Integer id = 1;
     static final String name = "Admin";
     static final String email = "Admin@edu.fh-joanneum.at";
-    static final String dtype = "User";
     static final String password = "1234567";
     static final String passwordMerge = "7654321";
 
@@ -53,7 +52,7 @@ public class TestUser
     @Test
     public void create() {
         transaction.begin();
-        this.testUser = new User(name, email, password, dtype);
+        this.testUser = new User(name, email, password);
         assertNotNull(testUser);
         manager.persist(testUser);
         transaction.commit();

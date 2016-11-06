@@ -17,8 +17,8 @@ public class Projectmanager extends User{
     protected Projectmanager() {}
 
 
-    public Projectmanager(String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
-        super(name, email, password, dtype);
+    public Projectmanager(String name, String email, String password, Integer involved_In, String function, Company company_name) {
+        super(name, email, password);
         setInvolvedIn(involved_In);
         setFunction(function);
         setCompanyName(company_name);
