@@ -21,7 +21,7 @@ public class Company {
         setAddress(address);
     }
 
-    public Company(){}
+    protected Company(){}
 
 
     public String getCompany() {

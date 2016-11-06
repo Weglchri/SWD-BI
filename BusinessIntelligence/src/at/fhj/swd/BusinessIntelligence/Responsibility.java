@@ -10,7 +10,8 @@ public class Responsibility {
     @Id private Integer fkProjectmanagerId;
         private Integer fkProjectId;
 
-    public Responsibility(){}
+    protected Responsibility(){}
+
 
     public Integer getFkProjectmanagerId() {
         return fkProjectmanagerId;

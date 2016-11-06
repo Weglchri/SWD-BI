@@ -20,7 +20,8 @@ public class Offer {
         setCreationDate(creationDate);
     }
 
-    public Offer(){}
+    protected Offer(){}
+
 
     public Integer getOfferId() {
         return offerId;

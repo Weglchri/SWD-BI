@@ -18,8 +18,8 @@ public class Project {
         setTask(task);
     }
 
-    public Project() {
-    }
+    protected Project() {}
+
 
     public Integer getProjectId() {
         return projectId;

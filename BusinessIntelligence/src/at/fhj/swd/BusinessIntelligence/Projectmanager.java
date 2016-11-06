@@ -10,14 +10,12 @@ public class Projectmanager extends User{
     private int involved_In;
     private String function;
 
-
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
     public Company company_name;
 
-    public Projectmanager() {
+    protected Projectmanager() {}
 
-    }
 
     public Projectmanager(String name, String email, String password, String dtype, Integer involved_In, String function, Company company_name) {
         super(name, email, password, dtype);
@@ -25,7 +23,6 @@ public class Projectmanager extends User{
         setFunction(function);
         setCompanyName(company_name);
     }
-
 
     public void setCompanyName(Company company) {this.company_name = company;}
 
