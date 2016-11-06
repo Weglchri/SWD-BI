@@ -1,6 +1,8 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
 @Table(name="Projectmanager", schema="public")
@@ -13,6 +15,10 @@ public class Projectmanager extends User{
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
     public Company company_name;
+
+    @ManyToMany
+    @JoinTable(name = "Responsibility", joinColumns = @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "fk_project_id", referencedColumnName = "project_id"))
+    private List<Project> projects;
 
     protected Projectmanager() {}
 
@@ -43,4 +49,11 @@ public class Projectmanager extends User{
     public void setFunction(String function) {
         this.function = function;
     }
+/*
+    public List<Project> getProjects() {return projects;}
+
+    public void addProjects(Project project) {
+        projects.add(project);
+    }
+*/
 }

@@ -2,31 +2,42 @@ package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Project", schema="public")
 public class Project {
-    @Id private Integer projectId;
-        private Integer capital;
-        private Date creationDate;
-        private String task;
+    @Id @Column(name = "project_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer project_id;
+    private Integer capital;
+    private String task;
 
-    public Project(int projectId, int capital, Date creationDate, String task) {
-        setProjectId(projectId);
+    @Column(name="creation_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date creation_date;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_company_name")
+    public Company company_name;
+
+    @ManyToMany
+    @JoinTable(name="Responsibility", joinColumns=@JoinColumn(name="fk_project_id", referencedColumnName="project_id"), inverseJoinColumns=@JoinColumn(name="fk_user_id", referencedColumnName="user_id"))
+    private List<User> users;
+
+
+    public Project(int capital, java.util.Date creation_date, String task, Company company_name) {
+        //setCreationDate(creationDate);
+        this.creation_date = creation_date;
         setCapital(capital);
-        setCreationDate(creationDate);
         setTask(task);
+        setCompanyName(company_name);
     }
 
     protected Project() {}
 
 
     public Integer getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+        return project_id;
     }
 
     public Integer getCapital() {
@@ -36,7 +47,7 @@ public class Project {
     public void setCapital(Integer capital) {
         this.capital = capital;
     }
-
+/*
     public Date getCreationDate() {
         return creationDate;
     }
@@ -44,7 +55,7 @@ public class Project {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-
+*/
     public String getTask() {
         return task;
     }
@@ -53,4 +64,14 @@ public class Project {
         this.task = task;
     }
 
+    public Company getCompanyName() {return company_name;}
+
+    public void setCompanyName(Company company_name) {this.company_name = company_name;}
+/*
+    public List<User> getUsers() {return users;}
+
+    public void addUsers(User user) {
+        users.add(user);
+    }
+*/
 }

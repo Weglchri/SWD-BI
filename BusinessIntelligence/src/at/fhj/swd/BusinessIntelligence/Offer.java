@@ -1,23 +1,30 @@
 package at.fhj.swd.BusinessIntelligence;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name="Offer", schema="public")
 public class Offer {
+
     @Id private Integer offerId;
         private Integer price;
         private Date creationDate;
-        private Integer fkProjectId;
-        private Integer fkUserId;
 
-    public Offer(int offerId, int price, Date creationDate){
+    @ManyToOne
+    @JoinColumn(name = "fk_user_id")
+    public User user_id;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_project_id")
+    public Project project_id;
+
+    public Offer(int offerId, int price, Date creationDate, User user_id, Project project_id){
         setOfferId(offerId);
         setPrice(price);
         setCreationDate(creationDate);
+        setFkProjectId(project_id);
+        setFkUserId(user_id);
     }
 
     protected Offer(){}
@@ -47,20 +54,20 @@ public class Offer {
         this.creationDate = creationDate;
     }
 
-    public Integer getFkProjectId() {
-        return fkProjectId;
+    public Project getFkProjectId() {
+        return project_id;
     }
 
-    public void setFkProjectId(Integer fkProjectId) {
-        this.fkProjectId = fkProjectId;
+    public void setFkProjectId(Project fkProjectId) {
+        this.project_id = project_id;
     }
 
-    public Integer getFkUserId() {
-        return fkUserId;
+    public User getFkUserId() {
+        return user_id;
     }
 
-    public void setFkUserId(Integer fkUserId) {
-        this.fkUserId = fkUserId;
+    public void setFkUserId(User fkUserId) {
+        this.user_id = user_id;
     }
 
 
