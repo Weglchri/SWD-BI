@@ -1,28 +1,8 @@
-Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert,
-ist der Freelancer-Test & Projectmanager-Test nur beim ersten Test-Durchlauf positiv.
-Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ.
-Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich
-in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
-
+Open Issues:
 
   SQL
          Freelancer und Projectmanager INHERITS (public.User)
          gut. aber nicht portble af eine anderes RDMBS :-(
-
-         ansonsten sieh's sher gut aus!
-
-         at.fhj.swd.dbanw
-             das drueckt nicht aus um welches projekt es sich handelt - das
-             gehoert schon in den url hinein
-
-
-         User
-             PK  userId wird generiert (SERIAL) - dann braucht und darf
-                 man keinen wert beim konstruktor mitgeben !
-
-
-         beziehungen zw. entitaeten : da sind sie erst am anfang..
-
 
      test
          die setup() methode ist in allen tests gleich. die gehoert
@@ -30,6 +10,28 @@ in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
          noch besser in eine eigenen klasse in src - dann kann die
          application sie auch nutzen.
 
+
+
+
+
+
+
+
+
+#Done -- Sequences und Test funktionnieren
+//User PK userId wird generiert (SERIAL) - dann braucht und darf
+//man keinen wert beim konstruktor mitgeben !
+//Wird die Datenbank mit Drop.sql gelöscht und Create.sql generiert,
+//ist der Freelancer-Test & Projectmanager-Test nur beim ersten Test-Durchlauf positiv.
+//Auch bei einem Freelancer-Test ist der darauffolgend Projectmanager-Test negativ.
+/Eventuelle Ursache vermute ich dass der Merge im "modify"-Bereich
+//in Verbindung mit der Auto-Generated-Squence der Id bei User Schuld hat.
+
+
+#Done -- at.fhj.swd.BusinessIntelligence
+//at.fhj.swd.dbanw
+//das drueckt nicht aus um welches projekt es sich handelt - das
+//gehoert schon in den url hinein
 
 
 #Done -- Klasse gelöscht, Logik des M:N übernimmt Java
