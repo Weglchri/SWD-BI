@@ -43,12 +43,12 @@ public class TestProject {
     //data for Projectmanager
     static final Integer involved = 1;
     static final String function = "Personal";
-    static final String functionMerge = "Zulieferung";
 
-    //data for project
+    //data for Project
     static final Integer capital = 1000;
-    static final String task = "Website-Programming";
     Date date = new Date();
+    static final String task = "Website-Programming";
+    static final String taskMerge = "Database-Design";
 
     //date for tests
     private static Location testAddress;
@@ -96,7 +96,7 @@ public class TestProject {
         transaction.commit();
 
     }
-/*
+
     @Test
     public void modify() {
         transaction.begin();
@@ -104,16 +104,17 @@ public class TestProject {
         assertNotNull(testAddress);
         assertNotNull(testCompany);
         assertNotNull(testProjectmanager);
+        assertNotNull(testProject);
 
-        Projectmanager merge = manager.merge(testProjectmanager);
-        merge.setFunction(functionMerge);
+        Project merge = manager.merge(testProject);
+        merge.setTask(taskMerge);
 
         transaction.commit();
 
-        testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
-        assertEquals(functionMerge, testProjectmanager.getFunction());
+        testProject = manager.find(Project.class, testProject.getProjectId());
+        assertEquals(taskMerge, testProject.getTask());
     }
-*/
+
     @Test
     public void remove() {
         transaction.begin();

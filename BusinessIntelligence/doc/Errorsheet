@@ -6,6 +6,9 @@ Open Issues:
          noch besser in eine eigenen klasse in src - dann kann die
          application sie auch nutzen.
 
+     m:n
+        die Join-Tabelle (Responsibility) übernimmt keine Werte, obwohl die Verbindung zwischen
+        Project und Projectmanager funktioniert.
 
 
 

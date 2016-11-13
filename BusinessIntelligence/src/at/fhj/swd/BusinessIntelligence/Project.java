@@ -20,10 +20,9 @@ public class Project {
     @JoinColumn(name = "fk_company_name")
     public Company company_name;
 
-    @ManyToMany
-    @JoinTable(name="Responsibility", joinColumns=@JoinColumn(name="fk_project_id", referencedColumnName="project_id"), inverseJoinColumns=@JoinColumn(name="fk_user_id", referencedColumnName="user_id"))
-    private List<User> users;
-
+    //Problems with Insertion in Responsibility(Join Table)
+    @ManyToMany(mappedBy="projects")
+    private List<Projectmanager> projectmanagers;
 
     public Project(int capital, java.util.Date creation_date, String task, Company company_name) {
         //setCreationDate(creationDate);
@@ -67,11 +66,14 @@ public class Project {
     public Company getCompanyName() {return company_name;}
 
     public void setCompanyName(Company company_name) {this.company_name = company_name;}
-/*
-    public List<User> getUsers() {return users;}
 
-    public void addUsers(User user) {
-        users.add(user);
+/*
+     public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
+
+    public void addProjectmanager(Projectmanager projectmanager) {
+        projectmanagers.add(projectmanager);
+        //projectmanager.addProject(this);
     }
 */
+
 }

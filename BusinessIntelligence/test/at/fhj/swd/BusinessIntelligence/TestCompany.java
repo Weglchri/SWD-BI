@@ -12,6 +12,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -36,6 +38,12 @@ public class TestCompany {
     static final String company_name = "Stahl Incorporation";
     static final String branch = "Stahlbau";
     static final String branchMerge = "Bergbau";
+
+    //data for project
+    static final Integer capital = 1000;
+    Date date = new Date();
+    static final String task = "Website-Programming";
+    static final String taskMerge = "Database-Design";
 
 
     @BeforeClass

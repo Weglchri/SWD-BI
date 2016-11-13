@@ -17,7 +17,10 @@ public class Projectmanager extends User{
     public Company company_name;
 
     @ManyToMany
-    @JoinTable(name = "Responsibility", joinColumns = @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "fk_project_id", referencedColumnName = "project_id"))
+    @JoinTable(
+            name="Responsibility",
+            joinColumns=@JoinColumn(name="fk_user_id", referencedColumnName="user_id"),
+            inverseJoinColumns=@JoinColumn(name="fk_project_id", referencedColumnName="project_id"))
     private List<Project> projects;
 
     protected Projectmanager() {}
@@ -49,11 +52,13 @@ public class Projectmanager extends User{
     public void setFunction(String function) {
         this.function = function;
     }
+
 /*
     public List<Project> getProjects() {return projects;}
 
-    public void addProjects(Project project) {
+    public void addProject(Project project) {
         projects.add(project);
+        //project.addProjectmanager(this);
     }
 */
 }
