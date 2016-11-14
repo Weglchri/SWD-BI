@@ -9,7 +9,8 @@ import java.util.List;
 @Inheritance(strategy= InheritanceType.JOINED)
 @Table(name ="User", schema="public")
 public class User {
-    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer userId;
+    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer userId;
         private String name;
         private String email;
         private String password;

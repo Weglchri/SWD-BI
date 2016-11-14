@@ -53,12 +53,17 @@ public class TestOffer {
     //data for Company
     static final String company_name = "Stahl Incorporation";
     static final String branch = "Stahlbau";
-    static final String branchMerge = "Bergbau";
 
-    //data for project
+    //data for Project
     static final Integer capital = 1000;
     Date date = new Date();
     static final String task = "Website-Programming";
+
+    //data for Offer
+    static final Integer price = 100;
+    static final Integer priceMerge = 120;
+    Date date2 = new Date();
+
 
     //data for test
     private static Location testAddress;
@@ -67,6 +72,7 @@ public class TestOffer {
     private static Projectmanager testProjectmanager;
     private static Company testCompany;
     private static Project testProject;
+    private static Offer testOffer;
 
     @BeforeClass
     public static void setup() {
@@ -114,49 +120,63 @@ public class TestOffer {
         assertNotNull(testProject);
         manager.persist(testProject);
 
+        this.testOffer = new Offer(price, date2, testFreelancer, testProject);
+        assertNotNull(testOffer);
+        manager.persist(testOffer);
+
         transaction.commit();
 
     }
-/*
+
     @Test
     public void modify() {
         transaction.begin();
 
         assertNotNull(testAddress);
+        assertNotNull(testAddress2);
         assertNotNull(testCompany);
         assertNotNull(testProjectmanager);
         assertNotNull(testProject);
+        assertNotNull(testProject);
+        assertNotNull(testOffer );
 
-        Project merge = manager.merge(testProject);
-        merge.setTask(taskMerge);
+        Offer merge = manager.merge(testOffer);
+        merge.setPrice(priceMerge);
 
         transaction.commit();
 
-        testProject = manager.find(Project.class, testProject.getProjectId());
-        assertEquals(taskMerge, testProject.getTask());
+        testOffer = manager.find(Offer.class, testOffer.getOfferId());
+        assertEquals(priceMerge, testOffer.getPrice());
     }
 
     @Test
     public void remove() {
         transaction.begin();
 
-        manager.remove(testProjectmanager);
-        manager.remove(testCompany);
-        manager.remove(testAddress);
+        manager.remove(testOffer);
         manager.remove(testProject);
+        manager.remove(testProjectmanager);
+        manager.remove(testFreelancer);
+        manager.remove(testCompany);
+        manager.remove(testAddress2);
+        manager.remove(testAddress);
 
         transaction.commit();
 
         this.testAddress = manager.find(Location.class, testAddress.getAddress());
+        this.testAddress2 = manager.find(Location.class, testAddress2.getAddress());
         this.testCompany= manager.find(Company.class, testCompany.getCompany());
+        this.testFreelancer= manager.find(Freelancer.class, testFreelancer.getUserId());
         this.testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
         this.testProject = manager.find(Project.class, testProject.getProjectId());
+        this.testOffer = manager.find(Offer.class, testOffer.getOfferId());
 
         assertNull(testAddress);
+        assertNull(testAddress2);
         assertNull(testCompany);
         assertNull(testProjectmanager);
         assertNull(testProject);
-
+        assertNull(testProject);
+        assertNull(testOffer );
     }
-*/
 }

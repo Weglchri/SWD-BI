@@ -6,11 +6,15 @@ Open Issues:
          noch besser in eine eigenen klasse in src - dann kann die
          application sie auch nutzen.
 
-     m:n
-        die Join-Tabelle (Responsibility) übernimmt keine Werte, obwohl die Verbindung zwischen
-        Project und Projectmanager funktioniert.
+
+         eventuell nehmen wir den check nach dem Einfügen bei Responisbility raus.
 
 
+
+
+#Done -- Der Liste musste die Intsanz hinzugefügt werden
+//m:n - die Join-Tabelle (Responsibility) übernimmt keine Werte, obwohl die Verbindung zwischen
+//Project und Projectmanager funktioniert.
 
 
 #Done -- DTYPE aus Konstruktor % INHERITS aus SQL-SKRIPT entfernt
@@ -55,7 +59,7 @@ Open Issues:
 //so koennte ein DAU inbenutzen, was keinen sinn ergibt.
 
 
-#Done -- META-INF großgeschrieben, 
+#Done -- META-INF großgeschrieben
 //meta-inf
 //auf Linux / UNIX wird das crashen - denn dort wird gross-kleinschreibung untershieden!
 

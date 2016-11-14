@@ -1,15 +1,18 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
-import java.sql.Date;
+
 
 @Entity
 @Table(name="Offer", schema="public")
 public class Offer {
-
-    @Id private Integer offerId;
+    @Id @Column(name = "offer_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer offerId;
         private Integer price;
-        private Date creationDate;
+
+    @Column(name="creation_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date creation_date;
 
     @ManyToOne
     @JoinColumn(name = "fk_user_id")
@@ -19,23 +22,17 @@ public class Offer {
     @JoinColumn(name = "fk_project_id")
     public Project project_id;
 
-    public Offer(int offerId, int price, Date creationDate, User user_id, Project project_id){
-        setOfferId(offerId);
+    public Offer(int price,  java.util.Date creation_date, User user_id, Project project_id){
+        this.creation_date = creation_date;
         setPrice(price);
-        setCreationDate(creationDate);
         setFkProjectId(project_id);
         setFkUserId(user_id);
     }
 
     protected Offer(){}
 
-
     public Integer getOfferId() {
         return offerId;
-    }
-
-    public void setOfferId(Integer offerId) {
-        this.offerId = offerId;
     }
 
     public Integer getPrice() {
@@ -46,19 +43,11 @@ public class Offer {
         this.price = price;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
     public Project getFkProjectId() {
         return project_id;
     }
 
-    public void setFkProjectId(Project fkProjectId) {
+    public void setFkProjectId(Project project_id) {
         this.project_id = project_id;
     }
 
@@ -66,7 +55,7 @@ public class Offer {
         return user_id;
     }
 
-    public void setFkUserId(User fkUserId) {
+    public void setFkUserId(User user_id) {
         this.user_id = user_id;
     }
 

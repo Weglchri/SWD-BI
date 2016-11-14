@@ -26,7 +26,6 @@ public class Project {
     private List<Projectmanager> projectmanagers = new ArrayList<Projectmanager>();
 
     public Project(int capital, java.util.Date creation_date, String task, Company company_name) {
-        //setCreationDate(creationDate);
         this.creation_date = creation_date;
         setCapital(capital);
         setTask(task);
@@ -47,15 +46,7 @@ public class Project {
     public void setCapital(Integer capital) {
         this.capital = capital;
     }
-/*
-    public Date getCreationDate() {
-        return creationDate;
-    }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-*/
     public String getTask() {
         return task;
     }
@@ -67,7 +58,6 @@ public class Project {
     public Company getCompanyName() {return company_name;}
 
     public void setCompanyName(Company company_name) {this.company_name = company_name;}
-
 
     public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
 

@@ -14,10 +14,7 @@ import java.util.Date;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
 
-/**
- * Created by sattlerb on 14/11/16.
- */
-public class TestReleationManagerProject
+public class TestResponsibility
 {
     static EntityManagerFactory factory;
     static EntityManager manager;
@@ -26,48 +23,44 @@ public class TestReleationManagerProject
     static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for User 1
-    static final int id = 1;
-    static final String name = "Björn Sattler";
-    static final String email = "bjoern.sattler@edu.fh-joanneum.at";
-    static final String password = "*******";
-    //data for Projectmanager 1
-    static final Integer involved = 1;
-    static final String function = "Personal";
-    static final String functionMerge = "Zulieferung";
+    static final int id1 = 1;
+    static final String name1 = "Björn Sattler";
+    static final String email1 = "bjoern.sattler@edu.fh-joanneum.at";
+    static final String password1 = "*******";
 
+    //data for Projectmanager 1
+    static final Integer involved1 = 1;
+    static final String function1 = "Personal";
 
     //data for User 2
-    static final int id1 = 2;
-    static final String name1 = "Christopher Wegl";
-    static final String email1 = "christopher.wegl@edu.fh-joanneum.at";
-    static final String password1 = "*********";
+    static final int id2 = 2;
+    static final String name2 = "Christopher Wegl";
+    static final String email2 = "christopher.wegl@edu.fh-joanneum.at";
+    static final String password2 = "*********";
+
     //data for Projectmanager 2
-    static final Integer involved1 = 1;
-    static final String function1 = "Engineer";
-    static final String functionMerge1 = "Deploy";
+    static final Integer involved2 = 2;
+    static final String function2 = "Engineer";
 
     //data for User 3
-    static final int id2 = 3;
-    static final String name2 = "Harald Habiger";
-    static final String email2 = "harald.habiger@fh-joanneum.at";
-    static final String password2 = "***";
+    static final int id3 = 3;
+    static final String name3 = "Harald Habiger";
+    static final String email3 = "harald.habiger@fh-joanneum.at";
+    static final String password3 = "***";
+
     //data for Projectmanager 3
-    static final Integer involved2 = 2;
-    static final String function2 = "Teacher";
-    static final String functionMerge2 = "Lecture Room";
+    static final Integer involved3 = 3;
+    static final String function3 = "Teacher";
 
-
-    //data for Project
+    //data for Project 1
     static final Integer capital = 1000;
-    Date date = new Date();
-    static final String task = "Website-Programming";
-    static final String taskMerge = "Database-Design";
-
-    //data for Project1
-    static final Integer capital1 = 10000;
     Date date1 = new Date();
+    static final String task = "Website-Programming";
+
+    //data for Project 2
+    static final Integer capital1 = 10000;
+    Date date2 = new Date();
     static final String task1 = "Software Quality Testing";
-    static final String taskMerge1 = "SW_QUAL";
 
     //date for tests
     private static Projectmanager managerSattler;
@@ -75,8 +68,6 @@ public class TestReleationManagerProject
     private static Projectmanager managerHabiger;
     private static Project projectWebsite;
     private static Project projectQualityCheck;
-
-
 
 
     @BeforeClass
@@ -100,9 +91,9 @@ public class TestReleationManagerProject
     {
         transaction.begin();
 
-        this.managerSattler = new Projectmanager(name, email, password, involved, function, null);
-        this.managerWegl = new Projectmanager(name1, email1, password1, involved1, function1, null);
-        this.managerHabiger = new Projectmanager(name2, email2, password2, involved2, function2, null);
+        this.managerSattler = new Projectmanager(name1, email1, password1, involved1, function1, null);
+        this.managerWegl = new Projectmanager(name2, email2, password2, involved2, function2, null);
+        this.managerHabiger = new Projectmanager(name3, email3, password3, involved3, function3, null);
         assertNotNull(managerSattler);
         assertNotNull(managerWegl);
         assertNotNull(managerHabiger);
@@ -111,8 +102,8 @@ public class TestReleationManagerProject
         manager.persist(managerHabiger);
 
 
-        this.projectWebsite = new Project(capital, date, task, null);
-        this.projectQualityCheck = new Project(capital1, date1, task1, null);
+        this.projectWebsite = new Project(capital, date1, task, null);
+        this.projectQualityCheck = new Project(capital1, date2, task1, null);
         assertNotNull(projectWebsite);
         assertNotNull(projectQualityCheck);
         manager.persist(projectWebsite);
@@ -120,9 +111,7 @@ public class TestReleationManagerProject
 
         managerSattler.addProject(projectWebsite);
         managerSattler.addProject(projectQualityCheck);
-
         managerWegl.addProject(projectWebsite);
-
         managerHabiger.addProject(projectQualityCheck);
 
         transaction.commit();
@@ -140,40 +129,32 @@ public class TestReleationManagerProject
 
     }
 
-//    @Test
-//    public void modify() {
-//        transaction.begin();
-//
-//        assertNotNull(managerSattler);
-//
-//        Projectmanager merge = manager.merge(managerSattler);
-//        merge.setFunction(functionMerge);
-//
-//        transaction.commit();
-//
-//        managerSattler = manager.find(Projectmanager.class, managerSattler.getUserId());
-//        assertEquals(functionMerge, managerSattler.getFunction());
-//    }
+    @Test
+    public void remove() {
 
-//    @Test
-//    public void remove() {
-//        transaction.begin();
-//
-//        manager.remove(managerSattler);
-//        manager.remove(testCompany);
-//        manager.remove(testAddress);
-//
-//        transaction.commit();
-//
-//        this.testAddress = manager.find(Location.class, testAddress.getAddress());
-//        this.testCompany= manager.find(Company.class, testCompany.getCompany());
-//        this.managerSattler = manager.find(Projectmanager.class, managerSattler.getUserId());
-//
-//        assertNull(managerSattler);
-//        assertNull(testCompany);
-//        assertNull(testAddress);
-//
-//    }
+        transaction.begin();
+
+        manager.remove(managerSattler);
+        manager.remove(managerWegl);
+        manager.remove(managerHabiger);
+        manager.remove(projectWebsite);
+        manager.remove(projectQualityCheck);
+
+        transaction.commit();
+
+        this.projectWebsite = manager.find(Project.class, projectWebsite.getProjectId());
+        this.projectQualityCheck =  manager.find(Project.class, projectQualityCheck.getProjectId());
+        this.managerSattler = manager.find(Projectmanager.class, managerSattler.getUserId());
+        this.managerWegl = manager.find(Projectmanager.class, managerWegl.getUserId());
+        this.managerHabiger = manager.find(Projectmanager.class, managerHabiger.getUserId());
+
+        assertNull(managerSattler);
+        assertNull(managerWegl);
+        assertNull(managerHabiger);
+        assertNull(projectWebsite);
+        assertNull(projectQualityCheck);
+
+    }
 
 }
 

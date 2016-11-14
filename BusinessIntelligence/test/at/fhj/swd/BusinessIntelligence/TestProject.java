@@ -93,6 +93,8 @@ public class TestProject {
         assertNotNull(testProject);
         manager.persist(testProject);
 
+        testProjectmanager.addProject(testProject);
+
         transaction.commit();
 
     }
