@@ -24,7 +24,7 @@ public class TestProjectmanager {
     static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for Company
-    static final String company_name = "Stahl Incorporation";
+    static final String company_name = "Stahl Incorporation AG";
     static final String branch = "Stahlbau";
 
     //data for Location

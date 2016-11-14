@@ -2,6 +2,7 @@ package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class Project {
 
     //Problems with Insertion in Responsibility(Join Table)
     @ManyToMany(mappedBy="projects")
-    private List<Projectmanager> projectmanagers;
+    private List<Projectmanager> projectmanagers = new ArrayList<Projectmanager>();
 
     public Project(int capital, java.util.Date creation_date, String task, Company company_name) {
         //setCreationDate(creationDate);
@@ -67,13 +68,10 @@ public class Project {
 
     public void setCompanyName(Company company_name) {this.company_name = company_name;}
 
-/*
-     public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
+
+    public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
 
     public void addProjectmanager(Projectmanager projectmanager) {
         projectmanagers.add(projectmanager);
-        //projectmanager.addProject(this);
     }
-*/
-
 }

@@ -25,11 +25,11 @@ public class TestProject {
     static final String persistenceUnitName = "BusinessIntelligence";
 
     //data for Company
-    static final String company_name = "Stahl Incorporation";
+    static final String company_name = "Stahl Incorporation AG";
     static final String branch = "Stahlbau";
 
     //data for Location
-    static final String address = "Alte Poststraße 122/17";
+    static final String address = "Alte Poststraße 122/19";
     static final String country = "Austria";
     static final Integer zip = 8020;
     static final String city = "Graz";
