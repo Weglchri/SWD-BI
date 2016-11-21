@@ -1,5 +1,10 @@
 Open Issues:
 
+    21.11.2016 18:56h:
+        TestProjectmanagerQuery - konnte nicht getestet werden, weil VPN Verbindung zur FH nicht mehr funkt.
+        Daten sind eingecheckt.
+
+
      test
          die setup() methode ist in allen tests gleich. die gehoert
          refactored - z.B. in eine gemeinsam elternklasse; oder

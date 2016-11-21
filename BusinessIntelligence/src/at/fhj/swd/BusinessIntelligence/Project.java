@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Project", schema="public")
+
 public class Project {
     @Id @Column(name = "project_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer project_id;

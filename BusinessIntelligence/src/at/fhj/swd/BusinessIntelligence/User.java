@@ -8,8 +8,10 @@ import java.util.List;
 @Entity
 @Inheritance(strategy= InheritanceType.JOINED)
 @Table(name ="User", schema="public")
+@NamedQuery(name="findByName", query="SELECT u FROM User u WHERE u.name = :name")
 public class User {
     @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+
         private Integer userId;
         private String name;
         private String email;
@@ -32,7 +34,7 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
@@ -40,7 +42,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 

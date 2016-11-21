@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Projectmanager", schema="public")
+@NamedQuery(name="findByName", query="SELECT p FROM Projectmanager p where p.name = :name")
 public class Projectmanager extends User{
 
     //Projectmanager Variables
@@ -34,7 +35,7 @@ public class Projectmanager extends User{
         setCompanyName(company_name);
     }
 
-    public void setCompanyName(Company company) {this.company_name = company;}
+    private void setCompanyName(Company company) {this.company_name = company;}
 
     public Company getCompanyName() {return company_name;}
 
@@ -42,7 +43,7 @@ public class Projectmanager extends User{
         return involved_In;
     }
 
-    public void setInvolvedIn(Integer involved_In) {
+    private void setInvolvedIn(Integer involved_In) {
         this.involved_In = involved_In;
     }
 
