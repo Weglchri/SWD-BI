@@ -25,7 +25,7 @@ public class ProjectmanagerRepository
 
     public Projectmanager findByName(String searchProjectmanager)
     {
-        TypedQuery<Projectmanager> query =  entityManager.createNamedQuery("findByName", Projectmanager.class);
+        TypedQuery<Projectmanager> query =  entityManager.createNamedQuery("findProjectmanagerByName", Projectmanager.class);
         query.setParameter("name", searchProjectmanager);
         return query.getSingleResult();
     }

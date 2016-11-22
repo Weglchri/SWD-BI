@@ -125,8 +125,6 @@ public class TestProjectmanagerQuery
         transaction.commit();
 
         this.testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
-        assertNull(testAddress);
-        assertNull(testCompany);
         assertNull(testProjectmanager);
     }
 

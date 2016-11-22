@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Projectmanager", schema="public")
-@NamedQuery(name="findByName", query="SELECT p FROM Projectmanager p where p.name = :name")
+@NamedQuery(name="findProjectmanagerByName", query="SELECT p FROM Projectmanager p where p.name = :name")
 public class Projectmanager extends User{
 
     //Projectmanager Variables
