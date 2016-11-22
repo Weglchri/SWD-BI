@@ -1,9 +1,5 @@
 Open Issues:
 
-    21.11.2016 18:56h:
-        TestProjectmanagerQuery - konnte nicht getestet werden, weil VPN Verbindung zur FH nicht mehr funkt.
-        Daten sind eingecheckt.
-
 
      test
          die setup() methode ist in allen tests gleich. die gehoert
@@ -15,6 +11,9 @@ Open Issues:
          eventuell nehmen wir den check nach dem Einfügen bei Responisbility raus.
 
 
+#DONE -- 21.11.2016 18:56h:
+//TestProjectmanagerQuery - konnte nicht getestet werden, weil VPN Verbindung zur FH nicht mehr funkt.
+//Daten sind eingecheckt.
 
 
 #Done -- Der Liste musste die Intsanz hinzugefügt werden

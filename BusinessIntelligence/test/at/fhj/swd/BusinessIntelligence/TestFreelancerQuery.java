@@ -100,6 +100,7 @@ public class TestFreelancerQuery
         assertEquals(freelancer1.getEducation(), testFreelancer.getEducation());
         assertEquals(freelancer1.getAddress(), testFreelancer.getAddress());
     }
+
     @Test
     public void C_remove()
     {

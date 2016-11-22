@@ -41,7 +41,7 @@ public class Freelancer extends User {
         return availability;
     }
 
-    public void setAvailability(String availability) {
+    private void setAvailability(String availability) {
         this.availability = availability;
     }
 
@@ -49,7 +49,7 @@ public class Freelancer extends User {
         return hourly_wage;
     }
 
-    public void setHourly_wage(Integer hourly_wage) {
+    private void setHourly_wage(Integer hourly_wage) {
         this.hourly_wage = hourly_wage;
     }
 
@@ -57,7 +57,7 @@ public class Freelancer extends User {
         return education;
     }
 
-    public void setEducation(String education) {
+    private void setEducation(String education) {
         this.education = education;
     }
 
@@ -65,7 +65,7 @@ public class Freelancer extends User {
         return address;
     }
 
-    public void setAddress(Location address) {
+    private void setAddress(Location address) {
         this.address = address;
     }
 }
