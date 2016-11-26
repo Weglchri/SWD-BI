@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Project", schema="public")
+@NamedQuery(name="findByTask", query="SELECT p FROM Project p WHERE p.task = :task")
 
 public class Project {
     @Id @Column(name = "project_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
