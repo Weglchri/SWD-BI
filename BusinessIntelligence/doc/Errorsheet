@@ -1,15 +1,18 @@
 Open Issues:
 
 
-     test
-         die setup() methode ist in allen tests gleich. die gehoert
-         refactored - z.B. in eine gemeinsam elternklasse; oder
-         noch besser in eine eigenen klasse in src - dann kann die
-         application sie auch nutzen.
+
+
 
 
          eventuell nehmen wir den check nach dem Einfügen bei Responisbility raus.
 
+
+#Done -- Packages unter Tests eingefügt. Helper beinhaltet einen Controller und Daten.
+// test - die setup() methode ist in allen tests gleich. die gehoert
+// refactored - z.B. in eine gemeinsam elternklasse; oder
+// noch besser in eine eigenen klasse in src - dann kann die
+// application sie auch nutzen.
 
 #DONE -- 21.11.2016 18:56h:
 //TestProjectmanagerQuery - konnte nicht getestet werden, weil VPN Verbindung zur FH nicht mehr funkt.

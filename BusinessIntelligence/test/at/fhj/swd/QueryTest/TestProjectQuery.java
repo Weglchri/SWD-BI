@@ -1,5 +1,9 @@
-package at.fhj.swd.BusinessIntelligence;
+package at.fhj.swd.QueryTest;
 
+import at.fhj.swd.BusinessIntelligence.Company;
+import at.fhj.swd.BusinessIntelligence.Location;
+import at.fhj.swd.BusinessIntelligence.Project;
+import at.fhj.swd.BusinessIntelligence.ProjectRepository;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

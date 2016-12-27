@@ -4,9 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-/**
- * Created by sattlerb on 17/11/16.
- */
 public class UserRepository
 {
     public UserRepository(final EntityManager entityManager)

@@ -1,5 +1,7 @@
-package at.fhj.swd.BusinessIntelligence;
+package at.fhj.swd.QueryTest;
 
+import at.fhj.swd.BusinessIntelligence.Location;
+import at.fhj.swd.BusinessIntelligence.LocationRepository;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -15,9 +17,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by sattlerb on 26/11/16.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLocationQuery
 {

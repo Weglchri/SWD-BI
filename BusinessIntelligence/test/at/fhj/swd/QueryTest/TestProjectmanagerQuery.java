@@ -1,5 +1,9 @@
-package at.fhj.swd.BusinessIntelligence;
+package at.fhj.swd.QueryTest;
 
+import at.fhj.swd.BusinessIntelligence.Company;
+import at.fhj.swd.BusinessIntelligence.Location;
+import at.fhj.swd.BusinessIntelligence.Projectmanager;
+import at.fhj.swd.BusinessIntelligence.ProjectmanagerRepository;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -15,9 +19,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-/**
- * Created by sattlerb on 21/11/16.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProjectmanagerQuery
 {

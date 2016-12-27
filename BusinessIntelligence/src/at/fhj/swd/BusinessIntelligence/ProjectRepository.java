@@ -3,9 +3,6 @@ package at.fhj.swd.BusinessIntelligence;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-/**
- * Created by sattlerb on 21/11/16.
- */
 public class ProjectRepository
 {
     public ProjectRepository(final EntityManager entityManager)

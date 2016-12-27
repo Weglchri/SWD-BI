@@ -4,9 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by sattlerb on 21/11/16.
- */
 public class CompanyRepository
 {
     public CompanyRepository(final EntityManager entityManager)
