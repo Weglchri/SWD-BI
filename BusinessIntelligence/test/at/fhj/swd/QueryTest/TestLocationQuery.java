@@ -35,6 +35,7 @@ public class TestLocationQuery extends JdbcHandler {
     static final Integer zip2 = 9020;
     static final String city2 = "Sidney";
 
+
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
@@ -67,8 +68,7 @@ public class TestLocationQuery extends JdbcHandler {
     }
 
     @Test
-    public void B_repoTest()
-    {
+    public void B_repoTest() {
         LocationRepository locRepo = new LocationRepository(manager);
         List<Location> testLocationRepo = locRepo.findByCountry(country);
 
@@ -77,9 +77,9 @@ public class TestLocationQuery extends JdbcHandler {
         assertTrue(testLocationRepo.contains(testAddress1));
         assertFalse(testLocationRepo.contains(testAddress2));
     }
+
     @Test
-    public void C_remove()
-    {
+    public void C_remove() {
         transaction.begin();
 
         assertNotNull(testAddress);
@@ -91,9 +91,9 @@ public class TestLocationQuery extends JdbcHandler {
 
         transaction.commit();
 
-        this.testAddress = manager.find(Location.class, testAddress.getAddress());
-        this.testAddress1 = manager.find(Location.class, testAddress1.getAddress());
-        this.testAddress2 = manager.find(Location.class, testAddress2.getAddress());
+        testAddress = manager.find(Location.class, testAddress.getAddress());
+        testAddress1 = manager.find(Location.class, testAddress1.getAddress());
+        testAddress2 = manager.find(Location.class, testAddress2.getAddress());
         assertNull(testAddress);
         assertNull(testAddress1);
         assertNull(testAddress2);

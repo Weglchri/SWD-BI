@@ -25,13 +25,11 @@ public class TestCompanyQuery extends JdbcHandler {
     private static Company testCompany1;
     private static List<Company> companyBranchSearch;
 
-
     static final String company_name = "Stahl Incorporation";
     static final String branch = "Stahlbau";
 
     static final String company_name1 = "Orange Incorporation GmbH";
     static final String branch1 = "Bergbau";
-
 
 
     @BeforeClass
@@ -47,8 +45,7 @@ public class TestCompanyQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create()
-    {
+    public void A_create() {
         transaction.begin();
 
         testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
@@ -71,8 +68,7 @@ public class TestCompanyQuery extends JdbcHandler {
     }
 
     @Test
-    public void B_repoTest()
-    {
+    public void B_repoTest() {
         CompanyRepository companyRepo = new CompanyRepository(manager);
         CompanyRepository companyRepo1 = new CompanyRepository(manager);
 
@@ -89,8 +85,7 @@ public class TestCompanyQuery extends JdbcHandler {
     }
 
     @Test
-    public void C_repoTestGetBranche()
-    {
+    public void C_repoTestGetBranche() {
         CompanyRepository companyRepo = new CompanyRepository(manager);
         companyBranchSearch = companyRepo.findByBranch(branch);
 
@@ -98,8 +93,7 @@ public class TestCompanyQuery extends JdbcHandler {
     }
 
     @Test
-    public void D_remove()
-    {
+    public void D_remove() {
         transaction.begin();
 
         Company testCompany = manager.find(Company.class, company_name);

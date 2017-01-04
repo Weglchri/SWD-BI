@@ -21,6 +21,7 @@ public class TestUserQuery extends JdbcHandler {
     static final String email = "Admin@edu.fh-joanneum.at";
     static final String password = "1234567";
 
+
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
@@ -34,8 +35,7 @@ public class TestUserQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create()
-    {
+    public void A_create() {
         transaction.begin();
         testUser = new User(name, email, password);
         assertNotNull(testUser);
@@ -44,8 +44,7 @@ public class TestUserQuery extends JdbcHandler {
     }
 
     @Test
-    public void B_repoTest()
-    {
+    public void B_repoTest() {
         UserRepository userRepo = new UserRepository(manager);
         User testUser1 = userRepo.findByName(name);
 

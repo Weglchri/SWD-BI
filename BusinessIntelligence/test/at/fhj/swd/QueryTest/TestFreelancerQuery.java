@@ -39,8 +39,7 @@ public class TestFreelancerQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create()
-    {
+    public void A_create() {
         transaction.begin();
 
         testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
@@ -54,10 +53,8 @@ public class TestFreelancerQuery extends JdbcHandler {
         transaction.commit();
     }
 
-
     @Test
-    public void B_repoTest()
-    {
+    public void B_repoTest() {
         FreelancerRepository freelancerRepo = new FreelancerRepository(manager);
         Freelancer freelancer1 = freelancerRepo.findByName(TestUserQuery.name);
 
@@ -73,8 +70,7 @@ public class TestFreelancerQuery extends JdbcHandler {
     }
 
     @Test
-    public void C_remove()
-    {
+    public void C_remove() {
         transaction.begin();
 
         assertNotNull(testAddress);

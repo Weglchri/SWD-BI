@@ -39,8 +39,7 @@ public class TestProjectmanagerQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create()
-    {
+    public void A_create() {
         transaction.begin();
 
         testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
@@ -58,10 +57,8 @@ public class TestProjectmanagerQuery extends JdbcHandler {
         transaction.commit();
     }
 
-
     @Test
-    public void B_repoTest()
-    {
+    public void B_repoTest() {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
         Projectmanager projectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name);
 
@@ -74,9 +71,9 @@ public class TestProjectmanagerQuery extends JdbcHandler {
         assertEquals(projectmanager1.getCompanyName(), testProjectmanager.getCompanyName());
         assertEquals(projectmanager1.getFunction(), testProjectmanager.getFunction());
     }
+
     @Test
-    public void C_remove()
-    {
+    public void C_remove() {
         transaction.begin();
 
         assertNotNull(testAddress);
