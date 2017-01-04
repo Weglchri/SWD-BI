@@ -1,11 +1,13 @@
-package at.fhj.swd.BusinessIntelligence;
+package at.fhj.swd.BusinessIntelligenceRepositories;
+
+import at.fhj.swd.BusinessIntelligence.Project;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-public class ProjectmanagerRepository
+public class ProjectRepository
 {
-    public ProjectmanagerRepository(final EntityManager entityManager)
+    public ProjectRepository(final EntityManager entityManager)
     {
         setEntityManager( entityManager );
     }
@@ -19,11 +21,10 @@ public class ProjectmanagerRepository
         this.entityManager = entityManager;
     }
 
-
-    public Projectmanager findByName(String searchProjectmanager)
+    public Project findByTask(String searchName)
     {
-        TypedQuery<Projectmanager> query =  entityManager.createNamedQuery("findProjectmanagerByName", Projectmanager.class);
-        query.setParameter("name", searchProjectmanager);
+        TypedQuery<Project> query =  entityManager.createNamedQuery("findByTask", Project.class);
+        query.setParameter("task", searchName);
         return query.getSingleResult();
     }
 }

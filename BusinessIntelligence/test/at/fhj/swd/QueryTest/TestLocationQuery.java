@@ -1,68 +1,50 @@
 package at.fhj.swd.QueryTest;
 
 import at.fhj.swd.BusinessIntelligence.Location;
-import at.fhj.swd.BusinessIntelligence.LocationRepository;
+import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestLocationQuery
-{
-    static EntityManagerFactory factory;
-    static EntityManager manager;
-    static EntityTransaction transaction;
-
-    static final String persistenceUnitName = "BusinessIntelligence";
-
-    //data for Location
-    static final String address = "Alte Poststraße 122/15";
-    static final String country = "Austria";
-    static final Integer zip = 8020;
-    static final String city = "Graz";
-
-    //data for Location 2
-    static final String address1 = "Alte Poststraße 122/16";
-    static final String country1 = "Austria";
-    static final Integer zip1 = 8020;
-    static final String city1 = "Graz";
-
-    //data for Location3
-    static final String address2 = "Melbourne Road 88";
-    static final String country2 = "Australia";
-    static final Integer zip2 = 9020;
-    static final String city2 = "Sidney";
+public class TestLocationQuery extends JdbcHandler {
 
     private static Location testAddress;
     private static Location testAddress1;
     private static Location testAddress2;
 
+    static final String address = "Alte Poststraße 122/1";
+    static final String country = "Austria";
+    static final Integer zip = 8020;
+    static final String city = "Graz";
+
+    static final String address1 = "Lugner City 1";
+    static final String country1 = "Austria";
+    static final Integer zip1 = 1010;
+    static final String city1 = "Wien";
+
+    static final String address2 = "Melbourne Road 88";
+    static final String country2 = "Australia";
+    static final Integer zip2 = 9020;
+    static final String city2 = "Sidney";
+
     @BeforeClass
     public static void setup() {
-
-        factory = Persistence.createEntityManagerFactory(persistenceUnitName);
-        assertNotNull(factory);
-        manager = factory.createEntityManager();
-        assertNotNull(manager);
-        transaction = manager.getTransaction();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        if (manager == null) return;
-        manager.close();
-        factory.close();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test

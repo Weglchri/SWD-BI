@@ -1,68 +1,47 @@
 package at.fhj.swd.QueryTest;
 
-
 import at.fhj.swd.BusinessIntelligence.User;
-import at.fhj.swd.BusinessIntelligence.UserRepository;
+import at.fhj.swd.BusinessIntelligenceRepositories.UserRepository;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import static org.junit.Assert.*;
 
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestUserQuery
-{
-    static EntityManagerFactory factory;
-    static EntityManager manager;
-    static EntityTransaction transaction;
+public class TestUserQuery extends JdbcHandler {
 
-    static final String persistenceUnitName = "BusinessIntelligence";
+    private static User testUser;
 
-    //data for User
-    static final Integer id = 1;
     static final String name = "Administrator";
     static final String email = "Admin@edu.fh-joanneum.at";
     static final String password = "1234567";
-    static final String passwordMerge = "7654321";
-
-    //data for tests
-    private static User testUser;
-
-
 
     @BeforeClass
     public static void setup() {
-        factory = Persistence.createEntityManagerFactory(persistenceUnitName);
-        assertNotNull(factory);
-        manager = factory.createEntityManager();
-        assertNotNull(manager);
-        transaction = manager.getTransaction();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        if (manager == null) return;
-        manager.close();
-        factory.close();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
     public void A_create()
     {
         transaction.begin();
-        this.testUser = new User(name, email, password);
+        testUser = new User(name, email, password);
         assertNotNull(testUser);
         manager.persist(testUser);
         transaction.commit();
     }
-
 
     @Test
     public void B_repoTest()
@@ -75,13 +54,14 @@ public class TestUserQuery
         assertEquals(testUser1.getPassword(), testUser.getPassword());
         assertEquals(testUser1.getUserId(), testUser.getUserId());
     }
+
     @Test
     public void C_remove() {
         transaction.begin();
         assertNotNull(testUser);
         manager.remove(testUser);
         transaction.commit();
-        this.testUser = manager.find(User.class, testUser.getUserId());
+        testUser = manager.find(User.class, testUser.getUserId());
         assertNull(testUser);
     }
 }

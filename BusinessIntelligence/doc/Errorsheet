@@ -1,11 +1,6 @@
 Open Issues:
 
-
-
-
-
-
-         eventuell nehmen wir den check nach dem Einfügen bei Responisbility raus.
+    Querys - Daten über insert bespielen und in querytests auslesen.
 
 
 #Done -- Packages unter Tests eingefügt. Helper beinhaltet einen Controller und Daten.

@@ -1,16 +1,18 @@
 package at.fhj.swd.ClassTest;
 
 import at.fhj.swd.BusinessIntelligence.*;
-import at.fhj.swd.Helper.Handler;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class TestOffer extends Handler
+public class TestOffer extends JdbcHandler
 {
 
     private static Location testLocation;
@@ -21,16 +23,21 @@ public class TestOffer extends Handler
     private static Project testProject;
     private static Offer testOffer;
 
+    static final Integer price = 100;
+    static final Integer newPrice = 120;
+    static final Date date = new Date();
+
+
     @BeforeClass
     public static void setup() {
-        Handler.build();
-        Handler.init();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        Handler.close();
-        Handler.destroy();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
@@ -38,27 +45,27 @@ public class TestOffer extends Handler
     {
         transaction.begin();
 
-        testLocation = new Location(address, country, zip, city);
+        testLocation = new Location(TestLocation.address, TestLocation.country, TestLocation.zip, TestLocation.city);
         assertNotNull(testLocation);
         manager.persist(testLocation);
 
-        testLocation2 = new Location(address2, country, zip, city);
+        testLocation2 = new Location(TestLocation.address2, TestLocation.country, TestLocation.zip, TestLocation.city);
         assertNotNull(testLocation2);
         manager.persist(testLocation2);
 
-        testCompany = new Company(company_name, branch, testLocation);
+        testCompany = new Company(TestCompany.company_name, TestCompany.branch, testLocation);
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        testFreelancer = new Freelancer(name, email, password, profession, availability, hourly_wage, education, testLocation2 );
+        testFreelancer = new Freelancer(TestUser.name, TestUser.email, TestUser.password, TestFreelancer.profession, TestFreelancer.availability, TestFreelancer.hourly_wage, TestFreelancer.education, testLocation2 );
         assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
 
-        testProjectmanager = new Projectmanager(name2, email2, password2, involved, function, testCompany);
+        testProjectmanager = new Projectmanager(TestUser.name2, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, testCompany);
         assertNotNull(testProjectmanager);
         manager.persist(testProjectmanager);
 
-        testProject = new Project (capital, date, task, testCompany);
+        testProject = new Project (TestProject.capital, TestProject.date, TestProject.task, testCompany);
         assertNotNull(testProject);
         manager.persist(testProject);
 

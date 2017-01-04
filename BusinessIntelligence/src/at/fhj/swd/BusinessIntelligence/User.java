@@ -26,9 +26,7 @@ public class User {
     protected User() {}
 
 
-    public Integer getUserId() {
-        return userId;
-    }
+    public Integer getUserId() {return userId; }
 
     public String getName() {
         return name;

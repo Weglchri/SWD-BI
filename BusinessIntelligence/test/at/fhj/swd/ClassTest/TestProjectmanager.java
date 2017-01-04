@@ -3,7 +3,7 @@ package at.fhj.swd.ClassTest;
 import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
-import at.fhj.swd.Helper.Handler;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,22 +12,27 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class TestProjectmanager extends Handler {
+public class TestProjectmanager extends JdbcHandler {
 
     private static Location testLocation;
     private static Company testCompany;
     private static Projectmanager testProjectmanager;
 
+    static final Integer involved = 1;
+    static final String function = "Personal";
+    static final String newFunction = "Zulieferung";
+
+
     @BeforeClass
     public static void setup() {
-        Handler.build();
-        Handler.init();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        Handler.close();
-        Handler.destroy();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
@@ -35,15 +40,15 @@ public class TestProjectmanager extends Handler {
     {
         transaction.begin();
 
-        testLocation = new Location(address, country, zip, city);
+        testLocation = new Location(TestLocation.address, TestLocation.country, TestLocation.zip, TestLocation.city);
         assertNotNull(testLocation);
         manager.persist(testLocation);
 
-        testCompany = new Company(company_name, branch, testLocation);
+        testCompany = new Company(TestCompany.company_name, TestCompany.branch, testLocation);
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        testProjectmanager = new Projectmanager(name, email, password, involved, function, testCompany);
+        testProjectmanager = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, involved, function, testCompany);
         assertNotNull(testProjectmanager);
         manager.persist(testProjectmanager);
 

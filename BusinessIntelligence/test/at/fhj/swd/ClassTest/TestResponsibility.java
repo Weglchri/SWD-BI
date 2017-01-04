@@ -2,7 +2,7 @@ package at.fhj.swd.ClassTest;
 
 import at.fhj.swd.BusinessIntelligence.Project;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
-import at.fhj.swd.Helper.Handler;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
 
-public class TestResponsibility extends Handler
+public class TestResponsibility extends JdbcHandler
 {
     private static Projectmanager projectmanager1;
     private static Projectmanager projectmanager2;
@@ -21,14 +21,14 @@ public class TestResponsibility extends Handler
 
     @BeforeClass
     public static void setup() {
-        Handler.build();
-        Handler.init();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        Handler.close();
-        Handler.destroy();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
@@ -36,9 +36,9 @@ public class TestResponsibility extends Handler
     {
         transaction.begin();
 
-        projectmanager1 = new Projectmanager(name, email, password, involved, function, null);
-        projectmanager2 = new Projectmanager(name2, email2, password2, involved2, function2, null);
-        projectmanager3 = new Projectmanager(name3, email3, password3, involved3, function3, null);
+        projectmanager1 = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
+        projectmanager2 = new Projectmanager(TestUser.name2, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
+        projectmanager3 = new Projectmanager(TestUser.name3, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
         assertNotNull(projectmanager1);
         assertNotNull(projectmanager2);
         assertNotNull(projectmanager3);
@@ -47,8 +47,8 @@ public class TestResponsibility extends Handler
         manager.persist(projectmanager3);
 
 
-        projectWebsite = new Project(capital, date, task, null);
-        projectQualityCheck = new Project(capital, date, task, null);
+        projectWebsite = new Project(TestProject.capital, TestProject.date, TestProject.task, null);
+        projectQualityCheck = new Project(TestProject.capital, TestProject.date, TestProject.task, null);
         assertNotNull(projectWebsite);
         assertNotNull(projectQualityCheck);
         manager.persist(projectWebsite);

@@ -2,7 +2,7 @@
 package at.fhj.swd.ClassTest;
 
 import at.fhj.swd.BusinessIntelligence.Location;
-import at.fhj.swd.Helper.Handler;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -11,20 +11,28 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class TestLocation extends Handler {
+public class TestLocation extends JdbcHandler {
 
     private static Location testLocation;
 
+    static final String address = "Alte Poststraße 122/1";
+    static final String address2= "Alte Poststraße 122/2";
+    static final String country = "Austria";
+    static final Integer zip = 8020;
+    static final String city = "Graz";
+    static final String newCity = "Vienna";
+
+
     @BeforeClass
     public static void setup() {
-        Handler.build();
-        Handler.init();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        Handler.close();
-        Handler.destroy();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
@@ -54,8 +62,6 @@ public class TestLocation extends Handler {
     @Test
     public void remove() {
         transaction.begin();
-        Location testLocation = manager.find(Location.class, address);
-        assertNotNull(testLocation);
         manager.remove(testLocation);
         transaction.commit();
 

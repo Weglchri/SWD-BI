@@ -3,75 +3,39 @@ package at.fhj.swd.QueryTest;
 import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
-import at.fhj.swd.BusinessIntelligence.ProjectmanagerRepository;
+import at.fhj.swd.BusinessIntelligenceRepositories.ProjectmanagerRepository;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestProjectmanagerQuery
-{
+public class TestProjectmanagerQuery extends JdbcHandler {
 
-    static EntityManagerFactory factory;
-    static EntityManager manager;
-    static EntityTransaction transaction;
-
-    static final String persistenceUnitName = "BusinessIntelligence";
-
-    //data for Company
-    static final String company_name = "Stahl Incorporation AG";
-    static final String branch = "Stahlbau";
-
-    //data for Location
-    static final String address = "Alte Poststraße 122/16";
-    static final String country = "Austria";
-    static final Integer zip = 8020;
-    static final String city = "Graz";
-
-    //data for User
-    static final int id = 1;
-    static final String name = "Björn Sattler";
-    static final String email = "bjoern.sattler@edu.fh-joanneum.at";
-    static final String password = "*******";
-
-    //data for Projectmanager
-    static final Integer involved = 1;
-    static final String function = "Personal";
-    static final String functionMerge = "Zulieferung";
-
-
-    //date for tests
     private static Location testAddress;
     private static Company testCompany;
     private static Projectmanager testProjectmanager;
 
+    static final Integer involved = 1;
+    static final String function = "Personal";
 
 
     @BeforeClass
     public static void setup() {
-        factory = Persistence.createEntityManagerFactory(persistenceUnitName);
-        assertNotNull(factory);
-        manager = factory.createEntityManager();
-        assertNotNull(manager);
-        transaction = manager.getTransaction();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        if (manager == null) return;
-        manager.close();
-        factory.close();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
@@ -79,15 +43,15 @@ public class TestProjectmanagerQuery
     {
         transaction.begin();
 
-        this.testAddress = new Location(address, country, zip, city);
+        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
         assertNotNull(testAddress);
         manager.persist(testAddress);
 
-        this.testCompany = new Company(company_name, branch, testAddress);
+        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testAddress);
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        this.testProjectmanager = new Projectmanager(name, email, password, involved, function, testCompany);
+        testProjectmanager = new Projectmanager(TestUserQuery.name, TestUserQuery.email, TestUserQuery.password, involved, function, testCompany);
         assertNotNull(testProjectmanager);
         manager.persist(testProjectmanager);
 
@@ -99,7 +63,7 @@ public class TestProjectmanagerQuery
     public void B_repoTest()
     {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
-        Projectmanager projectmanager1 = projectmanagerRepo.findByName(name);
+        Projectmanager projectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name);
 
         assertEquals(projectmanager1.getName(), testProjectmanager.getName());
         assertEquals(projectmanager1.getEmail(), testProjectmanager.getEmail());
@@ -125,7 +89,7 @@ public class TestProjectmanagerQuery
 
         transaction.commit();
 
-        this.testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
+        testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
         assertNull(testProjectmanager);
     }
 

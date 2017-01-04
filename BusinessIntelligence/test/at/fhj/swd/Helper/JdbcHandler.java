@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 import static org.junit.Assert.assertNotNull;
 
-public class Handler extends TestData{
+public class JdbcHandler {
 
     public static EntityManagerFactory factory;
     public static EntityManager manager;
@@ -18,16 +18,14 @@ public class Handler extends TestData{
     private static final String persistenceUnitName = "BusinessIntelligence";
 
 
-    public static void build() { Loader.executeSqlScript("sql/create.sql"); }
+    public static final void build() { Loader.executeSqlScript("sql/create.sql"); }
 
-    public static void insert() {
-        Loader.executeSqlScript("sql/insert.sql");
-    }
+    //public static final void insert() {Loader.executeSqlScript("sql/insert.sql");}
 
-    public static void destroy() { Loader.executeSqlScript("sql/drop.sql"); }
+    public static final void destroy() { Loader.executeSqlScript("sql/drop.sql"); }
 
 
-    public static void init() {
+    public static final void init() {
         factory = Persistence.createEntityManagerFactory(persistenceUnitName);
         assertNotNull(factory);
         manager = factory.createEntityManager();
@@ -36,7 +34,7 @@ public class Handler extends TestData{
         assertNotNull(transaction);
     }
 
-    public static void close() {
+    public static final void close() {
         if (manager == null) return;
         manager.close();
         factory.close();

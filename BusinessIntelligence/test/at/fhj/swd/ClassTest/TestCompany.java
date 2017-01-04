@@ -3,7 +3,7 @@ package at.fhj.swd.ClassTest;
 
 import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
-import at.fhj.swd.Helper.Handler;
+import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,29 +14,33 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class TestCompany extends Handler {
+public class TestCompany extends JdbcHandler {
 
     private static Location testLocation;
     private static Company testCompany;
 
+    static final String company_name = "Stahl Incorporation";
+    static final String branch = "Stahlbau";
+    static final String newBranch = "Bergbau";
+
 
     @BeforeClass
     public static void setup() {
-        Handler.build();
-        Handler.init();
+        JdbcHandler.build();
+        JdbcHandler.init();
     }
 
     @AfterClass
     public static void teardown() {
-        Handler.close();
-        Handler.destroy();
+        JdbcHandler.close();
+        JdbcHandler.destroy();
     }
 
     @Test
     public void create() {
         transaction.begin();
 
-        testLocation = new Location(address, country, zip, city);
+        testLocation = new Location(TestLocation.address, TestLocation.country, TestLocation.zip, TestLocation.city);
         assertNotNull(testLocation);
         manager.persist(testLocation);
 
@@ -71,7 +75,7 @@ public class TestCompany extends Handler {
 
         transaction.commit();
 
-        testLocation = manager.find(Location.class, address);
+        testLocation = manager.find(Location.class, testLocation.getAddress());
         testCompany = manager.find(Company.class, company_name);
 
         assertNull(testLocation);

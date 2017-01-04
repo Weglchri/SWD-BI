@@ -1,4 +1,6 @@
-package at.fhj.swd.BusinessIntelligence;
+package at.fhj.swd.BusinessIntelligenceRepositories;
+
+import at.fhj.swd.BusinessIntelligence.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
