@@ -60,16 +60,16 @@ public class TestProjectmanagerQuery extends JdbcHandler {
     @Test
     public void B_repoTest() {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
-        Projectmanager projectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name);
+        Projectmanager testProjectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name);
 
-        assertEquals(projectmanager1.getName(), testProjectmanager.getName());
-        assertEquals(projectmanager1.getEmail(), testProjectmanager.getEmail());
-        assertEquals(projectmanager1.getPassword(), testProjectmanager.getPassword());
-        assertEquals(projectmanager1.getUserId(), testProjectmanager.getUserId());
-        assertEquals(projectmanager1.getProjects(), testProjectmanager.getProjects());
-        assertEquals(projectmanager1.getInvolvedIn(), testProjectmanager.getInvolvedIn());
-        assertEquals(projectmanager1.getCompanyName(), testProjectmanager.getCompanyName());
-        assertEquals(projectmanager1.getFunction(), testProjectmanager.getFunction());
+        assertEquals(testProjectmanager1.getName(), testProjectmanager.getName());
+        assertEquals(testProjectmanager1.getEmail(), testProjectmanager.getEmail());
+        assertEquals(testProjectmanager1.getPassword(), testProjectmanager.getPassword());
+        assertEquals(testProjectmanager1.getUserId(), testProjectmanager.getUserId());
+        assertEquals(testProjectmanager1.getProjects(), testProjectmanager.getProjects());
+        assertEquals(testProjectmanager1.getInvolvedIn(), testProjectmanager.getInvolvedIn());
+        assertEquals(testProjectmanager1.getCompanyName(), testProjectmanager.getCompanyName());
+        assertEquals(testProjectmanager1.getFunction(), testProjectmanager.getFunction());
     }
 
     @Test

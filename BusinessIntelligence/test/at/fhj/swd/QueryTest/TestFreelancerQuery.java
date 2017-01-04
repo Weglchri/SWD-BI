@@ -56,17 +56,17 @@ public class TestFreelancerQuery extends JdbcHandler {
     @Test
     public void B_repoTest() {
         FreelancerRepository freelancerRepo = new FreelancerRepository(manager);
-        Freelancer freelancer1 = freelancerRepo.findByName(TestUserQuery.name);
+        Freelancer testFreelancer1 = freelancerRepo.findByName(TestUserQuery.name);
 
-        assertEquals(freelancer1.getName(), testFreelancer.getName());
-        assertEquals(freelancer1.getEmail(), testFreelancer.getEmail());
-        assertEquals(freelancer1.getPassword(), testFreelancer.getPassword());
-        assertEquals(freelancer1.getUserId(), testFreelancer.getUserId());
-        assertEquals(freelancer1.getAvailability(), testFreelancer.getAvailability());
-        assertEquals(freelancer1.getProfession(), testFreelancer.getProfession());
-        assertEquals(freelancer1.getHourly_wage(), testFreelancer.getHourly_wage());
-        assertEquals(freelancer1.getEducation(), testFreelancer.getEducation());
-        assertEquals(freelancer1.getAddress(), testFreelancer.getAddress());
+        assertEquals(testFreelancer1.getName(), testFreelancer.getName());
+        assertEquals(testFreelancer1.getEmail(), testFreelancer.getEmail());
+        assertEquals(testFreelancer1.getPassword(), testFreelancer.getPassword());
+        assertEquals(testFreelancer1.getUserId(), testFreelancer.getUserId());
+        assertEquals(testFreelancer1.getAvailability(), testFreelancer.getAvailability());
+        assertEquals(testFreelancer1.getProfession(), testFreelancer.getProfession());
+        assertEquals(testFreelancer1.getHourly_wage(), testFreelancer.getHourly_wage());
+        assertEquals(testFreelancer1.getEducation(), testFreelancer.getEducation());
+        assertEquals(testFreelancer1.getAddress(), testFreelancer.getAddress());
     }
 
     @Test

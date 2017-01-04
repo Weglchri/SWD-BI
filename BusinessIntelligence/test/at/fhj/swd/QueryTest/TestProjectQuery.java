@@ -63,12 +63,12 @@ public class TestProjectQuery extends JdbcHandler{
     @Test
     public void B_repoTest() {
         ProjectRepository projectRepo = new ProjectRepository(manager);
-        Project testProjectRepo = projectRepo.findByTask(task);
+        Project testProject1 = projectRepo.findByTask(task);
 
-        assertEquals(testProjectRepo.getCompanyName(), testProject.getCompanyName());
-        assertEquals(testProjectRepo.getCapital(), testProject.getCapital());
-        assertEquals(testProjectRepo.getProjectId(), testProject.getProjectId());
-        assertEquals(testProjectRepo.getTask(), testProjectRepo.getTask());
+        assertEquals(testProject1.getCompanyName(), testProject.getCompanyName());
+        assertEquals(testProject1.getCapital(), testProject.getCapital());
+        assertEquals(testProject1.getProjectId(), testProject.getProjectId());
+        assertEquals(testProject1.getTask(), testProject.getTask());
     }
 
     @Test

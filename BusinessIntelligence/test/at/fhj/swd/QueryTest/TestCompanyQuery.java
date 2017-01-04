@@ -69,19 +69,18 @@ public class TestCompanyQuery extends JdbcHandler {
 
     @Test
     public void B_repoTest() {
-        CompanyRepository companyRepo = new CompanyRepository(manager);
         CompanyRepository companyRepo1 = new CompanyRepository(manager);
+        Company testCompany1 = companyRepo1.findByName(company_name);
+        CompanyRepository companyRepo2 = new CompanyRepository(manager);
+        Company testCompany2 = companyRepo2.findByName(company_name1);
 
-        Company companySearch1 = companyRepo.findByName(company_name);
-        Company companySearch2 = companyRepo1.findByName(company_name1);
+        assertEquals(testCompany1.getBranch(), TestCompanyQuery.testCompany.getBranch());
+        assertEquals(testCompany1.getCompany(), TestCompanyQuery.testCompany.getCompany());
+        assertEquals(testCompany1.getAddress(), TestCompanyQuery.testCompany.getAddress());
 
-        assertEquals(companySearch1.getBranch(), testCompany.getBranch());
-        assertEquals(companySearch1.getCompany(), testCompany.getCompany());
-        assertEquals(companySearch1.getAddress(), testCompany.getAddress());
-
-        assertEquals(companySearch2.getBranch(), testCompany1.getBranch());
-        assertEquals(companySearch2.getCompany(), testCompany1.getCompany());
-        assertEquals(companySearch2.getAddress(), testCompany1.getAddress());
+        assertEquals(testCompany2.getBranch(), TestCompanyQuery.testCompany1.getBranch());
+        assertEquals(testCompany2.getCompany(), TestCompanyQuery.testCompany1.getCompany());
+        assertEquals(testCompany2.getAddress(), TestCompanyQuery.testCompany1.getAddress());
     }
 
     @Test

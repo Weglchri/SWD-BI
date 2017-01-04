@@ -70,12 +70,12 @@ public class TestLocationQuery extends JdbcHandler {
     @Test
     public void B_repoTest() {
         LocationRepository locRepo = new LocationRepository(manager);
-        List<Location> testLocationRepo = locRepo.findByCountry(country);
+        List<Location> testLocation1 = locRepo.findByCountry(country);
 
-        assertEquals(2, testLocationRepo.size());
-        assertTrue(testLocationRepo.contains(testAddress));
-        assertTrue(testLocationRepo.contains(testAddress1));
-        assertFalse(testLocationRepo.contains(testAddress2));
+        assertEquals(2, testLocation1.size());
+        assertTrue(testLocation1.contains(testAddress));
+        assertTrue(testLocation1.contains(testAddress1));
+        assertFalse(testLocation1.contains(testAddress2));
     }
 
     @Test
