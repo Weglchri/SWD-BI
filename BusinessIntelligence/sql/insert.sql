@@ -10,6 +10,8 @@ INSERT INTO public.Company (Company_Name, FK_Address, Branch) VALUES ('Stahl Inc
 
 INSERT INTO public.Company (Company_Name, FK_Address, Branch) VALUES ('Orange GmbH',  (SELECT Address from public.location WHERE Address='Alte Poststraße 122/2'), 'Bergbau');
 
+INSERT INTO public.Company (Company_Name, FK_Address, Branch) VALUES ('Diamond Mine Coorporation GmbH',  (SELECT Address from public.location WHERE Address='Alte Poststraße 122/3'), 'Bergbau');
+
 INSERT INTO public.User (User_Id, Name, Email, Password, Dtype) VALUES (nextval ('public.user_sequence'), 'Somebody', 'Somebody@edu.fh-joanneum.at', '1234567', 'Freelancer');
 
 INSERT INTO public.Freelancer (User_Id, Profession, Availability, Fk_Address, Hourly_Wage, Education) VALUES ((SELECT user_id from public.User WHERE user_id = 2) , 'FH Joanneum', 'available', (SELECT Address from public.location WHERE Address='Alte Poststraße 122/1'), 13, 'Software Engineer Freelancer');

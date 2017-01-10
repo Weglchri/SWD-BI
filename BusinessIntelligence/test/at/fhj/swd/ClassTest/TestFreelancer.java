@@ -33,7 +33,7 @@ public class TestFreelancer extends JdbcHandler
     @AfterClass
     public static void teardown() {
         JdbcHandler.close();
-        //JdbcHandler.destroy();
+        JdbcHandler.destroy();
     }
 
     @Test

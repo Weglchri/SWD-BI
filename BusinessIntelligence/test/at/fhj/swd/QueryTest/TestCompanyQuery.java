@@ -21,15 +21,21 @@ public class TestCompanyQuery extends JdbcHandler {
 
     private static Location testAddress;
     private static Location testAddress1;
+    private static Location testAddress2;
     private static Company testCompany;
     private static Company testCompany1;
+    private static Company testCompany2;
     private static List<Company> companyBranchSearch;
+    private static List<Company> companyBranchSearch1;
 
     static final String company_name = "Stahl Incorporation";
     static final String branch = "Stahlbau";
 
     static final String company_name1 = "Orange Incorporation GmbH";
     static final String branch1 = "Bergbau";
+
+    static final String company_name2 = "Diamond Mine Coorporation GmbH";
+    static final String branch2 = "Bergbau";
 
 
     @BeforeClass
@@ -56,6 +62,10 @@ public class TestCompanyQuery extends JdbcHandler {
         assertNotNull(testAddress1);
         manager.persist(testAddress1);
 
+        testAddress2 = new Location(TestLocationQuery.address2, TestLocationQuery.country2, TestLocationQuery.zip2, TestLocationQuery.city2);
+        assertNotNull(testAddress2);
+        manager.persist(testAddress2);
+
         testCompany = new Company(company_name, branch, testAddress);
         assertNotNull(testCompany);
         manager.persist(testCompany);
@@ -63,6 +73,10 @@ public class TestCompanyQuery extends JdbcHandler {
         testCompany1 = new Company(company_name1, branch1, testAddress1);
         assertNotNull(testCompany1);
         manager.persist(testCompany1);
+
+        testCompany2 = new Company(company_name2, branch2, testAddress2);
+        assertNotNull(testCompany2);
+        manager.persist(testCompany2);
 
         transaction.commit();
     }
@@ -73,6 +87,8 @@ public class TestCompanyQuery extends JdbcHandler {
         Company testCompany1 = companyRepo1.findByName(company_name);
         CompanyRepository companyRepo2 = new CompanyRepository(manager);
         Company testCompany2 = companyRepo2.findByName(company_name1);
+        CompanyRepository companyRepo3 = new CompanyRepository(manager);
+        Company testCompany3 = companyRepo3.findByName(company_name2);
 
         assertEquals(testCompany1.getBranch(), TestCompanyQuery.testCompany.getBranch());
         assertEquals(testCompany1.getCompany(), TestCompanyQuery.testCompany.getCompany());
@@ -81,14 +97,20 @@ public class TestCompanyQuery extends JdbcHandler {
         assertEquals(testCompany2.getBranch(), TestCompanyQuery.testCompany1.getBranch());
         assertEquals(testCompany2.getCompany(), TestCompanyQuery.testCompany1.getCompany());
         assertEquals(testCompany2.getAddress(), TestCompanyQuery.testCompany1.getAddress());
+
+        assertEquals(testCompany3.getBranch(), TestCompanyQuery.testCompany2.getBranch());
+        assertEquals(testCompany3.getCompany(), TestCompanyQuery.testCompany2.getCompany());
+        assertEquals(testCompany3.getAddress(), TestCompanyQuery.testCompany2.getAddress());
     }
 
     @Test
     public void C_repoTestGetBranche() {
         CompanyRepository companyRepo = new CompanyRepository(manager);
         companyBranchSearch = companyRepo.findByBranch(branch);
+        companyBranchSearch1 = companyRepo.findByBranch(branch1);
 
-        assertEquals(2, companyBranchSearch.size());
+        assertEquals(1, companyBranchSearch.size());
+        assertEquals(2, companyBranchSearch1.size());
     }
 
     @Test
