@@ -5,7 +5,6 @@ import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.Helper.JdbcHandler;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,7 +33,7 @@ public class TestCompany extends JdbcHandler {
     @AfterClass
     public static void teardown() {
         JdbcHandler.close();
-        JdbcHandler.destroy();
+        JdbcHandler.dropTables();
     }
 
     @Test

@@ -31,7 +31,7 @@ public class TestUserQuery extends JdbcHandler {
     @AfterClass
     public static void teardown() {
         JdbcHandler.close();
-        JdbcHandler.destroy();
+        JdbcHandler.dropTables();
     }
 
     @Test

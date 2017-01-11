@@ -29,4 +29,10 @@ public class LocationRepository
         query.setParameter("country", searchCountry);
         return query.getResultList();
     }
+
+    public List<Location> findAll()
+    {
+        TypedQuery<Location> query =  entityManager.createNamedQuery("findAll", Location.class);
+        return query.getResultList();
+    }
 }

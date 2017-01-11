@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Location", schema="public")
-@NamedQuery(name="findLocationByCountry", query="SELECT l FROM Location l WHERE l.country = :country")
+@NamedQueries({@NamedQuery(name="findLocationByCountry", query="SELECT l FROM Location l WHERE l.country = :country"),
+              @NamedQuery(name="findAll", query="SELECT l FROM Location l")}
+)
 public class Location {
 
     @Id private String address;

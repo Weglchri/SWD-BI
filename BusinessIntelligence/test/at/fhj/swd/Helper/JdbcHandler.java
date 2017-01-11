@@ -22,7 +22,16 @@ public class JdbcHandler {
 
     //public static final void insert() {Loader.executeSqlScript("sql/insert.sql");}
 
-    public static final void destroy() { Loader.executeSqlScript("sql/drop.sql"); }
+    public static final void dropTables()
+    {
+        Loader.executeSqlScript("sql/drop.sql");
+        dropSequences();
+    }
+
+    private static final void dropSequences()
+    {
+        Loader.executeSqlScript("sql/drop_Sequences.sql");
+    }
 
 
     public static final void init() {
@@ -38,6 +47,15 @@ public class JdbcHandler {
         if (manager == null) return;
         manager.close();
         factory.close();
+    }
+
+    public static final void buildSecurity(){
+        Loader.executeSqlScript("sql/security_create.sql");
+    }
+
+
+    public static final void revokeSecurity(){
+        Loader.executeSqlScript("sql/security_drop.sql");
     }
 
 }
