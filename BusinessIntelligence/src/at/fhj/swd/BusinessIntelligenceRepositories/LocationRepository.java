@@ -30,6 +30,13 @@ public class LocationRepository
         return query.getResultList();
     }
 
+    public Location findByAddress(String searchAddress)
+    {
+        TypedQuery query =  entityManager.createNamedQuery("findLocationByAddress", Location.class);
+        query.setParameter("address", searchAddress);
+        return (Location) query.getSingleResult();
+    }
+
     public List<Location> findAll()
     {
         TypedQuery<Location> query =  entityManager.createNamedQuery("findAll", Location.class);
