@@ -12,13 +12,13 @@ import org.junit.runners.MethodSorters;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLocationQuery extends JdbcHandler {
 
     private static Location testAddress;
     private static Location testAddress1;
-    private static Location testAddress2;
 
     static final String address = "Alte Poststraße 122/1";
     static final String country = "Austria";
@@ -35,10 +35,18 @@ public class TestLocationQuery extends JdbcHandler {
     static final Integer zip2 = 9020;
     static final String city2 = "Sidney";
 
+    static final String address3 = "Chapel Hill 12";
+    static final String country3 = "UK";
+    static final Integer zip3 = 1234;
+    static final String city3 = "London";
+
+
+
 
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
+        JdbcHandler.insert();
         JdbcHandler.init();
     }
 
@@ -49,54 +57,35 @@ public class TestLocationQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create() {
-        transaction.begin();
+    public void A_createObjects() {
 
-        this.testAddress = new Location(address, country, zip, city);
+        testAddress = new Location(address, country, zip, city);
         assertNotNull(testAddress);
-        manager.persist(testAddress);
 
-        this.testAddress1 = new Location(address1, country1, zip1, city1);
+        testAddress1 = new Location(address1, country1, zip1, city1);
         assertNotNull(testAddress1);
-        manager.persist(testAddress1);
 
-        this.testAddress2 = new Location(address2, country2, zip2, city2);
-        assertNotNull(testAddress2);
-        manager.persist(testAddress2);
-
-        transaction.commit();
     }
 
     @Test
     public void B_repoTest() {
+        
         LocationRepository locRepo = new LocationRepository(manager);
         List<Location> testLocation1 = locRepo.findByCountry(country);
 
         assertEquals(2, testLocation1.size());
-        assertTrue(testLocation1.contains(testAddress));
-        assertTrue(testLocation1.contains(testAddress1));
-        assertFalse(testLocation1.contains(testAddress2));
+
+        assertEquals(testAddress.getAddress(), testLocation1.get(0).getAddress());
+        assertEquals(testAddress.getCity(), testLocation1.get(0).getCity());
+        assertEquals(testAddress.getCountry(), testLocation1.get(0).getCountry());
+        assertEquals(testAddress.getZip(), testLocation1.get(0).getZip());
+
+        assertEquals(testAddress1.getAddress(), testLocation1.get(1).getAddress());
+        assertEquals(testAddress1.getCity(), testLocation1.get(1).getCity());
+        assertEquals(testAddress1.getCountry(), testLocation1.get(1).getCountry());
+        assertEquals(testAddress1.getZip(), testLocation1.get(1).getZip());
+
     }
 
-    @Test
-    public void C_remove() {
-        transaction.begin();
-
-        assertNotNull(testAddress);
-        assertNotNull(testAddress1);
-        assertNotNull(testAddress2);
-        manager.remove(testAddress);
-        manager.remove(testAddress1);
-        manager.remove(testAddress2);
-
-        transaction.commit();
-
-        testAddress = manager.find(Location.class, testAddress.getAddress());
-        testAddress1 = manager.find(Location.class, testAddress1.getAddress());
-        testAddress2 = manager.find(Location.class, testAddress2.getAddress());
-        assertNull(testAddress);
-        assertNull(testAddress1);
-        assertNull(testAddress2);
-    }
 
 }

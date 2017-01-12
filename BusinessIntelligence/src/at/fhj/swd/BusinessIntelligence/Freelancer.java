@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Freelancer", schema="public")
-@NamedQuery(name="findFreelancerByName", query="SELECT f from Freelancer f WHERE f.name = :name")
+@NamedQuery(name="findFreelancerByName", query="SELECT f from Freelancer f  WHERE f.name = :name")
 public class Freelancer extends User {
 
+    //inner join User u on f.name=u.name
     //Freelancer Variables
     private String profession;
     private String availability;

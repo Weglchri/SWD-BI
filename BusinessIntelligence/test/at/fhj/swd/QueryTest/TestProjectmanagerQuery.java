@@ -2,6 +2,7 @@ package at.fhj.swd.QueryTest;
 
 import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
+import at.fhj.swd.BusinessIntelligence.Project;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
 import at.fhj.swd.BusinessIntelligenceRepositories.ProjectmanagerRepository;
 import at.fhj.swd.Helper.JdbcHandler;
@@ -20,6 +21,7 @@ public class TestProjectmanagerQuery extends JdbcHandler {
 
     private static Location testAddress;
     private static Company testCompany;
+    private static Project testProject;
     private static Projectmanager testProjectmanager;
 
     static final Integer involved = 1;
@@ -29,6 +31,7 @@ public class TestProjectmanagerQuery extends JdbcHandler {
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
+        JdbcHandler.insert();
         JdbcHandler.init();
     }
 
@@ -40,54 +43,38 @@ public class TestProjectmanagerQuery extends JdbcHandler {
 
     @Test
     public void A_create() {
-        transaction.begin();
-
         testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
         assertNotNull(testAddress);
-        manager.persist(testAddress);
 
-        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testAddress);
+        testCompany = new Company(TestCompanyQuery.company_name2, TestCompanyQuery.branch, testAddress);
         assertNotNull(testCompany);
-        manager.persist(testCompany);
 
-        testProjectmanager = new Projectmanager(TestUserQuery.name, TestUserQuery.email, TestUserQuery.password, involved, function, testCompany);
+        testProject = new Project(TestProjectQuery.capital, TestProjectQuery.date, TestProjectQuery.task, testCompany);
+        assertNotNull(testProject);
+
+        testProjectmanager = new Projectmanager(TestUserQuery.name2, TestUserQuery.email2, TestUserQuery.password2, involved, function, testCompany);
         assertNotNull(testProjectmanager);
-        manager.persist(testProjectmanager);
 
-        transaction.commit();
+        testProjectmanager.addProject(testProject);
     }
 
     @Test
     public void B_repoTest() {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
-        Projectmanager testProjectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name);
+        Projectmanager testProjectmanager1 = projectmanagerRepo.findByName(TestUserQuery.name2);
 
-        assertEquals(testProjectmanager1.getName(), testProjectmanager.getName());
-        assertEquals(testProjectmanager1.getEmail(), testProjectmanager.getEmail());
-        assertEquals(testProjectmanager1.getPassword(), testProjectmanager.getPassword());
-        assertEquals(testProjectmanager1.getUserId(), testProjectmanager.getUserId());
-        assertEquals(testProjectmanager1.getProjects(), testProjectmanager.getProjects());
-        assertEquals(testProjectmanager1.getInvolvedIn(), testProjectmanager.getInvolvedIn());
-        assertEquals(testProjectmanager1.getCompanyName(), testProjectmanager.getCompanyName());
-        assertEquals(testProjectmanager1.getFunction(), testProjectmanager.getFunction());
-    }
 
-    @Test
-    public void C_remove() {
-        transaction.begin();
-
-        assertNotNull(testAddress);
-        assertNotNull(testCompany);
-        assertNotNull(testProjectmanager);
-
-        manager.remove(testAddress);
-        manager.remove(testCompany);
-        manager.remove(testProjectmanager);
-
-        transaction.commit();
-
-        testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
-        assertNull(testProjectmanager);
+        assertEquals(testProjectmanager.getName(), testProjectmanager1.getName());
+        assertEquals(testProjectmanager.getEmail(), testProjectmanager1.getEmail());
+        assertEquals(testProjectmanager.getPassword(), testProjectmanager1.getPassword());
+        assertEquals(testProjectmanager.getProjects().get(0).getTask(), testProjectmanager1.getProjects().get(0).getTask());
+        assertEquals(testProjectmanager.getProjects().get(0).getCapital(), testProjectmanager1.getProjects().get(0).getCapital());
+        assertEquals(testProjectmanager.getInvolvedIn(), testProjectmanager1.getInvolvedIn());
+        assertEquals(testProjectmanager.getCompanyName().getCompany(), testProjectmanager1.getCompanyName().getCompany());
+        assertEquals(testProjectmanager.getFunction(), testProjectmanager1.getFunction());
     }
 
 }
+
+    //INSERT INTO public.Offer (Offer_Id, Price, Creation_Date, Fk_Project_Id, Fk_User_Id ) VALUES (nextval ('public.offer_sequence'), 100, current_timestamp, (SELECT Project_Id from public.Project WHERE Project_Id = 1 ),(SELECT User_Id from public.User WHERE User_Id = 2) );
+    //INSERT INTO public.Responsibility (Fk_User_Id, Fk_Project_Id) VALUES ((SELECT User_Id from public.User WHERE User_Id = 3),(SELECT Project_Id from public.Project WHERE Project_Id = 1));

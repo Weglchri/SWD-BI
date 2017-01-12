@@ -29,6 +29,7 @@ public class TestFreelancerQuery extends JdbcHandler {
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
+        JdbcHandler.insert();
         JdbcHandler.init();
     }
 
@@ -40,50 +41,30 @@ public class TestFreelancerQuery extends JdbcHandler {
 
     @Test
     public void A_create() {
-        transaction.begin();
 
-        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
+        testAddress = new Location(TestLocationQuery.address3, TestLocationQuery.country3, TestLocationQuery.zip3, TestLocationQuery.city3);
         assertNotNull(testAddress);
-        manager.persist(testAddress);
 
-        testFreelancer = new Freelancer(TestUserQuery.name, TestUserQuery.email, TestUserQuery.password, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.eduacation, testAddress );
+        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.eduacation, testAddress );
         assertNotNull(testFreelancer);
-        manager.persist(testFreelancer);
 
-        transaction.commit();
     }
 
     @Test
     public void B_repoTest() {
         FreelancerRepository freelancerRepo = new FreelancerRepository(manager);
-        Freelancer testFreelancer1 = freelancerRepo.findByName(TestUserQuery.name);
+        Freelancer testFreelancer1 = freelancerRepo.findByName(TestUserQuery.name1);
 
-        assertEquals(testFreelancer1.getName(), testFreelancer.getName());
-        assertEquals(testFreelancer1.getEmail(), testFreelancer.getEmail());
-        assertEquals(testFreelancer1.getPassword(), testFreelancer.getPassword());
-        assertEquals(testFreelancer1.getUserId(), testFreelancer.getUserId());
-        assertEquals(testFreelancer1.getAvailability(), testFreelancer.getAvailability());
-        assertEquals(testFreelancer1.getProfession(), testFreelancer.getProfession());
-        assertEquals(testFreelancer1.getHourly_wage(), testFreelancer.getHourly_wage());
-        assertEquals(testFreelancer1.getEducation(), testFreelancer.getEducation());
-        assertEquals(testFreelancer1.getAddress(), testFreelancer.getAddress());
+        assertEquals(testFreelancer.getName(), testFreelancer1.getName());
+        assertEquals(testFreelancer.getEmail(), testFreelancer1.getEmail());
+        assertEquals(testFreelancer.getPassword(), testFreelancer1.getPassword());
+        assertEquals(testFreelancer.getAvailability(), testFreelancer1.getAvailability());
+        assertEquals(testFreelancer.getProfession(), testFreelancer1.getProfession());
+        assertEquals(testFreelancer.getHourly_wage(), testFreelancer1.getHourly_wage());
+        assertEquals(testFreelancer.getEducation(), testFreelancer1.getEducation());
+        assertEquals(testFreelancer.getAddress().getAddress(), testFreelancer1.getAddress().getAddress());
     }
 
-    @Test
-    public void C_remove() {
-        transaction.begin();
-
-        assertNotNull(testAddress);
-        assertNotNull(testFreelancer);
-
-        manager.remove(testAddress);
-        manager.remove(testFreelancer);
-
-        transaction.commit();
-
-        testFreelancer = manager.find(Freelancer.class, testFreelancer.getUserId());
-        assertNull(testFreelancer);
-    }
 
 
 }

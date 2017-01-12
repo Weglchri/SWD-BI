@@ -24,7 +24,7 @@ public class TestProjectQuery extends JdbcHandler{
     private static Company testCompany;
     private static Project testProject;
 
-    Date date = new Date();
+    static final Date date = new Date();
     static final Integer capital = 1000;
     static final String task = "Turbinenherstellung";
 
@@ -32,6 +32,7 @@ public class TestProjectQuery extends JdbcHandler{
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
+        JdbcHandler.insert();
         JdbcHandler.init();
     }
 
@@ -43,21 +44,16 @@ public class TestProjectQuery extends JdbcHandler{
 
     @Test
     public void A_create() {
-        transaction.begin();
 
         testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
         assertNotNull(testAddress);
-        manager.persist(testAddress);
 
         testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testAddress);
         assertNotNull(testCompany);
-        manager.persist(testCompany);
 
         testProject = new Project (capital, date, task, testCompany);
         assertNotNull(testProject);
-        manager.persist(testProject);
 
-        transaction.commit();
     }
 
     @Test
@@ -65,30 +61,8 @@ public class TestProjectQuery extends JdbcHandler{
         ProjectRepository projectRepo = new ProjectRepository(manager);
         Project testProject1 = projectRepo.findByTask(task);
 
-        assertEquals(testProject1.getCompanyName(), testProject.getCompanyName());
-        assertEquals(testProject1.getCapital(), testProject.getCapital());
-        assertEquals(testProject1.getProjectId(), testProject.getProjectId());
-        assertEquals(testProject1.getTask(), testProject.getTask());
+        assertEquals(testProject.getCompanyName().getCompany(), testProject1.getCompanyName().getCompany());
+        assertEquals(testProject.getCapital(), testProject1.getCapital());
+        assertEquals(testProject.getTask(), testProject1.getTask());
     }
-
-    @Test
-    public void C_remove() {
-        transaction.begin();
-
-        assertNotNull(testProject);
-        assertNotNull(testCompany);
-        assertNotNull(testAddress);
-        manager.remove(testProject);
-        manager.remove(testCompany);
-        manager.remove(testAddress);
-
-        transaction.commit();
-        testProject = manager.find(Project.class, testProject.getProjectId());
-        testCompany = manager.find(Company.class, testCompany.getCompany());
-        testAddress = manager.find(Location.class, testAddress.getAddress());
-        assertNull(testProject);
-        assertNull(testCompany);
-        assertNull(testAddress);
-    }
-
 }

@@ -3,7 +3,7 @@ package at.fhj.swd.BusinessIntelligence;
 import javax.persistence.*;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import java.util.List;
+
 
 @Entity
 @Inheritance(strategy= InheritanceType.JOINED)

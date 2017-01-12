@@ -20,16 +20,14 @@ public class JdbcHandler {
 
     public static final void build() { Loader.executeSqlScript("sql/create.sql"); }
 
-    //public static final void insert() {Loader.executeSqlScript("sql/insert.sql");}
+    public static final void insert() {Loader.executeSqlScript("sql/insert.sql");}
 
-    public static final void dropTables()
-    {
+    public static final void dropTables() {
         Loader.executeSqlScript("sql/drop.sql");
         dropSequences();
     }
 
-    private static final void dropSequences()
-    {
+    private static final void dropSequences() {
         Loader.executeSqlScript("sql/drop_Sequences.sql");
     }
 

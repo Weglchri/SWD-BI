@@ -21,10 +21,19 @@ public class TestUserQuery extends JdbcHandler {
     static final String email = "Admin@edu.fh-joanneum.at";
     static final String password = "1234567";
 
+    static final String name1 = "Somebody";
+    static final String email1 = "Somebody@edu.fh-joanneum.at";
+    static final String password1 = "1234567";
+
+    static final String name2 = "Someone";
+    static final String email2 = "Someone@edu.fh-joanneum.at";
+    static final String password2 = "1234567";
+
 
     @BeforeClass
     public static void setup() {
         JdbcHandler.build();
+        JdbcHandler.insert();
         JdbcHandler.init();
     }
 
@@ -35,12 +44,9 @@ public class TestUserQuery extends JdbcHandler {
     }
 
     @Test
-    public void A_create() {
-        transaction.begin();
+    public void A_createObjects() {
         testUser = new User(name, email, password);
         assertNotNull(testUser);
-        manager.persist(testUser);
-        transaction.commit();
     }
 
     @Test
@@ -48,19 +54,10 @@ public class TestUserQuery extends JdbcHandler {
         UserRepository userRepo = new UserRepository(manager);
         User testUser1 = userRepo.findByName(name);
 
-        assertEquals(testUser1.getName(), testUser.getName());
-        assertEquals(testUser1.getEmail(), testUser.getEmail());
-        assertEquals(testUser1.getPassword(), testUser.getPassword());
-        assertEquals(testUser1.getUserId(), testUser.getUserId());
+        assertEquals(testUser.getName(), testUser1.getName());
+        assertEquals(testUser.getEmail(), testUser1.getEmail());
+        assertEquals(testUser.getPassword(), testUser1.getPassword());
+
     }
 
-    @Test
-    public void C_remove() {
-        transaction.begin();
-        assertNotNull(testUser);
-        manager.remove(testUser);
-        transaction.commit();
-        testUser = manager.find(User.class, testUser.getUserId());
-        assertNull(testUser);
-    }
 }
