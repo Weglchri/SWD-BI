@@ -17,8 +17,8 @@ import static org.junit.Assert.assertEquals;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLocationQuery extends JdbcHandler {
 
-    private static Location testAddress;
-    private static Location testAddress1;
+    private static Location testLocation;
+    private static Location testLocation1;
 
     static final String address = "Alte Poststraße 122/1";
     static final String country = "Austria";
@@ -59,11 +59,11 @@ public class TestLocationQuery extends JdbcHandler {
     @Test
     public void A_createObjects() {
 
-        testAddress = new Location(address, country, zip, city);
-        assertNotNull(testAddress);
+        testLocation = new Location(address, country, zip, city);
+        assertNotNull(testLocation);
 
-        testAddress1 = new Location(address1, country1, zip1, city1);
-        assertNotNull(testAddress1);
+        testLocation1 = new Location(address1, country1, zip1, city1);
+        assertNotNull(testLocation1);
 
     }
 
@@ -75,15 +75,15 @@ public class TestLocationQuery extends JdbcHandler {
 
         assertEquals(2, testLocation1.size());
 
-        assertEquals(testAddress.getAddress(), testLocation1.get(0).getAddress());
-        assertEquals(testAddress.getCity(), testLocation1.get(0).getCity());
-        assertEquals(testAddress.getCountry(), testLocation1.get(0).getCountry());
-        assertEquals(testAddress.getZip(), testLocation1.get(0).getZip());
+        assertEquals(testLocation.getAddress(), testLocation1.get(0).getAddress());
+        assertEquals(testLocation.getCity(), testLocation1.get(0).getCity());
+        assertEquals(testLocation.getCountry(), testLocation1.get(0).getCountry());
+        assertEquals(testLocation.getZip(), testLocation1.get(0).getZip());
 
-        assertEquals(testAddress1.getAddress(), testLocation1.get(1).getAddress());
-        assertEquals(testAddress1.getCity(), testLocation1.get(1).getCity());
-        assertEquals(testAddress1.getCountry(), testLocation1.get(1).getCountry());
-        assertEquals(testAddress1.getZip(), testLocation1.get(1).getZip());
+        assertEquals(TestLocationQuery.testLocation1.getAddress(), testLocation1.get(1).getAddress());
+        assertEquals(TestLocationQuery.testLocation1.getCity(), testLocation1.get(1).getCity());
+        assertEquals(TestLocationQuery.testLocation1.getCountry(), testLocation1.get(1).getCountry());
+        assertEquals(TestLocationQuery.testLocation1.getZip(), testLocation1.get(1).getZip());
 
     }
 

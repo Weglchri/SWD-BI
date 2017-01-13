@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestFreelancerQuery extends JdbcHandler {
 
-    private static Location testAddress;
+    private static Location testLocation;
     private static Freelancer testFreelancer;
 
     static final String education = "FH Joanneum";
@@ -42,10 +42,10 @@ public class TestFreelancerQuery extends JdbcHandler {
     @Test
     public void A_create() {
 
-        testAddress = new Location(TestLocationQuery.address3, TestLocationQuery.country3, TestLocationQuery.zip3, TestLocationQuery.city3);
-        assertNotNull(testAddress);
+        testLocation = new Location(TestLocationQuery.address3, TestLocationQuery.country3, TestLocationQuery.zip3, TestLocationQuery.city3);
+        assertNotNull(testLocation);
 
-        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.education, testAddress );
+        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.education, testLocation);
         assertNotNull(testFreelancer);
 
     }

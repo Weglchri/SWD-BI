@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestOfferQuery extends JdbcHandler {
 
-    private static Location testAddress;
+    private static Location testLocation;
     private static Company testCompany;
     private static Freelancer testFreelancer;
     private static Project testProject;
@@ -43,24 +43,20 @@ public class TestOfferQuery extends JdbcHandler {
     @Test
     public void A_createObjects() {
 
-        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
-        assertNotNull(testAddress);
+        testLocation = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
+        assertNotNull(testLocation);
 
-        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testAddress);
+        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testLocation);
         assertNotNull(testCompany);
-        manager.persist(testCompany);
 
-        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.education, testAddress );
+        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.education, testLocation);
         assertNotNull(testFreelancer);
-        manager.persist(testFreelancer);
 
         testProject = new Project (TestProjectQuery.capital, TestProjectQuery.date, TestProjectQuery.task, testCompany);
         assertNotNull(testProject);
-        manager.persist(testProject);
 
         testOffer = new Offer(price, date, testFreelancer, testProject);
         assertNotNull(testOffer);
-        manager.persist(testOffer);
 
     }
 
@@ -70,12 +66,8 @@ public class TestOfferQuery extends JdbcHandler {
         Offer testOffer1 = offerRepo.findByName(price);
 
         assertEquals(testOffer.getPrice(), testOffer1.getPrice());
+        assertEquals(testOffer.getFkProjectId().getCompanyName().getCompany(), testOffer1.getFkProjectId().getCompanyName().getCompany());
         assertEquals(testOffer.getFkUserId().getName(), testOffer1.getFkUserId().getName());
-        assertEquals(testOffer.getFkUserId().getEmail(), testOffer1.getFkUserId().getEmail());
-        assertEquals(testOffer.getFkUserId().getPassword(), testOffer1.getFkUserId().getPassword());
-        assertEquals(testOffer.getFkProjectId().getCapital(), testOffer1.getFkProjectId().getCapital());
-        assertEquals(testOffer.getFkProjectId().getTask(), testOffer1.getFkProjectId().getTask());
-        assertEquals(testOffer.getFkProjectId().getCompanyName(), testOffer1.getFkProjectId().getCompanyName());
 
     }
 

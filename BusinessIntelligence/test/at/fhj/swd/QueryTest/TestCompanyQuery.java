@@ -19,9 +19,9 @@ import static org.junit.Assert.assertNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCompanyQuery extends JdbcHandler {
 
-    private static Location testAddress;
-    private static Location testAddress1;
-    private static Location testAddress2;
+    private static Location testLocation;
+    private static Location testLocation1;
+    private static Location testLocation2;
     private static Company testCompany;
     private static Company testCompany1;
     private static Company testCompany2;
@@ -52,22 +52,22 @@ public class TestCompanyQuery extends JdbcHandler {
     @Test
     public void A_createObjects() {
 
-        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
-        assertNotNull(testAddress);
+        testLocation = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
+        assertNotNull(testLocation);
 
-        testAddress1 = new Location(TestLocationQuery.address1, TestLocationQuery.country1, TestLocationQuery.zip1, TestLocationQuery.city1);
-        assertNotNull(testAddress1);
+        testLocation1 = new Location(TestLocationQuery.address1, TestLocationQuery.country1, TestLocationQuery.zip1, TestLocationQuery.city1);
+        assertNotNull(testLocation1);
 
-        testAddress2 = new Location(TestLocationQuery.address2, TestLocationQuery.country2, TestLocationQuery.zip2, TestLocationQuery.city2);
-        assertNotNull(testAddress2);
+        testLocation2 = new Location(TestLocationQuery.address2, TestLocationQuery.country2, TestLocationQuery.zip2, TestLocationQuery.city2);
+        assertNotNull(testLocation2);
 
-        testCompany = new Company(company_name, branch, testAddress);
+        testCompany = new Company(company_name, branch, testLocation);
         assertNotNull(testCompany);
 
-        testCompany1 = new Company(company_name1, branch1, testAddress1);
+        testCompany1 = new Company(company_name1, branch1, testLocation1);
         assertNotNull(testCompany1);
 
-        testCompany2 = new Company(company_name2, branch2, testAddress2);
+        testCompany2 = new Company(company_name2, branch2, testLocation2);
         assertNotNull(testCompany2);
 
     }

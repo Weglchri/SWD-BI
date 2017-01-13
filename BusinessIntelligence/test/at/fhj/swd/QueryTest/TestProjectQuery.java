@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProjectQuery extends JdbcHandler{
 
-    private static Location testAddress;
+    private static Location testLocation;
     private static Company testCompany;
     private static Project testProject;
 
@@ -45,10 +45,10 @@ public class TestProjectQuery extends JdbcHandler{
     @Test
     public void A_create() {
 
-        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
-        assertNotNull(testAddress);
+        testLocation = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
+        assertNotNull(testLocation);
 
-        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testAddress);
+        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testLocation);
         assertNotNull(testCompany);
 
         testProject = new Project (capital, date, task, testCompany);
@@ -61,8 +61,9 @@ public class TestProjectQuery extends JdbcHandler{
         ProjectRepository projectRepo = new ProjectRepository(manager);
         Project testProject1 = projectRepo.findByTask(task);
 
-        assertEquals(testProject.getCompanyName().getCompany(), testProject1.getCompanyName().getCompany());
         assertEquals(testProject.getCapital(), testProject1.getCapital());
         assertEquals(testProject.getTask(), testProject1.getTask());
+        assertEquals(testProject.getCompanyName().getCompany(), testProject1.getCompanyName().getCompany());
+
     }
 }

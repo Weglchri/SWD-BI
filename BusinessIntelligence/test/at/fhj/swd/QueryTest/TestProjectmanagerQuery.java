@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProjectmanagerQuery extends JdbcHandler {
 
-    private static Location testAddress;
+    private static Location testLocation;
     private static Company testCompany;
     private static Project testProject;
     private static Projectmanager testProjectmanager;
@@ -43,10 +43,10 @@ public class TestProjectmanagerQuery extends JdbcHandler {
 
     @Test
     public void A_create() {
-        testAddress = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
-        assertNotNull(testAddress);
+        testLocation = new Location(TestLocationQuery.address, TestLocationQuery.country, TestLocationQuery.zip, TestLocationQuery.city);
+        assertNotNull(testLocation);
 
-        testCompany = new Company(TestCompanyQuery.company_name2, TestCompanyQuery.branch, testAddress);
+        testCompany = new Company(TestCompanyQuery.company_name2, TestCompanyQuery.branch, testLocation);
         assertNotNull(testCompany);
 
         testProject = new Project(TestProjectQuery.capital, TestProjectQuery.date, TestProjectQuery.task, testCompany);
@@ -67,11 +67,11 @@ public class TestProjectmanagerQuery extends JdbcHandler {
         assertEquals(testProjectmanager.getName(), testProjectmanager1.getName());
         assertEquals(testProjectmanager.getEmail(), testProjectmanager1.getEmail());
         assertEquals(testProjectmanager.getPassword(), testProjectmanager1.getPassword());
+        assertEquals(testProjectmanager.getInvolvedIn(), testProjectmanager1.getInvolvedIn());
+        assertEquals(testProjectmanager.getFunction(), testProjectmanager1.getFunction());
+        assertEquals(testProjectmanager.getCompanyName().getCompany(), testProjectmanager1.getCompanyName().getCompany());
         assertEquals(testProjectmanager.getProjects().get(0).getTask(), testProjectmanager1.getProjects().get(0).getTask());
         assertEquals(testProjectmanager.getProjects().get(0).getCapital(), testProjectmanager1.getProjects().get(0).getCapital());
-        assertEquals(testProjectmanager.getInvolvedIn(), testProjectmanager1.getInvolvedIn());
-        assertEquals(testProjectmanager.getCompanyName().getCompany(), testProjectmanager1.getCompanyName().getCompany());
-        assertEquals(testProjectmanager.getFunction(), testProjectmanager1.getFunction());
     }
 
 }
