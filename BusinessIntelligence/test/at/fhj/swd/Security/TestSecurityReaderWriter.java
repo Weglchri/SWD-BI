@@ -136,6 +136,7 @@ public class TestSecurityReaderWriter extends JdbcHandler
         LocationRepository findLocationToUpdate = new LocationRepository(managerReaderWriter);
         Location updateLocation = findLocationToUpdate.findByAddress("Hauptplatz");
         updateLocation.setCity("Graz-Innere Stadt");
+        managerReaderWriter.persist(updateLocation);
         transactionReaderWriter.commit();
 
         Assert.assertEquals("Graz-Innere Stadt", findLocationToUpdate.findByAddress("Hauptplatz").getCity());
