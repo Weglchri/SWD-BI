@@ -20,7 +20,7 @@ public class TestFreelancerQuery extends JdbcHandler {
     private static Location testAddress;
     private static Freelancer testFreelancer;
 
-    static final String eduacation = "FH Joanneum";
+    static final String education = "FH Joanneum";
     static final String availability = "available";
     static final int hourly_wage = 13;
     static final String profession = "Software Engineer Freelancer";
@@ -45,7 +45,7 @@ public class TestFreelancerQuery extends JdbcHandler {
         testAddress = new Location(TestLocationQuery.address3, TestLocationQuery.country3, TestLocationQuery.zip3, TestLocationQuery.city3);
         assertNotNull(testAddress);
 
-        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.eduacation, testAddress );
+        testFreelancer = new Freelancer(TestUserQuery.name1, TestUserQuery.email1, TestUserQuery.password1, TestFreelancerQuery.profession, TestFreelancerQuery.availability, TestFreelancerQuery.hourly_wage, TestFreelancerQuery.education, testAddress );
         assertNotNull(testFreelancer);
 
     }

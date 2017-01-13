@@ -6,9 +6,7 @@ import at.fhj.swd.BusinessIntelligence.Offer;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-/**
- * Created by sattlerb on 21/11/16.
- */
+
 public class OfferRepository
 {
     public OfferRepository(final EntityManager entityManager)

@@ -15,12 +15,12 @@ public class TestUser extends JdbcHandler
 
     private static User testUser;
 
-    public static final String name = "Admin";
-    public static final String name2 = "Default";
-    public static final String name3 = "Prof.Harald Habiger";
-    public static final String email = "Admin@edu.fh-joanneum.at";
-    public static final String password = "1234567";
-    public static final String newPassword = "7654321";
+    static final String name = "Admin";
+    static final String name2 = "Default";
+    static final String name3 = "Prof.Harald Habiger";
+    static final String email = "Admin@edu.fh-joanneum.at";
+    static final String password = "1234567";
+    static final String newPassword = "7654321";
 
 
     @BeforeClass

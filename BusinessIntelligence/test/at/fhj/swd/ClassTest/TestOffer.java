@@ -61,10 +61,6 @@ public class TestOffer extends JdbcHandler
         assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
 
-        testProjectmanager = new Projectmanager(TestUser.name2, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, testCompany);
-        assertNotNull(testProjectmanager);
-        manager.persist(testProjectmanager);
-
         testProject = new Project (TestProject.capital, TestProject.date, TestProject.task, testCompany);
         assertNotNull(testProject);
         manager.persist(testProject);
@@ -84,7 +80,6 @@ public class TestOffer extends JdbcHandler
         assertNotNull(testLocation);
         assertNotNull(testLocation2);
         assertNotNull(testCompany);
-        assertNotNull(testProjectmanager);
         assertNotNull(testProject);
         assertNotNull(testProject);
         assertNotNull(testOffer );
@@ -104,7 +99,6 @@ public class TestOffer extends JdbcHandler
 
         manager.remove(testOffer);
         manager.remove(testProject);
-        manager.remove(testProjectmanager);
         manager.remove(testFreelancer);
         manager.remove(testCompany);
         manager.remove(testLocation2);
@@ -116,14 +110,12 @@ public class TestOffer extends JdbcHandler
         testLocation2 = manager.find(Location.class, testLocation2.getAddress());
         testCompany= manager.find(Company.class, testCompany.getCompany());
         testFreelancer= manager.find(Freelancer.class, testFreelancer.getUserId());
-        testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
         testProject = manager.find(Project.class, testProject.getProjectId());
         testOffer = manager.find(Offer.class, testOffer.getOfferId());
 
         assertNull(testLocation);
         assertNull(testLocation2);
         assertNull(testCompany);
-        assertNull(testProjectmanager);
         assertNull(testProject);
         assertNull(testProject);
         assertNull(testOffer );
