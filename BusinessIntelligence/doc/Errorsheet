@@ -2,9 +2,9 @@ Open Issues:
 
     Querys - Daten über insert bespielen und in querytests auslesen.
 
-10.01.2017 17:21 -- TestCompanyQuery C_repoTestGetBranche AssertionError
+#DONE 10.01.2017 17:21 -- TestCompanyQuery C_repoTestGetBranche AssertionError
 
-10.01.2017 17:33 -- @BeforeClass -> Execute Destroy()???
+#DONE 10.01.2017 17:33 -- @BeforeClass -> Execute Destroy()???
 
 
 
