@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Offer", schema="public")
+@NamedQuery(name="findByPrice", query="SELECT o FROM Offer o WHERE o.price = :price")
+
 public class Offer {
     @Id @Column(name = "offer_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer offerId;
