@@ -1,10 +1,54 @@
 Open Issues:
 
-    Querys - Daten über insert bespielen und in querytests auslesen.
+         ERD - sql
+             die namen sind tw. verschieden, das macht das lesen schwieriger.
+             Bsp : ERD  : participate
+                   sql  : Responsibility
 
-#DONE 10.01.2017 17:21 -- TestCompanyQuery C_repoTestGetBranche AssertionError
+         src
+             Projectmanager.addProject : verbindet in beide richtungen. gut
+             Project.addProjectmanager : verbindet nur in eine richtung. gut
+                 darf aber nicht public sein, der application programmer
+                 soll nur Projectmanager.addProject verwenden duerfen
 
-#DONE 10.01.2017 17:33 -- @BeforeClass -> Execute Destroy()???
+             die relationen sind z.T. nur einseitig vorhanden.
+                 z.b.: Offer -> Project : vorhanden
+                       Project -> Offer : fehlt
+
+             namedQuery : da braucht es noch welche mit JOINs
+
+             Repositories
+                 eine gemeinsame elternklasse waere gut, weil code-teile
+                 (setEntityManager(...) in allen repos gleich sind.
+
+             OfferRepository
+                 findByName
+                     sollte besser  findByPrice heissen
+
+                     //results in our case a single result
+                         na ja, bald wird es 2 offers mit dem gleichen preis geben
+                         und dann wird es krachen.
+
+
+         test
+
+             TestSecurityReader
+                 B_testReaderInsert
+                     falls KEINE exception geworfen wird heisst das, das
+                     die security nicht korrekt impl. ist
+                     daher ist der test abzubrechen.
+                     nach
+                         managerReader.persist(location);
+                     ist ein
+                         Assert.fail
+                     einzubauen
+
+             TestSecurityReaderWriter
+                 C_testReaderRemove
+                     detto : Assert.fail
+
+
+
 
 #Done -- Packages unter Tests eingefügt. Helper beinhaltet einen Controller und Daten.
 // test - die setup() methode ist in allen tests gleich. die gehoert
