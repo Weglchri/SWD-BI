@@ -64,6 +64,7 @@ public class TestProjectQuery extends JdbcHandler{
         assertEquals(testProject.getCapital(), testProject1.getCapital());
         assertEquals(testProject.getTask(), testProject1.getTask());
         assertEquals(testProject.getCompanyName().getCompany(), testProject1.getCompanyName().getCompany());
+        assertEquals(testProject.getOffers().get(0).getPrice(), testProject1.getOffers().get(0).getPrice());
 
     }
 }

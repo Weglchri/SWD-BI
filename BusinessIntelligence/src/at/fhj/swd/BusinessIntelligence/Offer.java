@@ -51,6 +51,7 @@ public class Offer {
 
     public void setFkProjectId(Project project_id) {
         this.project_id = project_id;
+        project_id.addOffer(this);
     }
 
     public User getFkUserId() {

@@ -1,6 +1,7 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
+import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,9 @@ public class Project {
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
     public Company company_name;
+
+    @OneToMany(mappedBy = "project_id")
+    private List<Offer> offers= new ArrayList<>();
 
     //Problems with Insertion in Responsibility(Join Table)
     @ManyToMany(mappedBy="projects")
@@ -66,4 +70,13 @@ public class Project {
     public void addProjectmanager(Projectmanager projectmanager) {
         projectmanagers.add(projectmanager);
     }
+
+    public void addOffer(Offer offer) {
+        offers.add(offer);
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
 }
+
