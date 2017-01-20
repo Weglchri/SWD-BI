@@ -1,9 +1,8 @@
 Open Issues:
 
-         ERD - sql
-             die namen sind tw. verschieden, das macht das lesen schwieriger.
-             Bsp : ERD  : participate
-                   sql  : Responsibility
+    Security: Zerschossen!
+
+
 
          src
              Projectmanager.addProject : verbindet in beide richtungen. gut
@@ -49,6 +48,10 @@ Open Issues:
 
 
 
+#Done -- Responsibility ist nun Participation
+// ERD - sql die namen sind tw. verschieden, das macht das lesen schwieriger.
+// ERD  : participate
+// sql  : Responsibility
 
 #Done -- Packages unter Tests eingefügt. Helper beinhaltet einen Controller und Daten.
 // test - die setup() methode ist in allen tests gleich. die gehoert

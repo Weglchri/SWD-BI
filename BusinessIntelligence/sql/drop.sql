@@ -1,4 +1,4 @@
-DROP TABLE public.Responsibility CASCADE;
+DROP TABLE public.Participation CASCADE;
 DROP TABLE public.Project CASCADE;
 DROP TABLE public.Offer CASCADE;
 DROP TABLE public.Location CASCADE;

@@ -115,7 +115,7 @@ public class TestSecurityReader extends JdbcHandler
         factoryOwner.close();
         ScriptLoader Loader = new ScriptLoader();
         Loader.executeSqlScript("sql/drop.sql");
-        Loader.executeSqlScript("sql/drop_Sequences.sql");
+        Loader.executeSqlScript("sql/drop_sequences.sql");
         Loader.executeSqlScript("sql/security_drop.sql");
     }
 

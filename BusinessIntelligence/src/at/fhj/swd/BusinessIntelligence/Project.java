@@ -27,7 +27,6 @@ public class Project {
     @OneToMany(mappedBy = "project_id")
     private List<Offer> offers= new ArrayList<>();
 
-    //Problems with Insertion in Responsibility(Join Table)
     @ManyToMany(mappedBy="projects")
     private List<Projectmanager> projectmanagers = new ArrayList<Projectmanager>();
 
@@ -71,12 +70,14 @@ public class Project {
         projectmanagers.add(projectmanager);
     }
 
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
     public void addOffer(Offer offer) {
         offers.add(offer);
     }
 
-    public List<Offer> getOffers() {
-        return offers;
-    }
+
 }
 

@@ -1,5 +1,6 @@
 package at.fhj.swd.QueryTest;
 
+import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class TestLocationQuery extends JdbcHandler {
 
     private static Location testLocation;
-    private static Location testLocation1;
+    private static Company testCompany;
 
     static final String address = "Alte Poststraße 122/1";
     static final String country = "Austria";
@@ -62,8 +63,8 @@ public class TestLocationQuery extends JdbcHandler {
         testLocation = new Location(address, country, zip, city);
         assertNotNull(testLocation);
 
-        testLocation1 = new Location(address1, country1, zip1, city1);
-        assertNotNull(testLocation1);
+        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testLocation);
+        assertNotNull(testCompany);
 
     }
 
@@ -80,10 +81,8 @@ public class TestLocationQuery extends JdbcHandler {
         assertEquals(testLocation.getCountry(), testLocation1.get(0).getCountry());
         assertEquals(testLocation.getZip(), testLocation1.get(0).getZip());
 
-        assertEquals(TestLocationQuery.testLocation1.getAddress(), testLocation1.get(1).getAddress());
-        assertEquals(TestLocationQuery.testLocation1.getCity(), testLocation1.get(1).getCity());
-        assertEquals(TestLocationQuery.testLocation1.getCountry(), testLocation1.get(1).getCountry());
-        assertEquals(TestLocationQuery.testLocation1.getZip(), testLocation1.get(1).getZip());
+        assertEquals(testLocation.getCompany().getCompanyName(), testLocation1.get(0).getCompany().getCompanyName());
+        assertEquals(testLocation.getCompany().getBranch(), testLocation1.get(0).getCompany().getBranch());
 
     }
 

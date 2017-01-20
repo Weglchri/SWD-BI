@@ -10,6 +10,12 @@ import javax.persistence.*;
 )
 public class Location {
 
+    @OneToOne (mappedBy="address")
+    private Company company;
+
+    @OneToOne (mappedBy="address")
+    private Freelancer freelancer;
+
     @Id private String address;
         private String country;
         private Integer zip;
@@ -56,4 +62,21 @@ public class Location {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public Freelancer getFreelancer() {
+        return freelancer;
+    }
+
+    public void setFreelancer(Freelancer freelancer) {
+        this.freelancer = freelancer;
+    }
 }
+

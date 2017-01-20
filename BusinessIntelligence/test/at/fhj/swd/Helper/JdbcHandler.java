@@ -28,7 +28,15 @@ public class JdbcHandler {
     }
 
     private static final void dropSequences() {
-        Loader.executeSqlScript("sql/drop_Sequences.sql");
+        Loader.executeSqlScript("sql/drop_sequences.sql");
+    }
+
+    public static final void buildSecurity(){
+        Loader.executeSqlScript("sql/security_create.sql");
+    }
+
+    public static final void revokeSecurity(){
+        Loader.executeSqlScript("sql/security_drop.sql");
     }
 
 
@@ -47,13 +55,5 @@ public class JdbcHandler {
         factory.close();
     }
 
-    public static final void buildSecurity(){
-        Loader.executeSqlScript("sql/security_create.sql");
-    }
-
-
-    public static final void revokeSecurity(){
-        Loader.executeSqlScript("sql/security_drop.sql");
-    }
 
 }

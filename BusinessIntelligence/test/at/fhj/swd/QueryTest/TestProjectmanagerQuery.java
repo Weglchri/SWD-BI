@@ -69,12 +69,10 @@ public class TestProjectmanagerQuery extends JdbcHandler {
         assertEquals(testProjectmanager.getPassword(), testProjectmanager1.getPassword());
         assertEquals(testProjectmanager.getInvolvedIn(), testProjectmanager1.getInvolvedIn());
         assertEquals(testProjectmanager.getFunction(), testProjectmanager1.getFunction());
-        assertEquals(testProjectmanager.getCompanyName().getCompany(), testProjectmanager1.getCompanyName().getCompany());
+        assertEquals(testProjectmanager.getCompany().getCompanyName(), testProjectmanager1.getCompany().getCompanyName());
         assertEquals(testProjectmanager.getProjects().get(0).getTask(), testProjectmanager1.getProjects().get(0).getTask());
         assertEquals(testProjectmanager.getProjects().get(0).getCapital(), testProjectmanager1.getProjects().get(0).getCapital());
     }
 
 }
 
-    //INSERT INTO public.Offer (Offer_Id, Price, Creation_Date, Fk_Project_Id, Fk_User_Id ) VALUES (nextval ('public.offer_sequence'), 100, current_timestamp, (SELECT Project_Id from public.Project WHERE Project_Id = 1 ),(SELECT User_Id from public.User WHERE User_Id = 2) );
-    //INSERT INTO public.Responsibility (Fk_User_Id, Fk_Project_Id) VALUES ((SELECT User_Id from public.User WHERE User_Id = 3),(SELECT Project_Id from public.Project WHERE Project_Id = 1));

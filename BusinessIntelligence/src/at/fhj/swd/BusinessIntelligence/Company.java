@@ -20,7 +20,7 @@ public class Company {
 
 
     public Company(String company_name, String branch, Location address){
-        setCompany(company_name);
+        setCompanyName(company_name);
         setBranch(branch);
         setAddress(address);
     }
@@ -28,11 +28,11 @@ public class Company {
     protected Company(){}
 
 
-    public String getCompany() {
+    public String getCompanyName() {
         return company_name;
     }
 
-    private void setCompany(String company_name) {
+    private void setCompanyName(String company_name) {
         this.company_name = company_name;
     }
 
@@ -46,6 +46,9 @@ public class Company {
 
     public Location getAddress() {return address;}
 
-    private void setAddress(Location address) {this.address = address;}
+    private void setAddress(Location address) {
+        this.address = address;
+        address.setCompany(this);
+    }
 
 }

@@ -7,8 +7,6 @@ import javax.persistence.*;
 @NamedQuery(name="findFreelancerByName", query="SELECT f from Freelancer f  WHERE f.name = :name")
 public class Freelancer extends User {
 
-    //inner join User u on f.name=u.name
-    //Freelancer Variables
     private String profession;
     private String availability;
     private Integer hourly_wage;
@@ -68,5 +66,6 @@ public class Freelancer extends User {
 
     private void setAddress(Location address) {
         this.address = address;
+        address.setFreelancer(this);
     }
 }

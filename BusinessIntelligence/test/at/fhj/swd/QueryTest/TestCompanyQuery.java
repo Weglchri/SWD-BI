@@ -79,15 +79,15 @@ public class TestCompanyQuery extends JdbcHandler {
         Company testCompany2 = companyRepo.findByName(company_name1);
         Company testCompany3 = companyRepo.findByName(company_name2);
 
-        assertEquals(testCompany1.getCompany(), testCompany1.getCompany());
+        assertEquals(testCompany1.getCompanyName(), testCompany1.getCompanyName());
         assertEquals(testCompany1.getBranch(), testCompany1.getBranch());
         assertEquals(testCompany1.getAddress().getAddress(), testCompany1.getAddress().getAddress());
 
-        assertEquals(testCompany2.getCompany(), testCompany2.getCompany());
+        assertEquals(testCompany2.getCompanyName(), testCompany2.getCompanyName());
         assertEquals(testCompany2.getBranch(), testCompany2.getBranch());
         assertEquals(testCompany2.getAddress().getAddress(), testCompany2.getAddress().getAddress());
 
-        assertEquals(testCompany3.getCompany(), testCompany3.getCompany());
+        assertEquals(testCompany3.getCompanyName(), testCompany3.getCompanyName());
         assertEquals(testCompany3.getBranch(), testCompany3.getBranch());
         assertEquals(testCompany3.getAddress().getAddress(), testCompany3.getAddress().getAddress());
 

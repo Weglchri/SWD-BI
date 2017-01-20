@@ -18,7 +18,6 @@ public class TestOffer extends JdbcHandler
     private static Location testLocation;
     private static Location testLocation2;
     private static Freelancer testFreelancer;
-    private static Projectmanager testProjectmanager;
     private static Company testCompany;
     private static Project testProject;
     private static Offer testOffer;
@@ -108,7 +107,7 @@ public class TestOffer extends JdbcHandler
 
         testLocation = manager.find(Location.class, testLocation.getAddress());
         testLocation2 = manager.find(Location.class, testLocation2.getAddress());
-        testCompany= manager.find(Company.class, testCompany.getCompany());
+        testCompany= manager.find(Company.class, testCompany.getCompanyName());
         testFreelancer= manager.find(Freelancer.class, testFreelancer.getUserId());
         testProject = manager.find(Project.class, testProject.getProjectId());
         testOffer = manager.find(Offer.class, testOffer.getOfferId());

@@ -10,7 +10,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
 
-public class TestResponsibility extends JdbcHandler
+public class TestParticipation extends JdbcHandler
 {
     private static Projectmanager projectmanager1;
     private static Projectmanager projectmanager2;

@@ -20,7 +20,7 @@ public class Projectmanager extends User{
 
     @ManyToMany
     @JoinTable(
-            name="Responsibility",
+            name="Participation",
             joinColumns=@JoinColumn(name="fk_user_id", referencedColumnName="user_id"),
             inverseJoinColumns=@JoinColumn(name="fk_project_id", referencedColumnName="project_id"))
     private List<Project> projects = new ArrayList<Project>();
@@ -32,12 +32,12 @@ public class Projectmanager extends User{
         super(name, email, password);
         setInvolvedIn(involved_In);
         setFunction(function);
-        setCompanyName(company_name);
+        setCompany(company_name);
     }
 
-    private void setCompanyName(Company company) {this.company_name = company;}
+    private void setCompany(Company company) {this.company_name = company;}
 
-    public Company getCompanyName() {return company_name;}
+    public Company getCompany() {return company_name;}
 
     public int getInvolvedIn() {
         return involved_In;
@@ -54,7 +54,6 @@ public class Projectmanager extends User{
     public void setFunction(String function) {
         this.function = function;
     }
-
 
     public List<Project> getProjects() {return projects;}
 

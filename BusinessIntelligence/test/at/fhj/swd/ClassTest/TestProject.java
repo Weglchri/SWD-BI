@@ -97,7 +97,7 @@ public class TestProject extends JdbcHandler {
         transaction.commit();
 
         testAddress = manager.find(Location.class, testAddress.getAddress());
-        testCompany= manager.find(Company.class, testCompany.getCompany());
+        testCompany= manager.find(Company.class, testCompany.getCompanyName());
         testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
         testProject = manager.find(Project.class, testProject.getProjectId());
 
