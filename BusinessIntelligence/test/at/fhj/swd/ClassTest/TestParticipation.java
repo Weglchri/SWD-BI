@@ -1,5 +1,7 @@
 package at.fhj.swd.ClassTest;
 
+import at.fhj.swd.BusinessIntelligence.Company;
+import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligence.Project;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
 import at.fhj.swd.Helper.JdbcHandler;
@@ -13,10 +15,9 @@ import static org.junit.Assert.*;
 public class TestParticipation extends JdbcHandler
 {
     private static Projectmanager projectmanager1;
-    private static Projectmanager projectmanager2;
-    private static Projectmanager projectmanager3;
+    private static Location testLocation;
+    private static Company testCompany;
     private static Project projectWebsite;
-    private static Project projectQualityCheck;
 
 
     @BeforeClass
@@ -36,41 +37,28 @@ public class TestParticipation extends JdbcHandler
     {
         transaction.begin();
 
-        projectmanager1 = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
-        projectmanager2 = new Projectmanager(TestUser.name2, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
-        projectmanager3 = new Projectmanager(TestUser.name3, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, null);
+        testLocation = new Location(TestLocation.address, TestLocation.country, TestLocation.zip, TestLocation.city);
+        assertNotNull(testLocation);
+        manager.persist(testLocation);
+
+        testCompany = new Company(TestCompany.company_name, TestCompany.branch, testLocation);
+        assertNotNull(testCompany);
+        manager.persist(testCompany);
+
+        projectmanager1 = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, testCompany);
         assertNotNull(projectmanager1);
-        assertNotNull(projectmanager2);
-        assertNotNull(projectmanager3);
         manager.persist(projectmanager1);
-        manager.persist(projectmanager2);
-        manager.persist(projectmanager3);
 
-
-        projectWebsite = new Project(TestProject.capital, TestProject.date, TestProject.task, null);
-        projectQualityCheck = new Project(TestProject.capital, TestProject.date, TestProject.task, null);
+        projectWebsite = new Project(TestProject.capital, TestProject.date, TestProject.task, testCompany);
         assertNotNull(projectWebsite);
-        assertNotNull(projectQualityCheck);
         manager.persist(projectWebsite);
-        manager.persist(projectQualityCheck);
 
         projectmanager1.addProject(projectWebsite);
-        projectmanager1.addProject(projectQualityCheck);
-        projectmanager2.addProject(projectWebsite);
-        projectmanager3.addProject(projectQualityCheck);
 
         transaction.commit();
 
-
-        assertFalse(projectmanager2.getProjects().contains(projectQualityCheck));
-        assertFalse(projectmanager3.getProjects().contains(projectWebsite));
         assertTrue(projectmanager1.getProjects().contains(projectWebsite));
-        assertTrue(projectmanager3.getProjects().contains(projectQualityCheck));
-
         assertTrue(projectWebsite.getProjectmanagers().contains(projectmanager1));
-        assertTrue(projectQualityCheck.getProjectmanagers().contains(projectmanager1));
-        assertFalse(projectQualityCheck.getProjectmanagers().contains(projectmanager2));
-        assertFalse(projectWebsite.getProjectmanagers().contains(projectmanager3));
 
     }
 
@@ -80,24 +68,16 @@ public class TestParticipation extends JdbcHandler
         transaction.begin();
 
         manager.remove(projectmanager1);
-        manager.remove(projectmanager2);
-        manager.remove(projectmanager3);
         manager.remove(projectWebsite);
-        manager.remove(projectQualityCheck);
 
         transaction.commit();
 
         projectWebsite = manager.find(Project.class, projectWebsite.getProjectId());
-        projectQualityCheck =  manager.find(Project.class, projectQualityCheck.getProjectId());
         projectmanager1 = manager.find(Projectmanager.class, projectmanager1.getUserId());
-        projectmanager2 = manager.find(Projectmanager.class, projectmanager2.getUserId());
-        projectmanager3 = manager.find(Projectmanager.class, projectmanager3.getUserId());
 
         assertNull(projectmanager1);
-        assertNull(projectmanager2);
-        assertNull(projectmanager3);
         assertNull(projectWebsite);
-        assertNull(projectQualityCheck);
+
 
     }
 

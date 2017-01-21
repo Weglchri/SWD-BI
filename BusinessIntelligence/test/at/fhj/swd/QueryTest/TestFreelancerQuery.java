@@ -62,7 +62,7 @@ public class TestFreelancerQuery extends JdbcHandler {
         assertEquals(testFreelancer.getProfession(), testFreelancer1.getProfession());
         assertEquals(testFreelancer.getHourly_wage(), testFreelancer1.getHourly_wage());
         assertEquals(testFreelancer.getEducation(), testFreelancer1.getEducation());
-        assertEquals(testFreelancer.getAddress().getAddress(), testFreelancer1.getAddress().getAddress());
+
     }
 
 

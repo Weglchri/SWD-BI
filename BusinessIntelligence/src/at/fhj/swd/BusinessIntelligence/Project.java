@@ -22,19 +22,19 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
-    public Company company_name;
+    public Company company;
 
-    @OneToMany(mappedBy = "project_id")
-    private List<Offer> offers= new ArrayList<>();
+    @OneToMany(mappedBy = "project")
+    private List<Offer> offers = new ArrayList<>();
 
     @ManyToMany(mappedBy="projects")
     private List<Projectmanager> projectmanagers = new ArrayList<Projectmanager>();
 
-    public Project(int capital, java.util.Date creation_date, String task, Company company_name) {
+    public Project(int capital, java.util.Date creation_date, String task, Company company) {
         this.creation_date = creation_date;
         setCapital(capital);
         setTask(task);
-        setCompanyName(company_name);
+        setCompany(company);
     }
 
     protected Project() {}
@@ -48,7 +48,7 @@ public class Project {
         return capital;
     }
 
-    public void setCapital(Integer capital) {
+    private void setCapital(Integer capital) {
         this.capital = capital;
     }
 
@@ -60,14 +60,18 @@ public class Project {
         this.task = task;
     }
 
-    public Company getCompanyName() {return company_name;}
+    public Company getCompany() {return company;}
 
-    public void setCompanyName(Company company_name) {this.company_name = company_name;}
+    private void setCompany(Company company) {
+        this.company = company;
+        company.addProject(this);
+    }
 
     public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
 
     public void addProjectmanager(Projectmanager projectmanager) {
         projectmanagers.add(projectmanager);
+
     }
 
     public List<Offer> getOffers() {

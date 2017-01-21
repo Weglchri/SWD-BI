@@ -10,10 +10,10 @@ import javax.persistence.*;
 )
 public class Location {
 
-    @OneToOne (mappedBy="address")
+    @OneToOne (mappedBy="location")
     private Company company;
 
-    @OneToOne (mappedBy="address")
+    @OneToOne (mappedBy="location")
     private Freelancer freelancer;
 
     @Id private String address;
@@ -51,7 +51,7 @@ public class Location {
         return zip;
     }
 
-    public void setZip(Integer zip) {
+    private void setZip(Integer zip) {
         this.zip = zip;
     }
 

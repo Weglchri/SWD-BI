@@ -1,6 +1,8 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Freelancer", schema="public")
@@ -14,15 +16,16 @@ public class Freelancer extends User {
 
     @OneToOne
     @JoinColumn(name="fk_address")
-    private Location address;
+    private Location location;
 
-    public Freelancer(String name, String email, String password, String profession, String availability, Integer hourly_wage, String education, Location address){
+
+    public Freelancer(String name, String email, String password, String profession, String availability, Integer hourly_wage, String education, Location location){
         super(name, email, password);
         setProfession(profession);
         setAvailability(availability);
         setHourly_wage(hourly_wage);
         setEducation(education);
-        setAddress(address);
+        setLocation(location);
     }
 
     protected Freelancer(){}
@@ -40,7 +43,7 @@ public class Freelancer extends User {
         return availability;
     }
 
-    private void setAvailability(String availability) {
+    public void setAvailability(String availability) {
         this.availability = availability;
     }
 
@@ -48,7 +51,7 @@ public class Freelancer extends User {
         return hourly_wage;
     }
 
-    private void setHourly_wage(Integer hourly_wage) {
+    public void setHourly_wage(Integer hourly_wage) {
         this.hourly_wage = hourly_wage;
     }
 
@@ -56,16 +59,18 @@ public class Freelancer extends User {
         return education;
     }
 
-    private void setEducation(String education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 
-    public Location getAddress() {
-        return address;
+    public Location getLocation() {
+        return location;
     }
 
-    private void setAddress(Location address) {
-        this.address = address;
-        address.setFreelancer(this);
+    public void setLocation(Location location) {
+        this.location = location;
+        location.setFreelancer(this);
     }
+
+
 }

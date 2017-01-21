@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProjectQuery extends JdbcHandler{
@@ -63,8 +63,5 @@ public class TestProjectQuery extends JdbcHandler{
 
         assertEquals(testProject.getCapital(), testProject1.getCapital());
         assertEquals(testProject.getTask(), testProject1.getTask());
-        //assertEquals(testProject.getCompany().getCompanyName(), testProject1.getCompany().getCompanyName());
-        //assertEquals(testProject.getOffers().get(0).getPrice(), testProject1.getOffers().get(0).getPrice());
-
     }
 }

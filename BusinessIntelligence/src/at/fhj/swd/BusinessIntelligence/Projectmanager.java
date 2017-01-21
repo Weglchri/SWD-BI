@@ -16,7 +16,7 @@ public class Projectmanager extends User{
 
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
-    public Company company_name;
+    public Company company;
 
     @ManyToMany
     @JoinTable(
@@ -28,22 +28,25 @@ public class Projectmanager extends User{
     protected Projectmanager() {}
 
 
-    public Projectmanager(String name, String email, String password, Integer involved_In, String function, Company company_name) {
+    public Projectmanager(String name, String email, String password, Integer involved_In, String function, Company company) {
         super(name, email, password);
         setInvolvedIn(involved_In);
         setFunction(function);
-        setCompany(company_name);
+        setCompany(company);
     }
 
-    private void setCompany(Company company) {this.company_name = company;}
+    public void setCompany(Company company) {
+        this.company = company;
+        company.addProjectmanager(this);
+    }
 
-    public Company getCompany() {return company_name;}
+    public Company getCompany() {return company;}
 
     public int getInvolvedIn() {
         return involved_In;
     }
 
-    private void setInvolvedIn(Integer involved_In) {
+    public void setInvolvedIn(Integer involved_In) {
         this.involved_In = involved_In;
     }
 

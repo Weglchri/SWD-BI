@@ -1,6 +1,7 @@
 package at.fhj.swd.QueryTest;
 
 import at.fhj.swd.BusinessIntelligence.Company;
+import at.fhj.swd.BusinessIntelligence.Freelancer;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
@@ -20,6 +21,7 @@ public class TestLocationQuery extends JdbcHandler {
 
     private static Location testLocation;
     private static Company testCompany;
+    private static Freelancer testFreelancer;
 
     static final String address = "Alte Poststraße 122/1";
     static final String country = "Austria";
@@ -63,9 +65,6 @@ public class TestLocationQuery extends JdbcHandler {
         testLocation = new Location(address, country, zip, city);
         assertNotNull(testLocation);
 
-        testCompany = new Company(TestCompanyQuery.company_name, TestCompanyQuery.branch, testLocation);
-        assertNotNull(testCompany);
-
     }
 
     @Test
@@ -75,14 +74,10 @@ public class TestLocationQuery extends JdbcHandler {
         List<Location> testLocation1 = locRepo.findByCountry(country);
 
         assertEquals(2, testLocation1.size());
-
         assertEquals(testLocation.getAddress(), testLocation1.get(0).getAddress());
         assertEquals(testLocation.getCity(), testLocation1.get(0).getCity());
         assertEquals(testLocation.getCountry(), testLocation1.get(0).getCountry());
         assertEquals(testLocation.getZip(), testLocation1.get(0).getZip());
-
-        assertEquals(testLocation.getCompany().getCompanyName(), testLocation1.get(0).getCompany().getCompanyName());
-        assertEquals(testLocation.getCompany().getBranch(), testLocation1.get(0).getCompany().getBranch());
 
     }
 

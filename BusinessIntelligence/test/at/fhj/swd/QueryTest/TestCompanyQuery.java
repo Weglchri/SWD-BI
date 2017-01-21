@@ -10,11 +10,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCompanyQuery extends JdbcHandler {
@@ -75,38 +74,21 @@ public class TestCompanyQuery extends JdbcHandler {
     @Test
     public void B_repoTest() {
         CompanyRepository companyRepo = new CompanyRepository(manager);
-        Company testCompany1 = companyRepo.findByName(company_name);
-        Company testCompany2 = companyRepo.findByName(company_name1);
-        Company testCompany3 = companyRepo.findByName(company_name2);
+        Company testCompany3 = companyRepo.findByName(company_name);
+        Company testCompany4 = companyRepo.findByName(company_name1);
+        Company testCompany5 = companyRepo.findByName(company_name2);
 
-        assertEquals(testCompany1.getCompanyName(), testCompany1.getCompanyName());
-        assertEquals(testCompany1.getBranch(), testCompany1.getBranch());
-        assertEquals(testCompany1.getAddress().getAddress(), testCompany1.getAddress().getAddress());
+        assertEquals(testCompany.getCompanyName(), testCompany3.getCompanyName());
+        assertEquals(testCompany.getBranch(), testCompany3.getBranch());
+        assertEquals(testCompany.getLocation().getAddress(), testCompany3.getLocation().getAddress());
 
-        assertEquals(testCompany2.getCompanyName(), testCompany2.getCompanyName());
-        assertEquals(testCompany2.getBranch(), testCompany2.getBranch());
-        assertEquals(testCompany2.getAddress().getAddress(), testCompany2.getAddress().getAddress());
+        assertEquals(testCompany1.getCompanyName(), testCompany4.getCompanyName());
+        assertEquals(testCompany1.getBranch(), testCompany4.getBranch());
+        assertEquals(testCompany1.getLocation().getAddress(), testCompany4.getLocation().getAddress());
 
-        assertEquals(testCompany3.getCompanyName(), testCompany3.getCompanyName());
-        assertEquals(testCompany3.getBranch(), testCompany3.getBranch());
-        assertEquals(testCompany3.getAddress().getAddress(), testCompany3.getAddress().getAddress());
-
-
-    }
-
-    @Test
-    public void C_repoTestGetBranche() {
-        CompanyRepository companyRepo = new CompanyRepository(manager);
-        List<Company> companyBranchSearch = companyRepo.findByBranch(branch);
-        List<Company> companyBranchSearch1 = companyRepo.findByBranch(branch1);
-
-        assertEquals(1, companyBranchSearch.size());
-        assertEquals( testCompany.getBranch() ,companyBranchSearch.get(0).getBranch());
-
-        assertEquals(2, companyBranchSearch1.size());
-        assertEquals( testCompany1.getBranch() ,companyBranchSearch1.get(0).getBranch());
-        assertEquals( testCompany2.getBranch() ,companyBranchSearch1.get(1).getBranch());
-
+        assertEquals(testCompany2.getCompanyName(), testCompany5.getCompanyName());
+        assertEquals(testCompany2.getBranch(), testCompany5.getBranch());
+        assertEquals(testCompany2.getLocation().getAddress(), testCompany5.getLocation().getAddress());
     }
 
 

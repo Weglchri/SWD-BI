@@ -66,8 +66,6 @@ public class TestOfferQuery extends JdbcHandler {
         Offer testOffer1 = offerRepo.findByName(price);
 
         assertEquals(testOffer.getPrice(), testOffer1.getPrice());
-        //assertEquals(testOffer.getFkProjectId().getCompany().getCompanyName(), testOffer1.getFkProjectId().getCompany().getCompanyName());
-        assertEquals(testOffer.getFkUserId().getName(), testOffer1.getFkUserId().getName());
 
     }
 

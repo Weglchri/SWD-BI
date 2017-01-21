@@ -1,20 +1,11 @@
 Open Issues:
 
-    Security: Zerschossen!
-
-
-
          src
              Projectmanager.addProject : verbindet in beide richtungen. gut
              Project.addProjectmanager : verbindet nur in eine richtung. gut
                  darf aber nicht public sein, der application programmer
                  soll nur Projectmanager.addProject verwenden duerfen
 
-             die relationen sind z.T. nur einseitig vorhanden.
-                 z.b.: Offer -> Project : vorhanden
-                       Project -> Offer : fehlt
-
-             namedQuery : da braucht es noch welche mit JOINs
 
              Repositories
                  eine gemeinsame elternklasse waere gut, weil code-teile
@@ -47,6 +38,14 @@ Open Issues:
                      detto : Assert.fail
 
 
+                namedQuery : da braucht es noch welche mit JOINs
+
+
+
+#Done -- Naming geändert
+// die relationen sind z.T. nur einseitig vorhanden.
+// z.b.: Offer -> Project : vorhanden
+// Project -> Offer : fehlt
 
 #Done -- Responsibility ist nun Participation
 // ERD - sql die namen sind tw. verschieden, das macht das lesen schwieriger.

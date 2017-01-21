@@ -1,6 +1,8 @@
 package at.fhj.swd.BusinessIntelligence;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Company", schema="public")
@@ -16,13 +18,18 @@ public class Company {
 
     @OneToOne
     @JoinColumn(name="fk_address")
-    private Location address;
+    private Location location;
 
+    @OneToMany (mappedBy="company")
+    private List<Projectmanager> projectmanagers = new ArrayList<Projectmanager>();
 
-    public Company(String company_name, String branch, Location address){
+    @OneToMany (mappedBy="company")
+    private List<Project> projects = new ArrayList<Project>();
+
+    public Company(String company_name, String branch, Location location){
         setCompanyName(company_name);
         setBranch(branch);
-        setAddress(address);
+        setLocation(location);
     }
 
     protected Company(){}
@@ -32,7 +39,7 @@ public class Company {
         return company_name;
     }
 
-    private void setCompanyName(String company_name) {
+    public void setCompanyName(String company_name) {
         this.company_name = company_name;
     }
 
@@ -44,11 +51,24 @@ public class Company {
         this.branch = branch;
     }
 
-    public Location getAddress() {return address;}
+    public Location getLocation() {return location;}
 
-    private void setAddress(Location address) {
-        this.address = address;
-        address.setCompany(this);
+    public void setLocation(Location location) {
+        this.location = location;
+        location.setCompany(this);
     }
 
+    public List<Projectmanager> getProjectmanagers() { return projectmanagers; }
+
+    public void addProjectmanager(Projectmanager projectmanager) {
+        projectmanagers.add(projectmanager);
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void addProject(Project project) {
+        projects.add(project);
+    }
 }

@@ -56,7 +56,7 @@ public class TestOffer extends JdbcHandler
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        testFreelancer = new Freelancer(TestUser.name, TestUser.email, TestUser.password, TestFreelancer.profession, TestFreelancer.availability, TestFreelancer.hourly_wage, TestFreelancer.education, testLocation2 );
+        testFreelancer = new Freelancer(TestUser.name, TestUser.email, TestUser.password, TestFreelancer.profession, TestFreelancer.availability, TestFreelancer.hourly_wage, TestFreelancer.education, testLocation2);
         assertNotNull(testFreelancer);
         manager.persist(testFreelancer);
 

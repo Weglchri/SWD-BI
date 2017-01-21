@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="BusinessIntelligence" value="e44a0aa5-fc40-42d2-b602-0b907b2b95f5" />
+          <factory-entry name="BusinessIntelligence" value="d2b62cee-579c-43c4-b2e4-cc3b7b076c09" />
           <factory-entry name="persistence" value="e44a0aa5-fc40-42d2-b602-0b907b2b95f5" />
           <factory-entry name="wegl" value="e44a0aa5-fc40-42d2-b602-0b907b2b95f5" />
         </datasource-mapping>
