@@ -1,7 +1,3 @@
-CREATE SEQUENCE public.user_sequence START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE public.offer_sequence START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE public.project_sequence START WITH 1 INCREMENT BY 1;
-
 CREATE TABLE public.User(
 User_Id INTEGER PRIMARY KEY DEFAULT nextval ('public.user_sequence'),
 Name VARCHAR NOT NULL,

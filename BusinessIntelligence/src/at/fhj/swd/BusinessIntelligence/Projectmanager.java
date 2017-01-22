@@ -16,7 +16,7 @@ public class Projectmanager extends User{
 
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
-    public Company company;
+    private Company company;
 
     @ManyToMany
     @JoinTable(

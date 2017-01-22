@@ -22,7 +22,7 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "fk_company_name")
-    public Company company;
+    private Company company;
 
     @OneToMany(mappedBy = "project")
     private List<Offer> offers = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Project {
         return capital;
     }
 
-    private void setCapital(Integer capital) {
+    public void setCapital(Integer capital) {
         this.capital = capital;
     }
 
@@ -62,23 +62,20 @@ public class Project {
 
     public Company getCompany() {return company;}
 
-    private void setCompany(Company company) {
+    public void setCompany(Company company) {
         this.company = company;
         company.addProject(this);
     }
 
     public List<Projectmanager> getProjectmanagers() {return projectmanagers;}
 
-    public void addProjectmanager(Projectmanager projectmanager) {
-        projectmanagers.add(projectmanager);
-
-    }
+    protected void addProjectmanager(Projectmanager projectmanager) { projectmanagers.add(projectmanager);}
 
     public List<Offer> getOffers() {
         return offers;
     }
 
-    public void addOffer(Offer offer) {
+    protected void addOffer(Offer offer) {
         offers.add(offer);
     }
 

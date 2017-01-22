@@ -78,7 +78,7 @@ public class Freelancer extends User {
         return offers;
     }
 
-    public void addOffer(Offer offer) {
+    protected void addOffer(Offer offer) {
         offers.add(offer);
     }
 

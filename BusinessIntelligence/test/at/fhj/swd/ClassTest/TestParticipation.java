@@ -14,10 +14,10 @@ import static org.junit.Assert.*;
 
 public class TestParticipation extends JdbcHandler
 {
-    private static Projectmanager projectmanager1;
+    private static Projectmanager testProjectmanager;
     private static Location testLocation;
     private static Company testCompany;
-    private static Project projectWebsite;
+    private static Project testProject;
 
 
     @BeforeClass
@@ -45,20 +45,20 @@ public class TestParticipation extends JdbcHandler
         assertNotNull(testCompany);
         manager.persist(testCompany);
 
-        projectmanager1 = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, testCompany);
-        assertNotNull(projectmanager1);
-        manager.persist(projectmanager1);
+        testProjectmanager = new Projectmanager(TestUser.name, TestUser.email, TestUser.password, TestProjectmanager.involved, TestProjectmanager.function, testCompany);
+        assertNotNull(testProjectmanager);
+        manager.persist(testProjectmanager);
 
-        projectWebsite = new Project(TestProject.capital, TestProject.date, TestProject.task, testCompany);
-        assertNotNull(projectWebsite);
-        manager.persist(projectWebsite);
+        testProject = new Project(TestProject.capital, TestProject.date, TestProject.task, testCompany);
+        assertNotNull(testProject);
+        manager.persist(testProject);
 
-        projectmanager1.addProject(projectWebsite);
+        testProjectmanager.addProject(testProject);
 
         transaction.commit();
 
-        assertTrue(projectmanager1.getProjects().contains(projectWebsite));
-        assertTrue(projectWebsite.getProjectmanagers().contains(projectmanager1));
+        assertTrue(testProjectmanager.getProjects().contains(testProject));
+        assertTrue(testProject.getProjectmanagers().contains(testProjectmanager));
 
     }
 
@@ -67,16 +67,16 @@ public class TestParticipation extends JdbcHandler
 
         transaction.begin();
 
-        manager.remove(projectmanager1);
-        manager.remove(projectWebsite);
+        manager.remove(testProjectmanager);
+        manager.remove(testProject);
 
         transaction.commit();
 
-        projectWebsite = manager.find(Project.class, projectWebsite.getProjectId());
-        projectmanager1 = manager.find(Projectmanager.class, projectmanager1.getUserId());
+        testProject = manager.find(Project.class, testProject.getProjectId());
+        testProjectmanager = manager.find(Projectmanager.class, testProjectmanager.getUserId());
 
-        assertNull(projectmanager1);
-        assertNull(projectWebsite);
+        assertNull(testProjectmanager);
+        assertNull(testProject);
 
 
     }

@@ -1,17 +1,7 @@
 Open Issues:
 
-         src
-             Projectmanager.addProject : verbindet in beide richtungen. gut
-             Project.addProjectmanager : verbindet nur in eine richtung. gut
-                 darf aber nicht public sein, der application programmer
-                 soll nur Projectmanager.addProject verwenden duerfen
+             namedQuery : da braucht es noch welche mit JOINs
 
-
-             Repositories
-                 eine gemeinsame elternklasse waere gut, weil code-teile
-                 (setEntityManager(...) in allen repos gleich sind.
-
-                 namedQuery : da braucht es noch welche mit JOINs
 
              OfferRepository
                  findByName
@@ -40,9 +30,13 @@ Open Issues:
                      detto : Assert.fail
 
 
+#Done -- EntityCreator erstellt
+// eine gemeinsame (Repository) elternklasse waere gut, weil code-teile
+// (setEntityManager(...) in allen repos gleich sind.
 
-
-
+#Done -- wurde auf protected gesetzt
+// Projectmanager.addProject : verbindet in beide richtungen. gut
+// Project.addProjectmanager : verbindet nur in eine richtung. gut, darf aber nicht public sein, der application programmer soll nur Projectmanager.addProject verwenden duerfen
 
 #Done -- Bidirektionalität
 // die relationen sind z.T. nur einseitig vorhanden.

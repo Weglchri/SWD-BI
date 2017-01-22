@@ -1,24 +1,16 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
 import at.fhj.swd.BusinessIntelligence.Project;
+import at.fhj.swd.EntityCreator.EntityCreator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-public class ProjectRepository
+public class ProjectRepository extends EntityCreator
 {
     public ProjectRepository(final EntityManager entityManager)
     {
-        setEntityManager( entityManager );
-    }
-
-    private EntityManager entityManager;
-    public void setEntityManager(final EntityManager entityManager)
-    {
-        if(entityManager == null)
-            throw new IllegalArgumentException("EntityManager is invalid!");
-
-        this.entityManager = entityManager;
+        super( entityManager );
     }
 
     public Project findByTask(String searchName)

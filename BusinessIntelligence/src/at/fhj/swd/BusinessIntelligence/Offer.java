@@ -18,11 +18,11 @@ public class Offer {
 
     @ManyToOne
     @JoinColumn(name = "fk_user_id")
-    public Freelancer freelancer;
+    private Freelancer freelancer;
 
     @ManyToOne
     @JoinColumn(name = "fk_project_id")
-    public Project project;
+    private Project project;
 
     public Offer(int price,  java.util.Date creation_date, Freelancer freelancer, Project project){
         this.creation_date = creation_date;
@@ -54,16 +54,7 @@ public class Offer {
         this.project = project;
         project.addOffer(this);
     }
-/*
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-        user.addOffer(this);
-    }
-*/
     public Freelancer getFreelancer() {
     return freelancer;
 }

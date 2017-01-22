@@ -9,27 +9,30 @@ import static org.junit.Assert.assertNotNull;
 
 public class JdbcHandler {
 
-    public static EntityManagerFactory factory;
-    public static EntityManager manager;
-    public static EntityTransaction transaction;
+    protected static EntityManagerFactory factory;
+    protected static EntityManager manager;
+    protected static EntityTransaction transaction;
 
     private static final ScriptLoader Loader = new ScriptLoader();
 
     private static final String persistenceUnitName = "BusinessIntelligence";
 
 
-    public static final void build() { Loader.executeSqlScript("sql/create.sql"); }
+    public static final void build() {
+        buildSequence();
+        Loader.executeSqlScript("sql/create.sql");
+    }
 
-    public static final void insert() {Loader.executeSqlScript("sql/insert.sql");}
+    private static final void buildSequence() { Loader.executeSqlScript("sql/create_sequence.sql"); }
+
+    public static final void insert() { Loader.executeSqlScript("sql/insert.sql");}
 
     public static final void dropTables() {
         Loader.executeSqlScript("sql/drop.sql");
         dropSequences();
     }
 
-    private static final void dropSequences() {
-        Loader.executeSqlScript("sql/drop_sequences.sql");
-    }
+    private static final void dropSequences() { Loader.executeSqlScript("sql/drop_sequences.sql"); }
 
     public static final void buildSecurity(){
         Loader.executeSqlScript("sql/security_create.sql");

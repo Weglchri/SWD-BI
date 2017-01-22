@@ -51,7 +51,7 @@ public class Location {
         return zip;
     }
 
-    private void setZip(Integer zip) {
+    public void setZip(Integer zip) {
         this.zip = zip;
     }
 
@@ -75,7 +75,7 @@ public class Location {
         return freelancer;
     }
 
-    public void setFreelancer(Freelancer freelancer) {
+    protected void setFreelancer(Freelancer freelancer) {
         this.freelancer = freelancer;
     }
 }

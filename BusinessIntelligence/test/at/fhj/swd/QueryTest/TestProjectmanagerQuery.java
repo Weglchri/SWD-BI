@@ -55,7 +55,6 @@ public class TestProjectmanagerQuery extends JdbcHandler {
         testProjectmanager = new Projectmanager(TestUserQuery.name2, TestUserQuery.email2, TestUserQuery.password2, involved, function, testCompany);
         assertNotNull(testProjectmanager);
 
-        //testProjectmanager.addProject(testProject);
     }
 
     @Test

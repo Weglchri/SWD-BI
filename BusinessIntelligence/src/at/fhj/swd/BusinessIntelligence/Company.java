@@ -60,7 +60,7 @@ public class Company {
 
     public List<Projectmanager> getProjectmanagers() { return projectmanagers; }
 
-    public void addProjectmanager(Projectmanager projectmanager) {
+    protected void addProjectmanager(Projectmanager projectmanager) {
         projectmanagers.add(projectmanager);
     }
 
@@ -68,7 +68,7 @@ public class Company {
         return projects;
     }
 
-    public void addProject(Project project) {
+    protected void addProject(Project project) {
         projects.add(project);
     }
 }

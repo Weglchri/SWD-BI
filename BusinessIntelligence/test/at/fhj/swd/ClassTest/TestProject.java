@@ -61,8 +61,6 @@ public class TestProject extends JdbcHandler {
         assertNotNull(testProject);
         manager.persist(testProject);
 
-        testProjectmanager.addProject(testProject);
-
         transaction.commit();
 
     }

@@ -1,25 +1,16 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
 import at.fhj.swd.BusinessIntelligence.User;
+import at.fhj.swd.EntityCreator.EntityCreator;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-public class UserRepository
+public class UserRepository extends EntityCreator
 {
     public UserRepository(final EntityManager entityManager)
     {
-        setEntityManager( entityManager );
-    }
-
-    private EntityManager entityManager;
-    public void setEntityManager(final EntityManager entityManager)
-    {
-        if(entityManager == null)
-            throw new IllegalArgumentException("EntityManager is invalid!");
-
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
     public User findByName(String searchName)

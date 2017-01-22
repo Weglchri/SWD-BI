@@ -1,25 +1,17 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
 import at.fhj.swd.BusinessIntelligence.Location;
+import at.fhj.swd.EntityCreator.EntityCreator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class LocationRepository
+public class LocationRepository extends EntityCreator
 {
     public LocationRepository(final EntityManager entityManager)
     {
-        setEntityManager( entityManager );
-    }
-
-    private EntityManager entityManager;
-    public void setEntityManager(final EntityManager entityManager)
-    {
-        if(entityManager == null)
-            throw new IllegalArgumentException("EntityManager is invalid!");
-
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
 
