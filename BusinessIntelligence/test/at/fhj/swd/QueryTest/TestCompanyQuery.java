@@ -89,6 +89,7 @@ public class TestCompanyQuery extends JdbcHandler {
         assertEquals(testCompany2.getCompanyName(), testCompany5.getCompanyName());
         assertEquals(testCompany2.getBranch(), testCompany5.getBranch());
         assertEquals(testCompany2.getLocation().getAddress(), testCompany5.getLocation().getAddress());
+
     }
 
 

@@ -18,10 +18,6 @@ public class User {
     private String email;
     private String password;
 
-
-    @OneToMany (mappedBy="user")
-    private List<Offer> offers = new ArrayList<>();
-
     public User(String name, String email, String password) {
         setName(name);
         setEmail(email);
@@ -52,13 +48,5 @@ public class User {
     public String getPassword() {return password;}
 
     public void setPassword(String password) {this.password = password;}
-
-    public List<Offer> getOffers() {
-        return offers;
-    }
-
-    public void addOffer(Offer offer) {
-        offers.add(offer);
-    }
 
 }

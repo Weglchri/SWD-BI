@@ -18,6 +18,8 @@ public class Freelancer extends User {
     @JoinColumn(name="fk_address")
     private Location location;
 
+    @OneToMany (mappedBy="freelancer")
+    private List<Offer> offers = new ArrayList<>();
 
     public Freelancer(String name, String email, String password, String profession, String availability, Integer hourly_wage, String education, Location location){
         super(name, email, password);
@@ -70,6 +72,14 @@ public class Freelancer extends User {
     public void setLocation(Location location) {
         this.location = location;
         location.setFreelancer(this);
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void addOffer(Offer offer) {
+        offers.add(offer);
     }
 
 
