@@ -5,6 +5,7 @@ import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
 import at.fhj.swd.Helper.ScriptLoader;
 import at.fhj.swd.QueryTest.TestLocationQuery;
+import junit.framework.AssertionFailedError;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
@@ -100,6 +101,7 @@ public class TestSecurityReader extends JdbcHandler
         try
         {
             managerReader.persist(location);
+            Assert.fail();
         }
         catch (Exception e)
         {

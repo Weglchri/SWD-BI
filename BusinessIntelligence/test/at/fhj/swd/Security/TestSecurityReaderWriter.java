@@ -120,6 +120,7 @@ public class TestSecurityReaderWriter extends JdbcHandler
         Location foundLocation = findLocationToRemove.findByAddress("Hauptplatz");
         try {
             managerReaderWriter.remove(foundLocation);
+            Assert.fail();
         }
         catch(Exception e)
         {

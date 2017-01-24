@@ -12,23 +12,21 @@ Open Issues:
                          und dann wird es krachen.
 
 
-         test
-
-             TestSecurityReader
-                 B_testReaderInsert
-                     falls KEINE exception geworfen wird heisst das, das
-                     die security nicht korrekt impl. ist
-                     daher ist der test abzubrechen.
-                     nach
-                         managerReader.persist(location);
-                     ist ein
-                         Assert.fail
-                     einzubauen
-
-             TestSecurityReaderWriter
-                 C_testReaderRemove
-                     detto : Assert.fail
-
+#DONE -- Assert.fail() bei beiden Testmethoden eingetragen
+//            test
+//             TestSecurityReader
+//                 B_testReaderInsert
+//                     falls KEINE exception geworfen wird heisst das, das
+//                     die security nicht korrekt impl. ist
+//                     daher ist der test abzubrechen.
+//                     nach
+//                         managerReader.persist(location);
+//                     ist ein
+//                         Assert.fail
+//                     einzubauen
+//             TestSecurityReaderWriter
+//                 C_testReaderRemove
+//                     detto : Assert.fail
 
 #Done -- EntityCreator erstellt
 // eine gemeinsame (Repository) elternklasse waere gut, weil code-teile
