@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name="Project", schema="public")
-@NamedQuery(name="findByTask", query="SELECT p FROM Project p WHERE p.task = :task")
+@NamedQueries({ @NamedQuery(name="findByTask", query="SELECT p FROM Project p WHERE p.task = :task"),
+                @NamedQuery(name="findByProjectType", query="SELECT NEW at.fhj.swd.BusinessIntelligence.ConciseProjectmanager(m) FROM Project p JOIN p.projectmanagers WHERE p.task = :projectType")})
 
 public class Project {
     @Id @Column(name = "project_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
