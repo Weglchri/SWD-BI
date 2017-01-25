@@ -1,6 +1,7 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
 import at.fhj.swd.BusinessIntelligence.Company;
+import at.fhj.swd.BusinessIntelligence.Projectmanager;
 import at.fhj.swd.EntityCreator.EntityCreator;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,14 @@ public class CompanyRepository extends EntityCreator
     {
         TypedQuery<Company> query =  entityManager.createNamedQuery("findCompaniesByBranche", Company.class);
         query.setParameter("branch", searchBranch);
+        return query.getResultList();
+    }
+
+    public List<Projectmanager> findAllProjectManagersOfCompany(String companyName)
+    {
+        TypedQuery<Projectmanager> query = entityManager.createNamedQuery("findAllProjectmanagersOfCompany", Projectmanager.class);
+        query.setParameter("companyName", companyName);
+        System.out.println(query.getResultList());
         return query.getResultList();
     }
 }

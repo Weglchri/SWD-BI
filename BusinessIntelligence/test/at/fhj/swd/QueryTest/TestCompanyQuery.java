@@ -25,7 +25,7 @@ public class TestCompanyQuery extends JdbcHandler {
     private static Company testCompany1;
     private static Company testCompany2;
 
-    static final String company_name = "Stahl Incorporation";
+    public static final String company_name = "Stahl Incorporation";
     static final String branch = "Stahlbau";
 
     static final String company_name1 = "Orange GmbH";

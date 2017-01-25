@@ -1,22 +1,16 @@
-package at.fhj.swd.QueryTest;
+package at.fhj.swd.JoinTest;
 
 import at.fhj.swd.BusinessIntelligence.*;
 import at.fhj.swd.BusinessIntelligence.Project;
-import at.fhj.swd.BusinessIntelligenceRepositories.ProjectRepository;
 import at.fhj.swd.BusinessIntelligenceRepositories.ProjectmanagerRepository;
-import at.fhj.swd.ClassTest.TestProjectmanager;
 import at.fhj.swd.Helper.JdbcHandler;
-import org.eclipse.persistence.sessions.*;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
+import at.fhj.swd.QueryTest.TestCompanyQuery;
+import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by sattlerb on 24.01.2017.
@@ -77,7 +71,7 @@ public class TestProjectmanagerJoinProjectQuery extends JdbcHandler
 //        assertNotNull(testProjectmanager);
 //    }
 
-    @Test
+    @Ignore
     public void B_repoTest() {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
         List<Project> projects = projectmanagerRepo.findProjectManagerByProjectType(TestCompanyQuery.company_name);

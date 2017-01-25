@@ -8,7 +8,8 @@ import java.util.List;
 @Table(name="Company", schema="public")
 @NamedQueries({
         @NamedQuery(name="findCompanyByName", query="SELECT c FROM Company c where c.company_name = :companyName"),
-        @NamedQuery(name="findCompaniesByBranche", query="SELECT c FROM Company c where c.branch = :branch")}
+        @NamedQuery(name="findCompaniesByBranche", query="SELECT c FROM Company c where c.branch = :branch"),
+        @NamedQuery(name="findAllProjectmanagersOfCompany", query="SELECT p FROM Projectmanager p JOIN p.company c WHERE c.company_name = :companyName")}
 )
 public class Company {
 
