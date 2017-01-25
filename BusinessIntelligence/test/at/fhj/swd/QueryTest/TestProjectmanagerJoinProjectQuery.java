@@ -1,8 +1,11 @@
 package at.fhj.swd.QueryTest;
 
 import at.fhj.swd.BusinessIntelligence.*;
+import at.fhj.swd.BusinessIntelligence.Project;
 import at.fhj.swd.BusinessIntelligenceRepositories.ProjectRepository;
+import at.fhj.swd.BusinessIntelligenceRepositories.ProjectmanagerRepository;
 import at.fhj.swd.Helper.JdbcHandler;
+import org.eclipse.persistence.sessions.*;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -67,8 +70,8 @@ public class TestProjectmanagerJoinProjectQuery extends JdbcHandler
 
     @Test
     public void B_repoTest() {
-        ProjectRepository projectRepo = new ProjectRepository(manager);
-        List<Project> projects = projectRepo.findProjectManagerByProjectType(TestProjectQuery.task);
+        ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
+        List<Project> projects = projectmanagerRepo.findProjectManagerByProjectType(TestProjectQuery.task);
 
         assertEquals(3, projects.size());
     }

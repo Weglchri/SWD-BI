@@ -1,6 +1,7 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
 import at.fhj.swd.BusinessIntelligence.Project;
+import at.fhj.swd.BusinessIntelligence.Projectmanager;
 import at.fhj.swd.EntityCreator.EntityCreator;
 
 import javax.persistence.EntityManager;
@@ -21,10 +22,5 @@ public class ProjectRepository extends EntityCreator
         return query.getSingleResult();
     }
 
-    public List<Project> findProjectManagerByProjectType(String projectType)
-    {
-        TypedQuery<Project> query  = entityManager.createNamedQuery("findByProjectType", Project.class);
-        query.setParameter("projectType", projectType);
-        return query.getResultList();
-    }
+
 }
