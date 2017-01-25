@@ -33,11 +33,15 @@ public class TestProjectmanagerCompanyJoin extends JdbcHandler
     }
 
     @Test
-    public void getAllProjectmanagersOfCompany()
-    {
+    public void getAllProjectmanagersOfCompany() {
         CompanyRepository companyRepo = new CompanyRepository(manager);
         List<Projectmanager> projectManagers = companyRepo.findAllProjectManagersOfCompany(TestCompanyQuery.company_name);
 
-        assertEquals(1, projectManagers.size());
+        assertEquals(2, projectManagers.size());
+
+        for (Projectmanager m : projectManagers)
+        {
+            assertEquals(TestCompanyQuery.company_name, m.getCompany().getCompanyName());
+        }
     }
 }
