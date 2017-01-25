@@ -8,7 +8,6 @@
         <class>at.fhj.swd.BusinessIntelligence.Project</class>
         <class>at.fhj.swd.BusinessIntelligence.Projectmanager</class>
         <class>at.fhj.swd.BusinessIntelligence.User</class>
-        <class>at.fhj.swd.BusinessIntelligence.ConciseProjectmanager</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.65.1.37:5434/wegl"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

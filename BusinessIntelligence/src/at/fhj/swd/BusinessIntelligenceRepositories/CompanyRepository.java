@@ -3,6 +3,7 @@ package at.fhj.swd.BusinessIntelligenceRepositories;
 import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Projectmanager;
 import at.fhj.swd.EntityCreator.EntityCreator;
+import org.eclipse.persistence.internal.jpa.JPAQuery;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -32,8 +33,7 @@ public class CompanyRepository extends EntityCreator
     public List<Projectmanager> findAllProjectManagersOfCompany(String companyName)
     {
         TypedQuery<Projectmanager> query = entityManager.createNamedQuery("findAllProjectmanagersOfCompany", Projectmanager.class);
-        query.setParameter("companyName", companyName);
-        System.out.println(query.getResultList());
+        query.setParameter("name", companyName);
         return query.getResultList();
     }
 }

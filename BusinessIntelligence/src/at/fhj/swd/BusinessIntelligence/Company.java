@@ -9,7 +9,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name="findCompanyByName", query="SELECT c FROM Company c where c.company_name = :companyName"),
         @NamedQuery(name="findCompaniesByBranche", query="SELECT c FROM Company c where c.branch = :branch"),
-        @NamedQuery(name="findAllProjectmanagersOfCompany", query="SELECT p FROM Projectmanager p JOIN p.company c WHERE c.company_name = :companyName")}
+        @NamedQuery(name="findAllProjectmanagersOfCompany", query="SELECT p.name FROM Projectmanager p JOIN p.company c WHERE c.company_name = :name")}
 )
 public class Company {
 
