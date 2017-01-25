@@ -68,8 +68,8 @@ public class TestProjectmanagerJoinProjectQuery extends JdbcHandler
     @Test
     public void B_repoTest() {
         ProjectRepository projectRepo = new ProjectRepository(manager);
-        List<ConciseProjectmanager> conciseProjectmanagers = projectRepo.findProjectManagerByProjectType(TestProjectQuery.task);
+        List<Project> projects = projectRepo.findProjectManagerByProjectType(TestProjectQuery.task);
 
-        assertEquals(3, conciseProjectmanagers.size());
+        assertEquals(3, projects.size());
     }
 }

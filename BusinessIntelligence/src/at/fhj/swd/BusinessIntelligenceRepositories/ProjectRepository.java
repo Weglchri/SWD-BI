@@ -1,6 +1,5 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
-import at.fhj.swd.BusinessIntelligence.ConciseProjectmanager;
 import at.fhj.swd.BusinessIntelligence.Project;
 import at.fhj.swd.EntityCreator.EntityCreator;
 
@@ -22,9 +21,9 @@ public class ProjectRepository extends EntityCreator
         return query.getSingleResult();
     }
 
-    public List<ConciseProjectmanager> findProjectManagerByProjectType(String projectType)
+    public List<Project> findProjectManagerByProjectType(String projectType)
     {
-        TypedQuery<ConciseProjectmanager> query  = entityManager.createNamedQuery("findByProjectType", ConciseProjectmanager.class);
+        TypedQuery<Project> query  = entityManager.createNamedQuery("findByProjectType", Project.class);
         query.setParameter("projectType", projectType);
         return query.getResultList();
     }
