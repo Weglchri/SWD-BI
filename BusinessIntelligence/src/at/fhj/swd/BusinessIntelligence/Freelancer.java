@@ -6,7 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name="Freelancer", schema="public")
-@NamedQuery(name="findFreelancerByName", query="SELECT f from Freelancer f  WHERE f.name = :name")
+@NamedQueries({@NamedQuery(name="findFreelancerByName", query="SELECT f from Freelancer f  WHERE f.name = :name"),
+                @NamedQuery(name="findAllOffersByFreelancer", query="SELECT o FROM Offer o JOIN o.freelancer f WHERE f.name = :worker")})
 public class Freelancer extends User {
 
     private String profession;

@@ -25,8 +25,8 @@ public class TestProjectQuery extends JdbcHandler{
     private static Project testProject;
 
     static final Date date = new Date();
-    static final Integer capital = 1000;
-    static final String task = "Turbinenherstellung";
+    static final Integer capital = 5000;
+    static final String task = "Turbinenschraubenherstellung";
 
 
     @BeforeClass
