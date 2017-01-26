@@ -1,7 +1,5 @@
 package at.fhj.swd.QueryTest;
 
-import at.fhj.swd.BusinessIntelligence.Company;
-import at.fhj.swd.BusinessIntelligence.Freelancer;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
@@ -20,8 +18,6 @@ import static org.junit.Assert.assertEquals;
 public class TestLocationQuery extends JdbcHandler {
 
     private static Location testLocation;
-    private static Company testCompany;
-    private static Freelancer testFreelancer;
 
     static final String address = "Alte Poststraße 122/1";
     static final String country = "Austria";
@@ -43,33 +39,31 @@ public class TestLocationQuery extends JdbcHandler {
     static final Integer zip3 = 1234;
     static final String city3 = "London";
 
-
-
-
     @BeforeClass
-    public static void setup() {
+    public static void setup()
+    {
         JdbcHandler.build();
         JdbcHandler.insert();
         JdbcHandler.init();
     }
 
     @AfterClass
-    public static void teardown() {
+    public static void teardown()
+    {
         JdbcHandler.close();
         JdbcHandler.dropTables();
     }
 
     @Test
-    public void A_createObjects() {
-
+    public void A_createObjects()
+    {
         testLocation = new Location(address, country, zip, city);
         assertNotNull(testLocation);
-
     }
 
     @Test
-    public void B_repoTest() {
-        
+    public void B_repoTest()
+    {
         LocationRepository locRepo = new LocationRepository(manager);
         List<Location> testLocation1 = locRepo.findByCountry(country);
 
@@ -78,7 +72,6 @@ public class TestLocationQuery extends JdbcHandler {
         assertEquals(testLocation.getCity(), testLocation1.get(0).getCity());
         assertEquals(testLocation.getCountry(), testLocation1.get(0).getCountry());
         assertEquals(testLocation.getZip(), testLocation1.get(0).getZip());
-
     }
 
 

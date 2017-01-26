@@ -1,5 +1,6 @@
 package at.fhj.swd.BusinessIntelligenceRepositories;
 
+import at.fhj.swd.BusinessIntelligence.Company;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.EntityCreator.EntityCreator;
 
@@ -33,5 +34,12 @@ public class LocationRepository extends EntityCreator
     {
         TypedQuery<Location> query =  entityManager.createNamedQuery("findAll", Location.class);
         return query.getResultList();
+    }
+
+    public Company findCompanyByLocation(String address)
+    {
+        TypedQuery<Company> query = entityManager.createNamedQuery("findCompanyByLocation", Company.class);
+        query.setParameter("address", address);
+        return query.getSingleResult();
     }
 }
