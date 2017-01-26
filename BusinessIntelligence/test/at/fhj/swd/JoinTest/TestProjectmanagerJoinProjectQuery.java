@@ -27,8 +27,7 @@ public class TestProjectmanagerJoinProjectQuery extends JdbcHandler
     private static Project testProject2;
     private static Projectmanager testProjectmanager;
 
-    static final Integer involved = 3;
-    static final String function = "Personal";
+    private static final int expectedInvolvedIn = 3;
 
 
     @BeforeClass
@@ -67,15 +66,15 @@ public class TestProjectmanagerJoinProjectQuery extends JdbcHandler
 //        testProject2 = new Project(TestProjectQuery.capital + 2000, TestProjectQuery.date, TestProjectQuery.task, testCompany2);
 //        assertNotNull(testProject2);
 //
-//        testProjectmanager = new Projectmanager(TestUserQuery.name2, TestUserQuery.email2, TestUserQuery.password2, involved, function, testCompany);
+//        testProjectmanager = new Projectmanager(TestUserQuery.name2, TestUserQuery.email2, TestUserQuery.password2, expectedInvolvedIn, function, testCompany);
 //        assertNotNull(testProjectmanager);
 //    }
 
-    @Ignore
+    @Test
     public void B_repoTest() {
         ProjectmanagerRepository projectmanagerRepo = new ProjectmanagerRepository(manager);
-        List<Project> projects = projectmanagerRepo.findProjectManagerByProjectType(TestCompanyQuery.company_name);
+        List<Project> projects = projectmanagerRepo.findAllProjectsOfProjectmanager("Someone");
 
-        assertEquals(3, projects.size());
+        assertEquals(expectedInvolvedIn, projects.size());
     }
 }

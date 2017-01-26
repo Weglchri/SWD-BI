@@ -37,3 +37,5 @@ INSERT INTO public.Offer (Offer_Id, Price, Creation_Date, Fk_Project_Id, Fk_User
 INSERT INTO public.Offer (Offer_Id, Price, Creation_Date, Fk_Project_Id, Fk_User_Id ) VALUES (nextval ('public.offer_sequence'), 200, current_timestamp, (SELECT Project_Id from public.Project WHERE Project_Id = 2 ),(SELECT User_Id from public.User WHERE User_Id = 2) );
 
 INSERT INTO public.Participation (Fk_User_Id, Fk_Project_Id) VALUES ((SELECT User_Id from public.User WHERE User_Id = 3),(SELECT Project_Id from public.Project WHERE Project_Id = 1));
+INSERT INTO public.Participation (Fk_User_Id, Fk_Project_Id) VALUES ((SELECT User_Id from public.User WHERE User_Id = 3),(SELECT Project_Id from public.Project WHERE Project_Id = 2));
+INSERT INTO public.Participation (Fk_User_Id, Fk_Project_Id) VALUES ((SELECT User_Id from public.User WHERE User_Id = 3),(SELECT Project_Id from public.Project WHERE Project_Id = 3));

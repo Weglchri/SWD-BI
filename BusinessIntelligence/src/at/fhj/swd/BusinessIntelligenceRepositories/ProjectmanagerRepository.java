@@ -22,10 +22,10 @@ public class ProjectmanagerRepository extends EntityCreator
         return query.getSingleResult();
     }
 
-    public List<Project> findProjectManagerByProjectType(String task)
+    public List<Project> findAllProjectsOfProjectmanager(String managerName)
     {
-        TypedQuery<Project> query  = entityManager.createNamedQuery("findProjectManagerByProjectType", Project.class);
-        query.setParameter("task", task);
+        TypedQuery<Project> query  = entityManager.createNamedQuery("findAllProjectsOfProjectmanager", Project.class);
+        query.setParameter("name", managerName);
         return query.getResultList();
     }
 }
