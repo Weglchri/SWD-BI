@@ -3,22 +3,12 @@ package at.fhj.swd.Security;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
-import at.fhj.swd.Helper.ScriptLoader;
-import at.fhj.swd.QueryTest.TestLocationQuery;
-import junit.framework.AssertionFailedError;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-
 import javax.persistence.*;
-
-import java.rmi.server.ExportException;
 import java.util.*;
 
-import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by sattlerb on 11/01/17.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSecurityReader extends JdbcHandler
 {
@@ -109,16 +99,13 @@ public class TestSecurityReader extends JdbcHandler
         }
     }
 
-
     @AfterClass
     public static void teardown()
     {
         managerOwner.close();
         factoryOwner.close();
-        ScriptLoader Loader = new ScriptLoader();
-        Loader.executeSqlScript("sql/drop.sql");
-        Loader.executeSqlScript("sql/drop_sequences.sql");
-        Loader.executeSqlScript("sql/security_drop.sql");
+        JdbcHandler.dropTables();
+        JdbcHandler.revokeSecurity();
     }
 
 }

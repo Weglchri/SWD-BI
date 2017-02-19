@@ -3,10 +3,8 @@ package at.fhj.swd.Security;
 import at.fhj.swd.BusinessIntelligence.Location;
 import at.fhj.swd.BusinessIntelligenceRepositories.LocationRepository;
 import at.fhj.swd.Helper.JdbcHandler;
-import at.fhj.swd.Helper.ScriptLoader;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -15,13 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by sattlerb on 12/01/17.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSecurityReaderWriter extends JdbcHandler
 {
-
 
     private static final String user = "smithers";
     private static final String password = "burns";
@@ -124,7 +118,7 @@ public class TestSecurityReaderWriter extends JdbcHandler
         }
         catch(Exception e)
         {
-            Assert.assertTrue(e.getMessage().contains( "permission denied" ));
+            Assert.assertTrue(e.getMessage().contains("permission denied"));
         }
     }
 
@@ -143,16 +137,14 @@ public class TestSecurityReaderWriter extends JdbcHandler
         Assert.assertEquals("Graz-Innere Stadt", findLocationToUpdate.findByAddress("Hauptplatz").getCity());
     }
 
-
     @AfterClass
     public static void teardown()
     {
         managerOwner.close();
         factoryOwner.close();
-        ScriptLoader Loader = new ScriptLoader();
-        Loader.executeSqlScript("sql/drop.sql");
-        Loader.executeSqlScript("sql/drop_sequences.sql");
-        Loader.executeSqlScript("sql/security_drop.sql");
+        JdbcHandler.dropTables();
+        JdbcHandler.revokeSecurity();
+
     }
 
 

@@ -1,17 +1,5 @@
 Open Issues:
 
-             namedQuery : da braucht es noch welche mit JOINs
-
-
-             OfferRepository
-                 findByName
-                     sollte besser  findByPrice heissen
-
-                     //results in our case a single result
-                         na ja, bald wird es 2 offers mit dem gleichen preis geben
-                         und dann wird es krachen.
-
-
 #DONE -- Assert.fail() bei beiden Testmethoden eingetragen
 //            test
 //             TestSecurityReader
@@ -27,6 +15,13 @@ Open Issues:
 //             TestSecurityReaderWriter
 //                 C_testReaderRemove
 //                     detto : Assert.fail
+
+//#Done -- findByName benannt
+OfferRepository findByName sollte besser  findByPrice heissen
+results in our case a single result na ja, bald wird es 2 offers mit dem gleichen preis geben
+und dann wird es krachen.
+
+//#Done --  namedQuery : da braucht es noch welche mit JOINs
 
 #Done -- EntityCreator erstellt
 // eine gemeinsame (Repository) elternklasse waere gut, weil code-teile
